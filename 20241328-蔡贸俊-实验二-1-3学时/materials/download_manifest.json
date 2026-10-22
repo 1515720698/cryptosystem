@@ -1,0 +1,23 @@
+{
+  "note": "Official server requires legacy TLS and has an untrusted certificate chain here. Downloaded with certificate validation disabled; hashes establish local integrity only.",
+  "files": [
+    {
+      "name": "SM2_official.rar",
+      "url": "https://www.scctc.org.cn/xzzx/sfydm/ydmxz/829b3a539f374a9dba35b56af7b55f5e/b49339a51a4745599fd6aa06a3ddddcf.rar",
+      "sha256": "5150e83584b7dbcf69a3a40024d8205c733cb5f90b66a31852f32d8a7a7861c0",
+      "bytes": 726311
+    },
+    {
+      "name": "SM3_official.rar",
+      "url": "https://www.scctc.org.cn/xzzx/sfydm/ydmxz/24c0334b8d7e4d9686d2f18de95de685/7cd65ff7cfc14bff8b255e1ce1fece3d.rar",
+      "sha256": "d7ca1c5a135c996f82a5463ec44a92175bb710fe9120fa09800734e77200d2b7",
+      "bytes": 109619
+    },
+    {
+      "name": "SM4_official.rar",
+      "url": "https://www.scctc.org.cn/xzzx/sfydm/ydmxz/eaea1d4374ea48a1b327a771feeddd76/e342f9b3d1eb454da1f2c95dec3d9c7d.rar",
+      "sha256": "01f2250ad41a5961cf02bdf1626216ea938227d9809367ef4f0669730da5599f",
+      "bytes": 100786
+    }
+  ]
+}
