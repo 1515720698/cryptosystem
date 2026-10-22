@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/1515720698/cryptosystem",
+  "branch": "master",
+  "directory": "20241328-蔡贸俊-实验二-1-3学时",
+  "archive_commits": [
+    {
+      "algorithm": "SM3",
+      "sha": "c5fa530a5691665c1949f5f2c7ec095e03e6aa4c",
+      "url": "https://github.com/1515720698/cryptosystem/commit/c5fa530a5691665c1949f5f2c7ec095e03e6aa4c"
+    },
+    {
+      "algorithm": "SM4",
+      "sha": "3357886efe16d463d8c6009a0e7733be62e7b504",
+      "url": "https://github.com/1515720698/cryptosystem/commit/3357886efe16d463d8c6009a0e7733be62e7b504"
+    },
+    {
+      "algorithm": "SM2 and verification",
+      "sha": "889d7d667819d6746e16b50acc55c37f15b5580e",
+      "url": "https://github.com/1515720698/cryptosystem/commit/889d7d667819d6746e16b50acc55c37f15b5580e"
+    }
+  ],
+  "history_note": "These are current archival commits grouped by algorithm after the already completed local experiment; no historical development dates were recreated."
+}

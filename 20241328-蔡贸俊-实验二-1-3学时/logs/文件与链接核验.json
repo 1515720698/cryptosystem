@@ -1,0 +1,76 @@
+{
+  "root": "D:\\HuaweiMoveData\\Users\\HUAWEI\\Documents\\Default Project\\20241328-蔡贸俊-实验二-1-3学时",
+  "scope": "Selected files, basic formats and local Markdown links only",
+  "ok": true,
+  "files": [
+    {
+      "path": "20241328_蔡贸俊_实验二_1-3学时_实践记录.md",
+      "size": 16493,
+      "sha256": "55473136c233d6d841d6a7fecbb8e9d77bfe24b98a2d33a062beb499419a7a64"
+    },
+    {
+      "path": "20241328_蔡贸俊_实验二_1-3学时_实践记录.pdf",
+      "size": 487042,
+      "sha256": "00887d450d1fe8582d7bf70f652e4c4f30eff6b527d7bc972c477f8b50f7cb24"
+    },
+    {
+      "path": "src/main.c",
+      "size": 4342,
+      "sha256": "192f31d487f2fe3139b029113e77ad6483586b82d0c4dc2d7ab5599941bbce5d"
+    },
+    {
+      "path": "src/SM2_ENC.c",
+      "size": 9063,
+      "sha256": "e5cac0fa8af45d0103fb5b6492429eac9d16181699adfcc9dcc2b556c64e2d5c"
+    },
+    {
+      "path": "src/SM3.c",
+      "size": 5444,
+      "sha256": "fd008ca8362076ecaf6fcc60154da764c9ef1e8aa5b6564d444d03862eaa9552"
+    },
+    {
+      "path": "src/SM4.c",
+      "size": 4171,
+      "sha256": "eed14704ec13016b49cdd5af94fd96574952d0ac70a0ca67aca4596e94a4a7e8"
+    },
+    {
+      "path": "logs/results.json",
+      "size": 2376,
+      "sha256": "55b7a635a9e858ba1903206fcee9ce662b978fb214d4ee77baf300b359d99aad"
+    },
+    {
+      "path": "logs/build.log",
+      "size": 14839,
+      "sha256": "90b11cf040618609d48e2be8d74a9264a35135d2b600f0f1afd6727ba5003427"
+    },
+    {
+      "path": "images/实际终端验证截图.png",
+      "size": 50772,
+      "sha256": "c902fcc98184f80542e6405a3c30e1a92d3eaafee5439785ec652b1104fa6779"
+    },
+    {
+      "path": "README_提交清单.md",
+      "size": 2535,
+      "sha256": "f46479ccb7e5b8f3b450200369584fbbb8731d94d370195a1956c8f6e2abf5f8"
+    },
+    {
+      "path": "materials/本阶段要求.md",
+      "size": 885,
+      "sha256": "add9c3d768954fe139b6822ae3f8e18736d35d6a3ea62c60ea872334f52b4f1f"
+    },
+    {
+      "path": "logs/verification.log",
+      "size": 23531,
+      "sha256": "b621e825f645187313c19d7226aee06ec25b4e2927c479c2acf910ab1679f98a"
+    },
+    {
+      "path": "src/SOURCES.md",
+      "size": 1152,
+      "sha256": "7a054f582ba5f28d8ba7b42f26e0fffa92e7df3e4dcf5fc7cc86284a2ed6be31"
+    }
+  ],
+  "linked_directories": [],
+  "embedded_images": 0,
+  "unverified_remote_links": [],
+  "errors": []
+}

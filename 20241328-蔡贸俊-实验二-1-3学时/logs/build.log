@@ -1,0 +1,220 @@
+make: Entering directory '/mnt/d/HuaweiMoveData/Users/HUAWEI/Documents/Default Project/20241328-蔡贸俊-实验二-1-3学时/src'
+gcc -O2 -I miracl -c miracl/mraes.c -o miracl/mraes.o
+gcc -O2 -I miracl -c miracl/mralloc.c -o miracl/mralloc.o
+gcc -O2 -I miracl -c miracl/mrarth0.c -o miracl/mrarth0.o
+gcc -O2 -I miracl -c miracl/mrarth1.c -o miracl/mrarth1.o
+gcc -O2 -I miracl -c miracl/mrarth2.c -o miracl/mrarth2.o
+gcc -O2 -I miracl -c miracl/mrarth3.c -o miracl/mrarth3.o
+gcc -O2 -I miracl -c miracl/mrbits.c -o miracl/mrbits.o
+gcc -O2 -I miracl -c miracl/mrbrick.c -o miracl/mrbrick.o
+gcc -O2 -I miracl -c miracl/mrbuild.c -o miracl/mrbuild.o
+gcc -O2 -I miracl -c miracl/mrcore.c -o miracl/mrcore.o
+gcc -O2 -I miracl -c miracl/mrcrt.c -o miracl/mrcrt.o
+gcc -O2 -I miracl -c miracl/mrcurve.c -o miracl/mrcurve.o
+gcc -O2 -I miracl -c miracl/mrdouble.c -o miracl/mrdouble.o
+gcc -O2 -I miracl -c miracl/mrebrick.c -o miracl/mrebrick.o
+gcc -O2 -I miracl -c miracl/mrec2m.c -o miracl/mrec2m.o
+gcc -O2 -I miracl -c miracl/mrecn2.c -o miracl/mrecn2.o
+gcc -O2 -I miracl -c miracl/mrfast.c -o miracl/mrfast.o
+gcc -O2 -I miracl -c miracl/mrflash.c -o miracl/mrflash.o
+gcc -O2 -I miracl -c miracl/mrflsh1.c -o miracl/mrflsh1.o
+gcc -O2 -I miracl -c miracl/mrflsh2.c -o miracl/mrflsh2.o
+gcc -O2 -I miracl -c miracl/mrflsh3.c -o miracl/mrflsh3.o
+gcc -O2 -I miracl -c miracl/mrflsh4.c -o miracl/mrflsh4.o
+gcc -O2 -I miracl -c miracl/mrfpe.c -o miracl/mrfpe.o
+gcc -O2 -I miracl -c miracl/mrfrnd.c -o miracl/mrfrnd.o
+gcc -O2 -I miracl -c miracl/mrgcd.c -o miracl/mrgcd.o
+gcc -O2 -I miracl -c miracl/mrgcm.c -o miracl/mrgcm.o
+gcc -O2 -I miracl -c miracl/mrgf2m.c -o miracl/mrgf2m.o
+gcc -O2 -I miracl -c miracl/mrio1.c -o miracl/mrio1.o
+gcc -O2 -I miracl -c miracl/mrio2.c -o miracl/mrio2.o
+gcc -O2 -I miracl -c miracl/mrjack.c -o miracl/mrjack.o
+gcc -O2 -I miracl -c miracl/mrlucas.c -o miracl/mrlucas.o
+gcc -O2 -I miracl -c miracl/mrmonty.c -o miracl/mrmonty.o
+gcc -O2 -I miracl -c miracl/mrmuldv.c -o miracl/mrmuldv.o
+gcc -O2 -I miracl -c miracl/mrpi.c -o miracl/mrpi.o
+gcc -O2 -I miracl -c miracl/mrpower.c -o miracl/mrpower.o
+gcc -O2 -I miracl -c miracl/mrprime.c -o miracl/mrprime.o
+gcc -O2 -I miracl -c miracl/mrrand.c -o miracl/mrrand.o
+gcc -O2 -I miracl -c miracl/mrround.c -o miracl/mrround.o
+gcc -O2 -I miracl -c miracl/mrscrt.c -o miracl/mrscrt.o
+gcc -O2 -I miracl -c miracl/mrsha3.c -o miracl/mrsha3.o
+gcc -O2 -I miracl -c miracl/mrshs.c -o miracl/mrshs.o
+gcc -O2 -I miracl -c miracl/mrshs256.c -o miracl/mrshs256.o
+gcc -O2 -I miracl -c miracl/mrshs512.c -o miracl/mrshs512.o
+gcc -O2 -I miracl -c miracl/mrsmall.c -o miracl/mrsmall.o
+gcc -O2 -I miracl -c miracl/mrsroot.c -o miracl/mrsroot.o
+gcc -O2 -I miracl -c miracl/mrstrong.c -o miracl/mrstrong.o
+gcc -O2 -I miracl -c miracl/mrxgcd.c -o miracl/mrxgcd.o
+gcc -O2 -I miracl -c miracl/mrzzn2.c -o miracl/mrzzn2.o
+gcc -O2 -I miracl -c miracl/mrzzn2b.c -o miracl/mrzzn2b.o
+gcc -O2 -I miracl -c miracl/mrzzn3.c -o miracl/mrzzn3.o
+gcc -O2 -I miracl -c miracl/mrzzn4.c -o miracl/mrzzn4.o
+ar rcs miracl/miracl.a miracl/mraes.o miracl/mralloc.o miracl/mrarth0.o miracl/mrarth1.o miracl/mrarth2.o miracl/mrarth3.o miracl/mrbits.o miracl/mrbrick.o miracl/mrbuild.o miracl/mrcore.o miracl/mrcrt.o miracl/mrcurve.o miracl/mrdouble.o miracl/mrebrick.o miracl/mrec2m.o miracl/mrecn2.o miracl/mrfast.o miracl/mrflash.o miracl/mrflsh1.o miracl/mrflsh2.o miracl/mrflsh3.o miracl/mrflsh4.o miracl/mrfpe.o miracl/mrfrnd.o miracl/mrgcd.o miracl/mrgcm.o miracl/mrgf2m.o miracl/mrio1.o miracl/mrio2.o miracl/mrjack.o miracl/mrlucas.o miracl/mrmonty.o miracl/mrmuldv.o miracl/mrpi.o miracl/mrpower.o miracl/mrprime.o miracl/mrrand.o miracl/mrround.o miracl/mrscrt.o miracl/mrsha3.o miracl/mrshs.o miracl/mrshs256.o miracl/mrshs512.o miracl/mrsmall.o miracl/mrsroot.o miracl/mrstrong.o miracl/mrxgcd.o miracl/mrzzn2.o miracl/mrzzn2b.o miracl/mrzzn3.o miracl/mrzzn4.o
+gcc -O2 -g -std=c11 -Wall -Wextra -fno-strict-aliasing -I miracl main.c SM3.c SM4.c miracl/miracl.a -lm -o lab2
+In file included from main.c:10:
+SM2_ENC.c: In function ‘Test_PubKey’:
+SM2_ENC.c:28:17: warning: variable ‘tmp’ set but not used [-Wunused-but-set-variable]
+   28 |     big x,y,x_3,tmp;
+      |                 ^~~
+SM2_ENC.c:28:13: warning: variable ‘x_3’ set but not used [-Wunused-but-set-variable]
+   28 |     big x,y,x_3,tmp;
+      |             ^~~
+SM2_ENC.c: In function ‘SM2_Init’:
+SM2_ENC.c:72:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+   72 |     bytes_to_big(SM2_NUMWORD,SM2_p,para_p);
+      |                              ^~~~~
+      |                              |
+      |                              unsigned char *
+In file included from SM2_ENC.c:1:
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:73:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+   73 |     bytes_to_big(SM2_NUMWORD,SM2_a,para_a);
+      |                              ^~~~~
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:74:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+   74 |     bytes_to_big(SM2_NUMWORD,SM2_b,para_b);
+      |                              ^~~~~
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:75:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+   75 |     bytes_to_big(SM2_NUMWORD,SM2_n,para_n);
+      |                              ^~~~~
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:76:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+   76 |     bytes_to_big(SM2_NUMWORD,SM2_Gx,para_Gx);
+      |                              ^~~~~~
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:77:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+   77 |     bytes_to_big(SM2_NUMWORD,SM2_Gy,para_Gy);
+      |                              ^~~~~~
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:78:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+   78 |     bytes_to_big(SM2_NUMWORD,SM2_h,para_h);
+      |                              ^~~~~
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c: In function ‘SM2_KeyGeneration’:
+SM2_ENC.c:95:9: warning: unused variable ‘i’ [-Wunused-variable]
+   95 |     int i=0;
+      |         ^
+SM2_ENC.c: In function ‘SM2_Encrypt’:
+SM2_ENC.c:123:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  123 |     bytes_to_big(SM2_NUMWORD,randK,rand);
+      |                              ^~~~~
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:126:34: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  126 |     big_to_bytes(SM2_NUMWORD,C1x,C,1);
+      |                                  ^
+      |                                  |
+      |                                  unsigned char *
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c:127:35: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  127 |     big_to_bytes(SM2_NUMWORD,C1y,C+SM2_NUMWORD,1);
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c:136:33: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  136 |     big_to_bytes(SM2_NUMWORD,x2,x2y2,1);
+      |                                 ^~~~
+      |                                 |
+      |                                 unsigned char *
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c:137:37: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  137 |     big_to_bytes(SM2_NUMWORD,y2,x2y2+SM2_NUMWORD,1);
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c: In function ‘SM2_Decrypt’:
+SM2_ENC.c:170:30: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  170 |     bytes_to_big(SM2_NUMWORD,C,C1x);
+      |                              ^
+      |                              |
+      |                              unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:171:31: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  171 |     bytes_to_big(SM2_NUMWORD,C+SM2_NUMWORD,C1y);
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:183:33: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  183 |     big_to_bytes(SM2_NUMWORD,x2,x2y2,1);
+      |                                 ^~~~
+      |                                 |
+      |                                 unsigned char *
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c:184:37: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  184 |     big_to_bytes(SM2_NUMWORD,y2,x2y2+SM2_NUMWORD,1);
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c: In function ‘SM2_ENC_SelfTest’:
+SM2_ENC.c:241:21: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  241 |     bytes_to_big(32,std_priKey,ks);  //ks is the standard private key
+      |                     ^~~~~~~~~~
+      |                     |
+      |                     unsigned char *
+miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+SM2_ENC.c:249:32: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  249 |     big_to_bytes(SM2_NUMWORD,x,kGxy,1);
+      |                                ^~~~
+      |                                |
+      |                                unsigned char *
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c:250:36: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  250 |     big_to_bytes(SM2_NUMWORD,y,kGxy+SM2_NUMWORD,1);
+miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+SM2_ENC.c:205:15: warning: unused variable ‘i’ [-Wunused-variable]
+  205 |     int tmp=0,i=0;
+      |               ^
+SM3.c: In function ‘SM3_done’:
+SM3.c:168:19: warning: unused variable ‘tmp’ [-Wunused-variable]
+  168 |     unsigned char tmp = 0;
+      |                   ^~~
+SM3.c: In function ‘SM3_SelfTest’:
+SM3.c:209:18: warning: unused variable ‘i’ [-Wunused-variable]
+  209 |     unsigned int i=0,a=1,b=1;
+      |                  ^
+make: Leaving directory '/mnt/d/HuaweiMoveData/Users/HUAWEI/Documents/Default Project/20241328-蔡贸俊-实验二-1-3学时/src'

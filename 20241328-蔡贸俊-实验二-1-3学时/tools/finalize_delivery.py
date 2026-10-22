@@ -1,6 +1,6 @@
 """Update verification date, render Markdown PDF, preview, and package delivery."""
 from pathlib import Path
-import json,re,subprocess,sys,zipfile,hashlib
+import json,re,subprocess,sys,zipfile,hashlib,datetime
 import pymupdf
 from PIL import Image,ImageDraw
 R=Path(__file__).resolve().parents[1]
@@ -37,7 +37,9 @@ for i,im in enumerate(ims):
     draw.text((x+5,y+3),f'Page {i+1}',fill='black');sheet.paste(im,(x,y+20))
 sheet.save(R/'images/PDF分页核验.png')
 verifier=Path.home()/'.config/opencode/skills/course-lab-delivery/scripts/verify_submission.py'
-subprocess.run([sys.executable,str(verifier),str(R),'--require',B+'.md','--require',B+'.pdf','--require','src/main.c','--require','src/SM2_ENC.c','--require','src/SM3.c','--require','src/SM4.c','--require','logs/results.json','--require','logs/build.log','--markdown',B+'.md','--markdown','README_提交清单.md','--json',str(R/'logs/文件与链接核验.json')],check=True)
+audit=R/'logs/文件与链接核验.json'
+if audit.exists():audit=R/'logs'/('文件与链接核验_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S')+'.json')
+subprocess.run([sys.executable,str(verifier),str(R),'--require',B+'.md','--require',B+'.pdf','--require','src/main.c','--require','src/SM2_ENC.c','--require','src/SM3.c','--require','src/SM4.c','--require','logs/results.json','--require','logs/build.log','--markdown',B+'.md','--markdown','README_提交清单.md','--json',str(audit)],check=True)
 git_recorded=(R/'logs/repository_metadata.json').is_file()
 report={'scope':'实验二1—3学时','algorithm_assertions':result['passed'],'verification_time':result['time'],'pdf_pages':len(pdf),'blank_pdf_pages':0,'pending':[] if git_recorded else ['课程仓库链接及功能递增Git记录'],'optional_not_attempted':['Rust']}
 (R/'logs/交付状态.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
