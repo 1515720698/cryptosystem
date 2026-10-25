@@ -1,0 +1,60 @@
+{
+  "pages": 11,
+  "checks": [
+    {
+      "page": 1,
+      "characters": 839,
+      "images": 0
+    },
+    {
+      "page": 2,
+      "characters": 979,
+      "images": 0
+    },
+    {
+      "page": 3,
+      "characters": 1271,
+      "images": 0
+    },
+    {
+      "page": 4,
+      "characters": 985,
+      "images": 0
+    },
+    {
+      "page": 5,
+      "characters": 820,
+      "images": 0
+    },
+    {
+      "page": 6,
+      "characters": 442,
+      "images": 1
+    },
+    {
+      "page": 7,
+      "characters": 1062,
+      "images": 0
+    },
+    {
+      "page": 8,
+      "characters": 1103,
+      "images": 0
+    },
+    {
+      "page": 9,
+      "characters": 844,
+      "images": 0
+    },
+    {
+      "page": 10,
+      "characters": 1273,
+      "images": 0
+    },
+    {
+      "page": 11,
+      "characters": 710,
+      "images": 0
+    }
+  ]
+}
