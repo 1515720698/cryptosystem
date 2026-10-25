@@ -1,0 +1,80 @@
+第四周实践记录（由 AI 助手在本地执行，非学生手动操作记录）
+Platform: win32 x64
+
+$ openssl.exe version
+OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+[exit=0]
+
+$ openssl.exe genpkey -algorithm SM2 -out private.pem
+[exit=0]
+
+$ openssl.exe pkey -in private.pem -pubout -out public.pem
+[exit=0]
+
+$ openssl.exe pkeyutl -encrypt -pubin -inkey public.pem -in message.txt -out cipher1.der
+[exit=0]
+
+$ openssl.exe pkeyutl -encrypt -pubin -inkey public.pem -in message.txt -out cipher2.der
+[exit=0]
+
+$ openssl.exe pkeyutl -decrypt -inkey private.pem -in cipher1.der -out recovered.txt
+[exit=0]
+
+PASS: SM2 encrypt/decrypt restores exact bytes
+PASS: Two encryptions of the same message produce different ciphertexts
+$ openssl.exe asn1parse -inform DER -in cipher1.der
+0:d=0  hl=3 l= 136 cons: SEQUENCE          
+    3:d=1  hl=2 l=  32 prim: INTEGER           :28EA1289C77AD4126BC7BA3C7D191FCA02104EAFC0BEB497E32A8F3D6C64FEBD
+   37:d=1  hl=2 l=  33 prim: INTEGER           :AAA78413E663B6794DB65F00E82829F8524F170D5B035EF17A812794DCEF78AC
+   72:d=1  hl=2 l=  32 prim: OCTET STRING      [HEX DUMP]:F16C60C38B648C301D86BB67DE1444DCB7FB6E2DC78211E8DE2F7125E24550A8
+  106:d=1  hl=2 l=  31 prim: OCTET STRING      [HEX DUMP]:CF1F634F5F4C14C21208461AC6F5FD54C6623DF5FD72AB2B6B71CA27D332B0
+[exit=0]
+
+$ openssl.exe pkeyutl -decrypt -inkey private.pem -in tampered.der -out rejected.txt
+Public Key operation error
+8C9E0000:error:1A800066:SM2 routines:ossl_sm2_decrypt:invalid digest:..\crypto\sm2\sm2_crypt.c:406:
+[exit=1]
+
+PASS: Tampered ciphertext is rejected
+$ openssl.exe dgst -sm3 -sign private.pem -sigopt distid:20241328 -out signature.der message.txt
+[exit=0]
+
+$ openssl.exe dgst -sm3 -verify public.pem -sigopt distid:20241328 -signature signature.der message.txt
+Verified OK
+[exit=0]
+
+$ openssl.exe dgst -sm3 -verify public.pem -sigopt distid:wrong-id -signature signature.der message.txt
+Verification failure
+F87E0000:error:030000EA:digital envelope routines:EVP_DigestVerifyFinal:provider signature failure:..\crypto\evp\m_sigver.c:703:SM2 digest_verify_final:
+[exit=1]
+
+$ openssl.exe dgst -sm3 -verify public.pem -sigopt distid:20241328 -signature signature.der message.txt
+Verified OK
+[exit=0]
+
+$ openssl.exe dgst -sm3 -verify public.pem -sigopt distid:20241328 -signature signature.der changed.txt
+Verification failure
+489E0000:error:030000EA:digital envelope routines:EVP_DigestVerifyFinal:provider signature failure:..\crypto\evp\m_sigver.c:703:SM2 digest_verify_final:
+[exit=1]
+
+PASS: Correct ID verifies; mismatched ID fails; restoring ID verifies; modified message fails.
+
+$ gcc.exe --version
+gcc.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 11.5.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+[exit=0]
+
+$ gcc.exe -std=c11 -Wall -Wextra -Werror struct_demo.c -o C:\Users\z8319\AppData\Local\Temp\week4-sm2-OLdDXQ\struct_demo.exe
+[exit=0]
+
+$ struct_demo.exe 
+header: sizeof=8, fields=5, length_offset=4
+after pass-by-value: length=5
+after pass-by-pointer: length=99
+serialized: 01 00 00 00 63
+binary: strlen=1, actual_bytes=4
+[exit=0]
+
+ALL CHECKS PASSED
