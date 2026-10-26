@@ -1,0 +1,7 @@
+*.bin -text
+*.enc -text
+*.png -text
+*.pdf -text
+*.sh text eol=lf
+*.c text eol=lf
+*.py text eol=lf

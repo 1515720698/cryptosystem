@@ -1,0 +1,4 @@
+$ gmssl sm4_cbc -decrypt -key a472d9ab2c5a3e6c6e3620feb9b8aac2 -iv 4c11e0dc563792464501629e33d23d7f -pkcs7_padding -in sn.enc -out logs/sn_cli.txt
+[exit code: 0]
+$ diff sn.txt logs/sn_cli.txt
+[exit code: 0]

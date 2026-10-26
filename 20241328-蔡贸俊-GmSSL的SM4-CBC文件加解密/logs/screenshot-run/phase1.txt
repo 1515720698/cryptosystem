@@ -1,0 +1,35 @@
+20241328 CAI MAOJUN | openEuler | supplementary run
+Working directory: logs/screenshot-run
+
+$ date -Iseconds
+2026-10-26T15:52:49+08:00
+[exit code: 0]
+
+$ grep PRETTY_NAME /etc/os-release
+PRETTY_NAME="openEuler 24.03 (LTS)"
+[exit code: 0]
+
+$ gmssl version
+GmSSL 3.3.0-dev.1183
+[exit code: 0]
+
+$ gcc -Wall -Wextra -O2 sm4_file.c -I/usr/local/include -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lgmssl -o sm4_file
+[exit code: 0]
+
+$ ./sm4_file
+key = 0ea7e22415acbdc98617a83f94c32733
+iv = ed4aef353d548dd4037f64db3332ce56
+encrypt: sn.txt (261 bytes) -> sn.enc (272 bytes)
+decrypt: sn.enc (272 bytes) -> sn2.txt (261 bytes)
+[exit code: 0]
+
+$ wc -c sn.txt sn.enc sn2.txt key.bin iv.bin
+261 sn.txt
+272 sn.enc
+261 sn2.txt
+ 16 key.bin
+ 16 iv.bin
+826 total
+[exit code: 0]
+
+=== ALL CHECKS PASSED ===

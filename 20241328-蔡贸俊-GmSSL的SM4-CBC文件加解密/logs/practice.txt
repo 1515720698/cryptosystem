@@ -1,0 +1,101 @@
+$ date -Iseconds
+2026-10-26T15:41:01+08:00
+[exit code: 0]
+
+$ cat /etc/os-release
+NAME="openEuler"
+VERSION="24.03 (LTS)"
+ID="openEuler"
+VERSION_ID="24.03"
+PRETTY_NAME="openEuler 24.03 (LTS)"
+ANSI_COLOR="0;31"
+
+[exit code: 0]
+
+$ uname -m
+x86_64
+[exit code: 0]
+
+$ gcc --version
+gcc (GCC) 12.3.1 (openEuler 12.3.1-38.oe2403)
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[exit code: 0]
+
+$ gmssl version
+GmSSL 3.3.0-dev.1183
+[exit code: 0]
+
+$ file /usr/local/lib/libgmssl.so
+/usr/local/lib/libgmssl.so: symbolic link to libgmssl.so.3
+[exit code: 0]
+
+$ python3 -c 'from pathlib import Path; a=Path('"'"'sn.txt'"'"').read_text().splitlines(); assert len(a)==len(set(a))==29; assert all(len(x)==8 and x.isdigit() for x in a); assert a[-1]=='"'"'20241328'"'"'; print('"'"'ID validation: PASS; count=29; last='"'"'+a[-1])'
+ID validation: PASS; count=29; last=20241328
+[exit code: 0]
+
+$ cat sn.txt
+20241301
+20241302
+20241303
+20241304
+20241305
+20241306
+20241307
+20241308
+20241309
+20241310
+20241311
+20241312
+20241313
+20241314
+20241315
+20241316
+20241317
+20241318
+20241319
+20241320
+20241321
+20241322
+20241323
+20241324
+20241325
+20241326
+20241327
+20241329
+20241328
+[exit code: 0]
+
+$ gcc -std=c11 -Wall -Wextra -O2 -I/usr/local/include src/sm4_file.c -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lgmssl -o sm4_file
+[exit code: 0]
+
+$ file sm4_file
+sm4_file: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=21826148002534c57caedbd4efd7c44dba631378, for GNU/Linux 3.2.0, not stripped
+[exit code: 0]
+
+$ ./sm4_file
+key = a472d9ab2c5a3e6c6e3620feb9b8aac2
+iv = 4c11e0dc563792464501629e33d23d7f
+encrypt: sn.txt (261 bytes) -> sn.enc (272 bytes)
+decrypt: sn.enc (272 bytes) -> sn2.txt (261 bytes)
+[exit code: 0]
+
+$ wc -c sn.txt sn.enc sn2.txt key.bin iv.bin
+261 sn.txt
+272 sn.enc
+261 sn2.txt
+ 16 key.bin
+ 16 iv.bin
+826 total
+[exit code: 0]
+
+$ diff sn.txt sn2.txt
+[exit code: 0]
+
+$ sha256sum sn.txt sn2.txt
+3e6ae0ce6045401bc073e36c4442f0de3d44cb6f6414ef0d339a5bac386ac012  sn.txt
+3e6ae0ce6045401bc073e36c4442f0de3d44cb6f6414ef0d339a5bac386ac012  sn2.txt
+[exit code: 0]
+
