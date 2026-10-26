@@ -1,0 +1,30 @@
+20241328 CAI MAOJUN | openEuler | SM2 supplementary run 2
+Working directory: logs/screenshot-run
+
+$ ./sm2_file encrypt sm2_public.pem sn.txt sn.enc
+encrypt block 1: plaintext=255, DER=364 bytes
+encrypt block 2: plaintext=6, DER=113 bytes
+encrypt: 2 blocks, plaintext total=261 bytes -> sn.enc
+[exit code: 0; expected: 0]
+
+$ ./sm2_file decrypt ../../private/screenshot_private.pem sn.enc sn2.txt
+decrypt block 1: DER=364, plaintext=255 bytes
+decrypt block 2: DER=113, plaintext=6 bytes
+decrypt: 2 blocks, plaintext total=261 bytes -> sn2.txt
+[exit code: 0; expected: 0]
+
+$ diff sn.txt sn2.txt
+[exit code: 0; expected: 0]
+
+$ sha256sum sn.txt sn2.txt
+3e6ae0ce6045401bc073e36c4442f0de3d44cb6f6414ef0d339a5bac386ac012  sn.txt
+3e6ae0ce6045401bc073e36c4442f0de3d44cb6f6414ef0d339a5bac386ac012  sn2.txt
+[exit code: 0; expected: 0]
+
+$ tail -n 3 sn.txt
+20241327
+20241329
+20241328
+[exit code: 0; expected: 0]
+
+=== ALL CHECKS PASSED ===

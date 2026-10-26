@@ -20,6 +20,12 @@ assert all(result[k] is True for k in ['roundtrip', 'cli_decryption',
     'tampered_message_rejected', 'truncated_ciphertext_rejected'])
 assert 'AI 生成说明' in report and '255 + 6' in report
 doc = fitz.open(root / (root.name + '.pdf'))
+assert sum(len(p.get_images()) for p in doc) >= 3
+supp = root / 'logs/screenshot-run'
+assert (supp / 'sm2_file.c').read_bytes() == (root / 'src/sm2_file.c').read_bytes()
+assert (supp / 'sn.txt').read_bytes() == (supp / 'sn2.txt').read_bytes() == plain
+for phase in range(1, 4):
+    assert 'ALL CHECKS PASSED' in (supp / f'phase{phase}.txt').read_text(encoding='utf-8')
 text = '\n'.join(p.get_text() for p in doc)
 assert all(x in text for x in ['蔡贸俊', '20241328', 'sm2keygen', 'verify: PASS', 'verify: REJECT', 'AI 生成说明'])
 rows = (len(doc) + 2) // 3

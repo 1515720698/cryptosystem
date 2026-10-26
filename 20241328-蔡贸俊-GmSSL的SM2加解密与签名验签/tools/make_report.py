@@ -42,7 +42,11 @@ ai = '''# AI 使用与问答记录
 
 > 核心实验已通过：261 字节原文分成 255 和 6 字节两块，解密后 `diff` 返回 0；签名覆盖完整文件，验签成功。额外验证也通过了：修改原文后验签拒绝，截断密文后解密报错，C 程序与 GmSSL 命令行生成的签名可以互相验证。
 
-## 3. AI 辅助内容摘要
+## 3. 补充截图的交流
+
+用户补充：“不对你是不是没搞运行截图”。助手确认此前仅提供运行文本，随后通过真实终端再次运行实验，补充密钥生成与编译、文件加解密与 diff、签名验签与篡改拒绝三张窗口截图，并更新报告。
+
+## 4. AI 辅助内容摘要
 
 1. 查阅旧实验的 SM2 调用方式，读取本机头文件和命令帮助。
 2. 根据 255 字节单次加密限制，设计分块密文文件格式，保持完整原文。
@@ -242,7 +246,29 @@ sm2_sign_finish(&ctx, sig, &siglen);
 3. **标识必须保持一致**：C 程序和 CLI 都采用 `1234567812345678`。
 4. **不能只看程序是否运行结束**：同时检查返回值、`diff`、正常验签和篡改拒绝。
 
-## 八、AI 使用与问答记录
+## 八、运行结果截图
+
+以下是 Windows Terminal 中调用 WSL/openEuler 执行实验时采集的真实窗口截图。此次补充运行使用相同 C 源码，另行生成密钥，数据及逐阶段日志保存在 `logs/screenshot-run/`，因此其公钥、随机密文和签名与前文首次运行记录不同。两次运行的 261 字节原文相同，均通过正常加解密与验签验证。展示版仅裁去窗口外围空白，原始截图也一并保存。
+
+### 图 1：密钥生成与编译
+
+截图展示 openEuler 和 GmSSL 版本、`gmssl sm2keygen`、公私钥 PEM 标识以及 GCC 编译，命令退出码均为 0。完整文本见 [phase1.txt](logs/screenshot-run/phase1.txt)。
+
+![图1：密钥生成与编译真实窗口截图](images/01-密钥生成与编译-展示.png)
+
+### 图 2：文件加解密与 diff 验证
+
+截图展示 255 + 6 字节分块加解密，`diff` 返回 0，两个 SHA-256 一致，最后一行为本人学号。完整文本见 [phase2.txt](logs/screenshot-run/phase2.txt)。
+
+![图2：加解密与diff真实窗口截图](images/02-加解密与diff验证-展示.png)
+
+### 图 3：签名验签与篡改拒绝
+
+截图展示完整文件签名、C 程序验签通过、CLI 验签成功和篡改后 `REJECT`。本次补充运行的 DER 签名为 71 字节，首次运行的签名为 72 字节，这是随机签名及 DER 编码长度变化的正常表现。完整文本见 [phase3.txt](logs/screenshot-run/phase3.txt)。
+
+![图3：签名验签及篡改验证真实窗口截图](images/03-签名验签与篡改验证-展示.png)
+
+## 九、AI 使用与问答记录
 
 本次使用 OpenCode（模型 `openai/gpt-6.1-sol`）辅助实验。提供课堂题目后，提出按前一次作业的方式完成。
 
@@ -253,7 +279,7 @@ sm2_sign_finish(&ctx, sig, &siglen);
 
 真实交流节录及过程摘要见 [logs/AI使用记录.md](logs/AI使用记录.md)，完整运行文本见 [logs/practice.txt](logs/practice.txt)。本节是实际过程的整理，没有将补写的示例问题当作真实用户提问。
 
-## 九、实验总结与附件
+## 十、实验总结与附件
 
 本次已完成命令生成 SM2 密钥对、程序加解密与签名验签。完整学号文件解密后与原文一致，原文签名验证成功，修改原文后验证被拒绝。
 
@@ -286,7 +312,7 @@ readme = f'''# GmSSL 的 SM2 加解密与签名验签
 姓名：蔡贸俊；学号：20241328；班级：2413。
 
 - [Markdown 报告]({name}.md)
-- [PDF 报告]({name}.pdf)
+- [PDF 报告（含运行截图）]({name}.pdf)
 - [完整 C 源码](src/sm2_file.c)
 - [AI 使用与问答记录](logs/AI使用记录.md)
 - [原始运行日志](logs/practice.txt)
@@ -320,7 +346,7 @@ gmssl sm2verify -pubkey sm2_public.pem -id 1234567812345678 -in sn.txt -sig sn.s
 ## 必交
 
 - `{name}.md`
-- `{name}.pdf`
+- `{name}.pdf`：含三张真实终端截图的最新提交版。
 - `src/sm2_file.c`，也可提供报告中的 GitHub 代码链接。
 
 ## 支撑材料
@@ -331,6 +357,8 @@ gmssl sm2verify -pubkey sm2_public.pem -id 1234567812345678 -in sn.txt -sig sn.s
 - `logs/AI使用记录.md`：真实交流节录及辅助过程摘要，最后注明 AI 生成。
 - `logs/block*.der`、`logs/block*.plain`、`logs/sn_cli.txt`、`logs/cli.sig`：交叉验证数据。
 - `logs/sn_tampered.txt`、`logs/truncated.enc`：对照输入。
+- `images/`：三张原始真实窗口截图及报告展示版。
+- `logs/screenshot-run/`：截图对应的单独补充运行源码、公钥、输入输出与阶段日志；补充运行的私钥仍只保存在根目录 private/ 中。
 
 ## 本地密钥与公开仓库
 
