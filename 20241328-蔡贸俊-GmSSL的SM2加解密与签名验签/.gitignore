@@ -1,0 +1,4 @@
+private/
+sm2_file
+__pycache__/
+*.pyc

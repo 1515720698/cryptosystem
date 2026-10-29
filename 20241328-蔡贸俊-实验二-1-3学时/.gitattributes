@@ -1,0 +1,13 @@
+# Preserve exact cryptographic test bytes across Windows and Linux.
+*.bin binary
+*.raw binary
+*.der binary
+*.png binary
+*.pdf binary
+*.rar binary
+*.zip binary
+*.pem text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.py text eol=lf
+Makefile text eol=lf

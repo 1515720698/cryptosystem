@@ -1,0 +1,20 @@
+$ gmssl sm2decrypt -key private/sm2_private.pem -pass "$SM2_PASS" -in logs/block1.der -out logs/block1.plain
+[exit code: 0; expected: 0]
+
+$ gmssl sm2decrypt -key private/sm2_private.pem -pass "$SM2_PASS" -in logs/block2.der -out logs/block2.plain
+[exit code: 0; expected: 0]
+
+$ diff sn.txt logs/sn_cli.txt
+[exit code: 0; expected: 0]
+
+$ gmssl sm2verify -pubkey sm2_public.pem -id 1234567812345678 -in sn.txt -sig sn.sig
+verify : success
+[exit code: 0; expected: 0]
+
+$ gmssl sm2sign -key private/sm2_private.pem -pass "$SM2_PASS" -id 1234567812345678 -in sn.txt -out logs/cli.sig
+[exit code: 0; expected: 0]
+
+$ ./sm2_file verify sm2_public.pem sn.txt logs/cli.sig
+verify: PASS, file=sn.txt, bytes=261, id=1234567812345678
+[exit code: 0; expected: 0]
+

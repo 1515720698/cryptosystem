@@ -1,0 +1,3 @@
+Source: /root/hash_hw/sn.txt (previous classroom exercise)
+SHA256: 3e6ae0ce6045401bc073e36c4442f0de3d44cb6f6414ef0d339a5bac386ac012
+Copied unchanged; 29 unique eight-digit student IDs; last: 20241328.

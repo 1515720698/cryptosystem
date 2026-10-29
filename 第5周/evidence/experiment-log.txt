@@ -1,0 +1,159 @@
+第五周实际运行记录：AI 助手执行，故障均为主动构造的复现验证。
+Platform: Windows-10-10.0.19045-SP0
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe version
+OpenSSL 3.6.5 29 Sep 2026 (Library: OpenSSL 3.6.5 29 Sep 2026)
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out private.pem
+....+++++++++++++++++++++++++++++++++++++++*.............+...+..+.+++++++++++++++++++++++++++++++++++++++*.+........+..........+............+.....+...............+...+....+........+....+...+.....+.+.........+...+..+...........................+.+.....+.......+..+..........+......+........+.........+............+...+.+..+..........+..+.+......+...............+.........+..+...+.........+...+...+.+...+..+...................+.........+......+..+...+.......+...+.........+.....+......+......+.+..+.+..............+.......+.....+.............+..+......+.........................+...+.....+.......+.................+...+...+.+...+........+...+..........+.........+...+..+..........+..................+........+.........+.+......+......+..+......+.+........+......+....+..+.+.....+.......+........+.......+......+.....+............+..................+.+.....+.............+..+.........+......+.+...+...............+......+...+..+......+...+..........+.....+....+...+..+.............+.....+...+.+....................+.+........+....+...+.....+.............+.....+....+...........+.+....................+...+.+...........+...+...+....+...+......+...........+.+..+.......+........+...+..........+..+.+..............+.+.....+.......+.........+........+...+...+....+......+.....+......+....+..+....+.....+...+...+.......+.....+.+.....+...............+......+.+........+....+...+............+........+..........+..+...+....+...+............+......+............+...+..+.............+..+.+.....+......+.+..+.......+.....+.+........+......+...+............................+.....+...+....+...+........+...................+..+..........+......+........+....+.....+................+..+...+.........+...+....+.....+...+.......+.....+...+......+.+...+..+.+........+.+..............+....+........+....+.........+.........+......+.....+......+.+...............+........................+......+...+...........+...+...+....+...+.....+................+...........+...+................++++++
+.....+............+..........+...+.....+....+........+.............+..+...+.+...+...+.....+...+................+........+.......+.....+......+.......+..+.+...+..+.........+.+...+.........+++++++++++++++++++++++++++++++++++++++*.+...+...........+...+...+...+.....................+.+............+......+..+..........+..+.+++++++++++++++++++++++++++++++++++++++*.+.....+......+......+.......+.....................+.....+.........+.+...........+...+...+....+......+.....+.......+.....+......+.+.........+..+...+....+..+......+.......+...+...+..+............+...+.............+...............+.........+...+..+......+.+......+.....+...................+......+...+.....+....+..+...+...+.......+.....+......+.+...+.....+...+.........................+...+..+....+...+..+.+.........+...+..+....+..+...+....+...............+...........+.+......+..+...+.........+.+...+.....+......+...+.....................+.+......++++++
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out other-private.pem
+...+...+.....+....+..+...+.......+.....+...+...+...+.........+.+.........+..+...+.......+...............+...+..+++++++++++++++++++++++++++++++++++++++*...+......+....+...+.....+.......+...+.....+....+++++++++++++++++++++++++++++++++++++++*........+..+......+....+..+..........+.....+..........+.....+..........+.....+......+..........+..++++++
+..+...+++++++++++++++++++++++++++++++++++++++*......+++++++++++++++++++++++++++++++++++++++*........+........+...+....+..+.............+...+..............+......+....+...+............+...+.....+.+.....+..........+......+........+...+..........+.....+.......+...............+..+....+.....+.+.........+..+...+......+.+........+.+..............+.......+.....+.......+..+.........+....+..+.+............+.....+.............+..............+..........+...........+....+........+......+..........+..+...+......+......+....+...+......+..+..........+.....+....+...+..+.+..............+....+.....+......+...+............+.+...............+..+................+..+...+.+..............+......+....+......+.....+...+.............+..+................+.....+....+......+.........++++++
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe pkey -in private.pem -pubout -out public.pem
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe pkey -in other-private.pem -pubout -out other-public.pem
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -sign private.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -out pss1.bin message.txt
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -sign private.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -out pss2.bin message.txt
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature pss1.bin message.txt
+Verified OK
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature pss2.bin message.txt
+Verified OK
+[exit=0]
+
+PASS: Two randomized PSS signatures differ and both verify
+PASS: RSA-2048 signature is 256 bytes
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature pss1.bin tampered.txt
+Verification failure
+00120000:error:12800067:DSO support routines:win32_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_win32.c:110:filename(ZLIB1.dll)
+00120000:error:12800067:DSO support routines:DSO_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_lib.c:147:
+00120000:error:02000068:rsa routines:ossl_rsa_verify_PKCS1_PSS_mgf1:bad signature:../openssl-3.6.5/crypto/rsa/rsa_pss.c:144:
+00120000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1106:
+[exit=1]
+
+PASS: Reject changed bytes: tampered.txt
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature pss1.bin crlf.txt
+Verification failure
+84A90000:error:12800067:DSO support routines:win32_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_win32.c:110:filename(ZLIB1.dll)
+84A90000:error:12800067:DSO support routines:DSO_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_lib.c:147:
+84A90000:error:02000068:rsa routines:ossl_rsa_verify_PKCS1_PSS_mgf1:bad signature:../openssl-3.6.5/crypto/rsa/rsa_pss.c:144:
+84A90000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1106:
+[exit=1]
+
+PASS: Reject changed bytes: crlf.txt
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify other-public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature pss1.bin message.txt
+Verification failure
+30450000:error:12800067:DSO support routines:win32_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_win32.c:110:filename(ZLIB1.dll)
+30450000:error:12800067:DSO support routines:DSO_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_lib.c:147:
+30450000:error:02000086:rsa routines:ossl_rsa_verify_PKCS1_PSS_mgf1:last octet invalid:../openssl-3.6.5/crypto/rsa/rsa_pss.c:103:
+30450000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1106:
+[exit=1]
+
+PASS: Reject unrelated public key
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature bad-signature.bin message.txt
+Verification failure
+4C720000:error:12800067:DSO support routines:win32_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_win32.c:110:filename(ZLIB1.dll)
+4C720000:error:12800067:DSO support routines:DSO_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_lib.c:147:
+4C720000:error:02000086:rsa routines:ossl_rsa_verify_PKCS1_PSS_mgf1:last octet invalid:../openssl-3.6.5/crypto/rsa/rsa_pss.c:103:
+4C720000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1106:
+[exit=1]
+
+PASS: Reject modified signature
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pkcs1 -signature pss1.bin message.txt
+Verification failure
+2CAC0000:error:12800067:DSO support routines:win32_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_win32.c:110:filename(ZLIB1.dll)
+2CAC0000:error:12800067:DSO support routines:DSO_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_lib.c:147:
+2CAC0000:error:0200008A:rsa routines:RSA_padding_check_PKCS1_type_1:invalid padding:../openssl-3.6.5/crypto/rsa/rsa_pk1.c:78:
+2CAC0000:error:02000072:rsa routines:rsa_ossl_public_decrypt:padding check failed:../openssl-3.6.5/crypto/rsa/rsa_ossl.c:793:
+2CAC0000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1063:
+[exit=1]
+
+PASS: Reject PSS signature under PKCS1-v1_5 verification
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:20 -sigopt rsa_mgf1_md:sha256 -signature pss1.bin message.txt
+Verification failure
+CC510000:error:12800067:DSO support routines:win32_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_win32.c:110:filename(ZLIB1.dll)
+CC510000:error:12800067:DSO support routines:DSO_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_lib.c:147:
+CC510000:error:02000088:rsa routines:ossl_rsa_verify_PKCS1_PSS_mgf1:salt length check failed:../openssl-3.6.5/crypto/rsa/rsa_pss.c:126:expected: 20 retrieved: 32
+CC510000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1106:
+[exit=1]
+
+PASS: Reject mismatched salt length
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature pss1.bin message.txt
+Verified OK
+[exit=0]
+
+PASS: Restore correct PSS parameters: verification succeeds
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -binary -out digest.bin message.txt
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -sign private.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -out double-hash.bin digest.bin
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature double-hash.bin message.txt
+Verification failure
+C8550000:error:12800067:DSO support routines:win32_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_win32.c:110:filename(ZLIB1.dll)
+C8550000:error:12800067:DSO support routines:DSO_load:could not load the shared library:../openssl-3.6.5/crypto/dso/dso_lib.c:147:
+C8550000:error:02000068:rsa routines:ossl_rsa_verify_PKCS1_PSS_mgf1:bad signature:../openssl-3.6.5/crypto/rsa/rsa_pss.c:144:
+C8550000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1106:
+[exit=1]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature double-hash.bin digest.bin
+Verified OK
+[exit=0]
+
+PASS: Signing a precomputed digest through dgst hashes it again
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -sign private.pem -sigopt rsa_padding_mode:pkcs1 -out v15-1.bin message.txt
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -sign private.pem -sigopt rsa_padding_mode:pkcs1 -out v15-2.bin message.txt
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pkcs1 -signature v15-1.bin message.txt
+Verified OK
+[exit=0]
+
+PASS: PKCS1-v1_5 signatures are deterministic for identical inputs
+$ D:\RedPanda\mingw64\bin\gcc.exe --version
+gcc.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 11.5.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+[exit=0]
+
+$ D:\RedPanda\mingw64\bin\gcc.exe -std=c11 -Wall -Wextra -Werror rsa_pss.c -o C:\Users\z8319\AppData\Local\Temp\opencode\week5-saejuogp\rsa_pss.exe -I C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\include C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\libcrypto-3-x64.dll
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\week5-saejuogp\rsa_pss.exe sign private.pem message.txt c-signature.bin
+SIGN OK: message=44 bytes, signature=256 bytes
+[exit=0]
+
+$ C:\Users\z8319\AppData\Local\Temp\opencode\openssl-mingw-week5\mingw64\bin\openssl.exe dgst -sha256 -verify public.pem -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 -sigopt rsa_mgf1_md:sha256 -signature c-signature.bin message.txt
+Verified OK
+[exit=0]
+
+PASS: C EVP signature verifies in OpenSSL CLI
+$ C:\Users\z8319\AppData\Local\Temp\opencode\week5-saejuogp\rsa_pss.exe verify public.pem message.txt pss1.bin
+VERIFY OK
+[exit=0]
+
+PASS: CLI signature verifies in C EVP (7-byte update chunks)
+$ C:\Users\z8319\AppData\Local\Temp\opencode\week5-saejuogp\rsa_pss.exe verify public.pem tampered.txt pss1.bin
+VERIFY INVALID
+[exit=1]
+
+PASS: C EVP rejects tampered message
+ALL 14 CHECKS PASSED

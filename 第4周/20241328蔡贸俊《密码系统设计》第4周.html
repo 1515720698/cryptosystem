@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>第四周预习报告 · 20241328蔡贸俊</title><style>
+    @page {size:A4; margin:17mm 16mm 19mm;}
+    * {box-sizing:border-box;}
+    body {font-family:"Microsoft YaHei","SimSun",sans-serif;color:#243041;font-size:10pt;line-height:1.65;margin:0;}
+    h1 {font-size:23pt;color:#123d6a;line-height:1.35;border-bottom:3px solid #2c6fa8;padding-bottom:12px;margin:8px 0 20px;}
+    h2 {font-size:15pt;color:#123d6a;border-bottom:1px solid #bdcfe0;padding-bottom:5px;margin:23px 0 12px;}
+    h3 {font-size:12pt;color:#205880;margin:17px 0 9px;}
+    h4 {font-size:10.7pt;color:#205880;margin:14px 0 7px;}
+    h1,h2,h3,h4 {break-after:avoid;}
+    p {margin:8px 0;orphans:3;widows:3;}
+    a {color:#175b8c;text-decoration:none;overflow-wrap:anywhere;}
+    strong {color:#173d60;}
+    blockquote {margin:12px 0;padding:8px 12px;background:#f1f6fa;border-left:3px solid #5289b5;color:#4d5e70;font-size:9pt;}
+    blockquote p {margin:3px 0;}
+    table {border-collapse:collapse;width:100%;margin:12px 0;font-size:9pt;}
+    th,td {border:1px solid #cbd7e0;padding:6px 8px;vertical-align:top;}
+    th {background:#eaf1f7;color:#173d60;}
+    th {white-space:nowrap;}
+    tr {break-inside:avoid;}
+    pre {white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f7;border:1px solid #dce3ea;border-radius:4px;padding:10px 12px;font-size:8pt;line-height:1.5;}
+    code {font-family:Consolas,"Microsoft YaHei",monospace;font-size:.91em;}
+    p code,li code,td code {background:#f0f3f6;padding:1px 3px;overflow-wrap:anywhere;}
+    pre code {font-size:inherit;}
+    ul,ol {padding-left:23px;margin:8px 0;}
+    li {margin:4px 0;}
+    hr {border:0;border-top:1px solid #d4e0ea;margin:20px 0;}
+    img {max-width:100%;}
+    figure.map {margin:10px 0;break-inside:avoid;text-align:center;}
+    figure.map img {max-height:220mm;object-fit:contain;}
+    figcaption {font-size:8pt;color:#68788b;}
+    @media screen {body {max-width:794px;margin:30px auto;padding:30px 50px;background:white;}html{background:#e9edf2;}}
+  </style></head><body><h1>密码系统设计 第四周预习报告</h1>
+<p><strong>学号</strong>：20241328　<strong>姓名</strong>：蔡贸俊<br><strong>代码仓库</strong>：<a href="https://github.com/1515720698/cryptosystem">1515720698/cryptosystem</a><br><strong>AI 工具</strong>：OpenCode（本次会话使用 OpenAI 模型）</p>
+<h2>学习内容</h2>
+<table>
+<thead>
+<tr>
+<th>教材与章节</th>
+<th>学习层次</th>
+<th>本周目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>《Head First C 嗨翻 C 语言》第 5 章</td>
+<td>掌握</td>
+<td>结构体、联合体、<code>typedef</code>，以及结构体传参和指针访问</td>
+</tr>
+<tr>
+<td>《Windows C/C++加密解密实战》第 6 章：非对称算法 RSA 的加解密</td>
+<td>了解</td>
+<td>公私钥分工、模运算、RSA 基本原理与填充</td>
+</tr>
+<tr>
+<td>第 8 章：椭圆曲线密码体制</td>
+<td>参考</td>
+<td>有限域、点加、倍点、标量乘、椭圆曲线离散对数问题</td>
+</tr>
+<tr>
+<td>第 13 章：SM2 算法的数学基础</td>
+<td>参考</td>
+<td>曲线与基点的阶、逆元、多倍点运算、点压缩及参数验证</td>
+</tr>
+<tr>
+<td>第 14 章：SM2 算法的实现</td>
+<td><strong>重点</strong></td>
+<td>参数与公钥验证、密钥生成、SM2 加解密、签名验签及实现注意事项</td>
+</tr>
+</tbody></table>
+<p>学习主线：<strong>C 语言组织数据 → 有限域与椭圆曲线运算 → SM2 算法流程 → 利用密码库验证正确性。</strong></p>
+<blockquote>
+<p>材料说明：章节范围依据课程要求与教材公开目录核对；知识总结结合 OpenSSL 官方文档整理，本次未获取教材付费章节全文。实践由 AI 助手在本地实际执行，原始输出见 <code>evidence/experiment-log.txt</code>；苏格拉底学习部分明确区分真实交流与 AI 生成的参考回答。</p>
+</blockquote>
+<hr>
+<h2>一、AI 对学习内容的总结（1分）</h2>
+<h3>1. Head First C 第 5 章：结构体、联合体与 typedef</h3>
+<p>结构体解决“怎样把相关的数据组织成一个整体”的问题。例如描述一段 SM2 密文时，既要保存临时点 <code>C1</code> 和校验值 <code>C3</code>，又要保存密文数据 <code>C2</code> 及其长度。如果把这些内容拆成互不关联的变量，很容易出现参数顺序错误或长度与缓冲区不匹配。</p>
+<ul>
+<li><strong><code>struct</code></strong>：把不同类型的成员组合起来，各成员有自己的存储空间。对象用 <code>.</code> 访问成员，结构体指针用 <code>-&gt;</code>。</li>
+<li><strong>结构体传参</strong>：C 语言采用值传递。传入整个结构体时，函数得到副本；要修改调用者的成员，应传入结构体地址。指针本身仍然是按值传递。</li>
+<li><strong>结构体赋值</strong>：数组成员会随结构体一起复制，但指针成员只复制地址，不会自动复制指向的数据，因此可能产生共享缓冲区和重复释放问题。</li>
+<li><strong><code>typedef</code></strong>：为已有类型定义别名，使声明更简洁；它不会自动分配内存，也不会改变数据布局。</li>
+<li><strong><code>union</code></strong>：成员共用一块存储，适合“同一时刻只使用其中一种表示”的场景。实际使用常配合 <code>enum</code> 标记当前有效成员。</li>
+<li><strong>初始化与嵌套</strong>：结构体可以嵌套，也可以包含数组和指针；初始化、对象生命周期和内存所有权需要一起考虑。</li>
+</ul>
+<p>与密码编程的联系：<strong><code>C1</code>、<code>C2</code>、<code>C3</code> 必须同时存在，适合用结构体组织，不能用一个联合体互相覆盖。</strong> 内存中的结构体布局也不能直接当成网络协议格式。</p>
+<h3>2. 第 6 章：RSA 加解密（了解）</h3>
+<p>非对称密码使用公钥和私钥：发送者使用接收者公钥加密，接收者使用自己的私钥解密。公钥可以公开，但应确认它确实属于预期的接收者。</p>
+<p>RSA 的教学原理如下：</p>
+<ol>
+<li>选择不同的大素数 <code>p、q</code>，计算 <code>N = p × q</code>。</li>
+<li>选取与 <code>φ(N) = (p−1)(q−1)</code> 互素的公开指数 <code>e</code>。</li>
+<li>求 <code>d</code>，使 <code>e × d ≡ 1 (mod φ(N))</code>。</li>
+<li>教学形式的加密为 <code>c = m^e mod N</code>，解密为 <code>m = c^d mod N</code>。</li>
+</ol>
+<p>实际系统不能直接使用上述“裸 RSA”。RSA 加密应结合 OAEP 等合适的编码方案，签名使用独立的签名方案；<strong>不能把签名简单理解成“私钥加密、公钥解密”</strong>。RSA 的本周作用是建立非对称密码的概念，为理解 SM2 的公私钥关系作对照。</p>
+<h3>3. 第 8、13 章：理解 SM2 所需的数学基础（参考）</h3>
+<p>本周主要关注素域上的短 Weierstrass 曲线：</p>
+<pre><code class="language-text">y² ≡ x³ + ax + b (mod p)
+4a³ + 27b² ≢ 0 (mod p)       （这里 p &gt; 3）
+</code></pre>
+<p>有限域中的点是离散的，不能把实数坐标下的曲线图像直接当作实际密码运算。</p>
+<ul>
+<li><strong>有限域与逆元</strong>：在素域中，“除以非零元素”实际是乘以模逆元，例如 <code>3⁻¹ mod 17 = 6</code>，因为 <code>3×6 ≡ 1 (mod 17)</code>。</li>
+<li><strong>点加、倍点</strong>：按椭圆曲线群的规则计算 <code>P+Q</code>、<code>2P</code>，不是直接把两个点的横纵坐标分别相加。</li>
+<li><strong>无穷远点 O</strong>：是群的单位元，满足 <code>P+O=P</code>，不是普通的 <code>(0,0)</code>。</li>
+<li><strong>标量乘</strong>：<code>[d]G</code> 表示把点 <code>G</code> 按群运算重复相加，可以通过倍点与加点高效实现。</li>
+<li><strong>两个模数</strong>：坐标的域运算通常模 <code>p</code>；私钥、临时随机数、签名标量的运算通常模基点阶 <code>n</code>，不能混用。</li>
+<li><strong>安全基础</strong>：已知 <code>d</code> 计算 <code>P=[d]G</code> 较容易；从 <code>G、P</code> 求出 <code>d</code> 是椭圆曲线离散对数问题，在合适参数下计算困难。</li>
+<li><strong>点压缩</strong>：短 Weierstrass 曲线上的点通常可用横坐标及用于选择纵坐标的标志表示，解压需要求平方根并验证点的有效性。</li>
+</ul>
+<p>教材还讨论二元扩域等内容，本周以理解其与素域的区别为主；实际练习使用 OpenSSL 的 SM2 标准曲线。</p>
+<h3>4. 第 14 章：SM2 算法的实现（重点）</h3>
+<h4>4.1 系统参数、密钥生成与公钥验证</h4>
+<p>SM2 是基于椭圆曲线的一组公钥密码算法，涵盖数字签名、密钥交换、公钥加密；本章重点学习加解密与签名验签。</p>
+<p>系统参数通常涉及有限域、曲线系数、基点 <code>G</code>、基点阶 <code>n</code> 和余因子 <code>h</code>。私钥是合法范围内的秘密标量 <code>d</code>，公钥是 <code>P=[d]G</code>。</p>
+<p>对于加密密钥，私钥范围通常为 <code>[1,n−1]</code>；SM2 签名需计算 <code>(1+d)⁻¹ mod n</code>，因此签名私钥范围是 <code>[1,n−2]</code>。应交由正确实现的密码库生成密钥，不能使用 C 的普通 <code>rand()</code> 代替密码学安全随机源。</p>
+<p>输入公钥时，需要按相应标准与接口要求验证：不是无穷远点、坐标属于相应有限域、满足曲线方程，并满足规定的阶／子群检查。<strong>数据能被解析，不等于公钥已经有效。</strong></p>
+<h4>4.2 SM2 加密：C1、C2、C3 分别做什么</h4>
+<p>发送者持有接收者公钥 <code>P_B</code>，对消息 <code>M</code> 加密的核心过程是：</p>
+<pre><code class="language-text">1. 生成新的临时随机数 k ∈ [1,n−1]
+2. C1 = [k]G
+3. 按算法要求检查接收者公钥，计算 [k]P_B = (x2,y2)
+4. t = KDF(x2 || y2, 消息比特长度)；若 t 全为零则重新选择 k
+5. C2 = M XOR t
+6. C3 = SM3(x2 || M || y2)
+7. 按约定格式编码并输出密文
+</code></pre>
+<p>其中 <code>||</code> 表示字节串拼接，坐标编码必须遵循规范，不能随意省略前导零。</p>
+<table>
+<thead>
+<tr>
+<th>分量</th>
+<th>作用</th>
+<th>本周应理解的关键点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>C1</code></td>
+<td>传递临时曲线点</td>
+<td>可以公开，但解密时必须验证</td>
+</tr>
+<tr>
+<td><code>C2</code></td>
+<td>掩码处理后的消息</td>
+<td>与明文等长，是二进制数据</td>
+</tr>
+<tr>
+<td><code>C3</code></td>
+<td>用于检验恢复消息是否一致</td>
+<td>应在校验通过后才接受明文</td>
+</tr>
+</tbody></table>
+<p>临时随机数 <code>k</code> 每次应重新生成，所以同一公钥、同一明文的两次加密，密文通常不同。</p>
+<h4>4.3 SM2 解密：为什么不用传递 k</h4>
+<p>接收者从密文取出并验证 <code>C1</code>，使用私钥 <code>d_B</code> 计算：</p>
+<pre><code class="language-text">[d_B]C1 = [d_B]([k]G) = [k]([d_B]G) = [k]P_B
+</code></pre>
+<p>因此收发双方可以得到相同的共享点，进而得到相同的 KDF 输出 <code>t</code>。接收者恢复 <code>M&#39;=C2 XOR t</code>，再计算 <code>u=SM3(x2 || M&#39; || y2)</code>。只有 <code>u</code> 与 <code>C3</code> 一致且其他检查均通过，才接受明文。</p>
+<p>常见接口可能采用原始拼接的 <code>C1C3C2</code> 或 <code>C1C2C3</code>，也可能使用 ASN.1 DER。<strong>顺序与编码是接口约定，不能仅根据扩展名或密文总长度猜测。</strong></p>
+<h4>4.4 SM2 签名验签：身份标识 ID 与 ZA</h4>
+<p>SM2 签名不是对消息直接做一次普通 SM3，也不是对摘要进行“私钥加密”。常见 SM2/SM3 配合方式先计算：</p>
+<pre><code class="language-text">ZA = SM3(ENTLA || IDA || a || b || xG || yG || xA || yA)
+e  = SM3(ZA || M)
+</code></pre>
+<p><code>ENTLA</code> 表示身份标识的比特长度编码，<code>ZA</code> 将身份标识、曲线参数及签名者公钥绑定到签名过程。<code>ID</code> 不是秘密口令，但签名与验签两端必须使用相同的字节序列。</p>
+<p>签名的核心公式是：</p>
+<pre><code class="language-text">(x1,y1) = [k]G
+r = (e+x1) mod n
+s = ((1+dA)⁻¹ × (k−r×dA)) mod n
+</code></pre>
+<p>若出现 <code>r=0</code>、<code>r+k=n</code> 或 <code>s=0</code> 等不满足规范的情况，需要重选随机数重新计算。验签先检查 <code>r、s</code> 的范围，再计算 <code>t=(r+s) mod n</code>；若 <code>t=0</code> 则拒绝。随后计算 <code>[s]G+[t]P_A</code>，并按算法检查所得横坐标与 <code>e</code> 形成的值是否等于 <code>r</code>。</p>
+<p>本周实验显式使用 <code>distid:20241328</code>，避免依赖不同工具的默认 ID。修改消息或修改 ID 都应导致验签失败。</p>
+<h4>4.5 从教材实现到工程实践</h4>
+<p>教材 14.11 介绍 MIRACL，14.12、14.13 进一步讨论 SM2 加解密和签名验签实现。阅读时应沿着“大整数运算 → 有限域运算 → 点运算 → 完整算法”的层次理解，注意随机数、错误检查与资源释放。</p>
+<p>实际开发优先使用维护良好的密码库。本周用 OpenSSL 3.x 命令验证算法行为；C 程序后续可使用 <code>EVP_PKEY_encrypt/decrypt</code> 与 <code>EVP_DigestSign/Verify</code> 系列接口。签名 ID 可通过 <code>EVP_PKEY_CTX_set1_id</code> 设置，所有分配、初始化与密码运算都应检查返回值。</p>
+<hr>
+<h2>二、对 AI 总结的反思与补充（2分）</h2>
+<h3>1. AI 总结仍有哪些不足</h3>
+<ol>
+<li><strong>“算法名称清单”容易掩盖章节主次。</strong> 本周不能把 RSA、ECC、SM2 平均用力。RSA 建立概念，ECC 与第 13 章解决数学障碍，第 14 章的加解密与签名流程才是学习重点。</li>
+<li><strong>公式正确不等于实现正确。</strong> 理论介绍容易省略无穷远点、公钥有效性、KDF 全零、错误返回值和校验失败处理。这些分支在安全实现中不可省略。</li>
+<li><strong>把 C3 说成“认证标签”仍需限定含义。</strong> C3 能检查 SM2 解密所得消息的一致性，但任何拿到接收者公钥的人都可以产生有效密文。因此，C3 不能证明发送者身份，发送者认证需要签名或认证协议。</li>
+<li><strong>只说“ID 要相同”还不够。</strong> 必须是 ID 的实际字节相同，不能一端用学号字符串，另一端误用数值编码；消息的 UTF-8 编码、换行和 BOM 也可能影响验签。</li>
+<li><strong>结构体语法与密码数据格式之间仍有距离。</strong> 结构体内部可能有填充字节、指针和平台相关的整数布局，不能通过 <code>fwrite(&amp;obj,sizeof obj,1,fp)</code> 就得到跨平台 SM2 编码。</li>
+</ol>
+<h3>2. 自己的补充与归纳</h3>
+<h4>补充一：用小曲线理解“除法”和“倍点”</h4>
+<p>取教学曲线 <code>y²=x³+2x+2 (mod 17)</code>，点 <code>G=(5,1)</code>。倍点斜率为：</p>
+<pre><code class="language-text">λ = (3×5²+2) × (2×1)⁻¹ mod 17
+  = 77 × 9 mod 17 = 13
+x(2G) = λ²−2×5 mod 17 = 6
+y(2G) = λ×(5−6)−1 mod 17 = 3
+所以 2G = (6,3)
+</code></pre>
+<p>这个例子说明：有限域中的除法是乘逆元，倍点也不是 <code>(10,2)</code>。这只是便于手算的教学曲线，实际 SM2 应使用规定参数。</p>
+<h4>补充二：把 SM2、SM3、SM4 放在同一个系统里理解</h4>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>主要角色</th>
+<th>与本周内容的联系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SM2</td>
+<td>公钥加密、数字签名、密钥交换</td>
+<td>本周重点；解决公私钥密码相关任务</td>
+</tr>
+<tr>
+<td>SM3</td>
+<td>密码杂凑</td>
+<td>在 SM2 中参与 ZA、消息摘要、KDF 和 C3 计算</td>
+</tr>
+<tr>
+<td>SM4</td>
+<td>对称分组密码</td>
+<td>适合配合合适的模式处理大量业务数据</td>
+</tr>
+</tbody></table>
+<p>大文件通常采用混合加密：使用对称密钥加密主体数据，再用公钥机制保护或协商该密钥。还应绑定接收者、算法参数和上下文，不能只把算法拼接起来就认为系统完整。</p>
+<h4>补充三：纠正上一周报告中与本周相关的认识</h4>
+<p>第三周报告曾把“末尾记录消息长度”说成防止长度扩展攻击的关键，这不准确。<strong>SM3、SHA-256 的这种填充并不会消除长度扩展问题</strong>。相关扩展形式包含原消息的填充，即 <code>H(K || M || pad || X)</code>，不能省略 <code>pad</code> 简写成 <code>H(K || M || X)</code>。</p>
+<p>HMAC 的安全设计来自规范的双层构造，不能据此把 SM2 的 C3、HMAC、普通 SM3 当作同一种东西。上一周关于旧 <code>EVP_MD_CTX_create/destroy</code> 名称“一定引发 OpenSSL 3.x 弃用告警”的说法也不严谨，它们在常见头文件中是兼容别名；具体是否告警要检查实际声明与编译输出。</p>
+<h4>补充四：验证算法必须包含反例</h4>
+<p>“能解密回来”“能验签通过”只能说明正常路径可用。本周补充以下反向检查：</p>
+<ul>
+<li>修改密文的一个字节，解密应被拒绝。</li>
+<li>修改消息，验签应失败。</li>
+<li>只修改 ID，验签应失败；恢复原 ID 后应成功。</li>
+<li>同一公钥与明文重复加密，密文通常应不同。</li>
+</ul>
+<p>这些检查把“参数参与运算”和“错误能被发现”转化为可以观察的结果。</p>
+<hr>
+<h2>三、学习思维导图（2分）</h2>
+<h3>Mermaid 代码</h3>
+<pre><code class="language-mermaid">mindmap
+  root((密码系统设计第四周))
+    C语言第5章
+      struct 组织相关数据
+      typedef 类型别名
+      union 共享存储
+      值传递与指针
+      内存布局不等于编码
+    RSA 第6章 了解
+      公钥加密与私钥解密
+      模幂与模逆元
+      OAEP与混合加密
+    ECC 第8及13章 参考
+      有限域与逆元
+      点加 倍点 标量乘
+      坐标模p 标量模n
+      离散对数与参数验证
+    SM2 第14章 重点
+      密钥生成与公钥验证
+      加密与解密
+        临时随机数k
+        C1 临时点
+        C2 密文数据
+        C3 一致性校验
+      签名与验签
+        ID与ZA绑定
+        SM3消息摘要
+        随机数与范围检查
+      工程实现
+        MIRACL与EVP
+        DER和原始拼接
+    实践与反思
+      加解密往返测试
+      错误ID验签失败
+      篡改消息与密文
+      结构体传参与序列化
+</code></pre>
+<h3>渲染截图</h3>
+<figure class="map"><img src="assets/week4-mindmap.png" alt="第四周学习思维导图"><figcaption>第四周学习思维导图 · Mermaid 实际渲染</figcaption></figure>
+<p>独立 Mermaid 源文件：<code>assets/week4-mindmap.mmd</code>。截图由上述代码实际渲染生成。</p>
+<hr>
+<h2>四、基于 AI 的学习（2分）</h2>
+<p><strong>学习方式</strong>：围绕两个不易理解的概念，按“一次一个问题”组织苏格拉底式学习。</p>
+<blockquote>
+<p>记录说明：实际交流中，我对“同一公钥和明文两次加密，密文是否相同”的回答是“还不清楚，请引导”。之后委托 AI 整理完整学习材料。下面的“参考回答”与评价是 AI 生成的学习示例，不冒充已经完成的个人逐轮回答。</p>
+</blockquote>
+<h3>概念一：SM2 临时随机数 k 与解密正确性</h3>
+<p><strong>提示词</strong>：我在学习 SM2 加密中的临时随机数与共享点，请你以苏格拉底的方式对我进行提问，一次一个问题。先从同一条消息加密两次的结果讲起。</p>
+<p><strong>AI 问题 1</strong>：同一条消息用同一把公钥加密两次，你认为密文应该相同吗？为什么？</p>
+<p><strong>实际回答</strong>：还不清楚，请引导。</p>
+<p><strong>AI 引导</strong>：SM2 每次加密都会生成临时随机数 <code>k</code>。即使公钥与明文相同，新的 <code>k</code> 通常不同，由它计算的临时点和掩码也会变化，因此密文通常不同。</p>
+<p><strong>AI 问题 2</strong>：如果固定 <code>k</code>，同一接收方的两条等长消息使用同一个掩码 <code>t</code>，把两段 <code>C2</code> 异或会得到什么？</p>
+<p><strong>参考回答</strong>：<code>(M1 XOR t) XOR (M2 XOR t) = M1 XOR M2</code>。掩码被抵消，攻击者获得两条明文的异或关系；如果知道其中一条，就可以恢复另一条。因此不能固定或不当重复使用 <code>k</code>。</p>
+<p><strong>AI 问题 3</strong>：接收者不知道 <code>k</code>，为什么仍然能得到发送者用来生成掩码的那个点？</p>
+<p><strong>参考回答</strong>：密文包含 <code>C1=[k]G</code>。接收者用私钥算 <code>[dB]C1</code>，与发送者算 <code>[k]PB</code> 相等，因为 <code>PB=[dB]G</code>。接收者不必先求出 <code>k</code>。</p>
+<p><strong>AI 问题 4</strong>：攻击者也看到 <code>G、PB、C1</code>，为什么不能照着接收者的方法恢复这个点？</p>
+<p><strong>参考回答</strong>：攻击者没有 <code>dB</code> 或 <code>k</code>。从公开点求私有标量涉及离散对数问题；从 <code>G、[dB]G、[k]G</code> 计算 <code>[kdB]G</code> 是相关的计算 Diffie–Hellman 问题。应区分两者，不能把它们未经说明就视为同一个问题。</p>
+<p><strong>AI 问题 5</strong>：解出候选明文后，为什么还要检查 C3？</p>
+<p><strong>参考回答</strong>：恢复出的字节可能来自被修改的密文。需要重新计算 C3 并比较，只有全部校验通过才能接受明文。但这并不证明发送者是谁，因为任何人都能用公钥加密。</p>
+<p><strong>AI 对参考回答的评价</strong>：该推理链覆盖随机性的作用、重复掩码泄露、解密双方等式以及 C3 的能力边界。后续自测应能不看公式解释 <code>[dB]C1=[k]PB</code>，并区分“消息一致性”与“发送者身份认证”。</p>
+<h3>概念二：SM2 签名为什么要绑定身份标识 ID</h3>
+<p><strong>提示词</strong>：我在学习 SM2 签名中的 ID、ZA 与消息摘要，请你以苏格拉底的方式对我进行提问，一次一个问题，帮助我解释“公钥和消息没变却验签失败”的原因。</p>
+<p><strong>AI 问题 1</strong>：如果签名只是对 <code>SM3(M)</code> 做运算，修改消息之外的 ID 会影响验签吗？</p>
+<p><strong>参考回答</strong>：在这个假设下不会。但 SM2 实际先计算与 ID 有关的 ZA，再计算 <code>SM3(ZA || M)</code>，因此 ID 也参与决定最终摘要。</p>
+<p><strong>AI 问题 2</strong>：ZA 为什么不只包含 ID，还包含曲线参数和公钥？</p>
+<p><strong>参考回答</strong>：它把身份标识与具体算法参数、公钥绑定到签名上下文中。不能只看一段相同的消息，就忽略它对应的身份和公钥信息。</p>
+<p><strong>AI 问题 3</strong>：两端公钥、消息、签名字节都相同，一端 ID 为 <code>20241328</code>，另一端为 <code>wrong-id</code>，应观察到什么？</p>
+<p><strong>参考回答</strong>：两端得到的 ZA 和摘要不同，验签应失败。应统一双方的 ID 字节，而不是删掉 ID 检查或跳过验签。</p>
+<p><strong>AI 问题 4</strong>：ID 是不是必须保密的密码？把 ID 改成自己的姓名，是否就能证明这是本人的公钥？</p>
+<p><strong>参考回答</strong>：ID 是参与签名的身份标识，不是秘密口令。自己设置 ID 不能证明公钥属于谁，现实身份与公钥的绑定仍需要可信证书、可信分发或其他认证机制。</p>
+<p><strong>AI 问题 5</strong>：如何设计实验，确认失败确实与 ID 不一致有关？</p>
+<p><strong>参考回答</strong>：保持消息、公钥和签名不变，只改验签 ID；观察失败后恢复原 ID，再观察成功。这是控制变量验证。然后另做只改消息的实验，区分两种失败原因。</p>
+<p><strong>AI 对参考回答的评价</strong>：该回答能把 ID、ZA、消息摘要和验签结果联系起来，也识别了“ID 绑定”不等于“现实身份已经可信”。实际自测时，应能独立解释并复现成功—失败—成功的结果。</p>
+<hr>
+<h2>五、学习实践过程遇到的问题与解决方式（2分）</h2>
+<h3>0. 实验环境与验证范围</h3>
+<p>本节为 <strong>AI 驱动的实际复现记录</strong>：由 AI 助手在当前 Windows x64 环境执行，不将前几周报告中的 Linux 环境版本直接当作本次环境。</p>
+<pre><code class="language-text">OpenSSL 3.5.9 29 Sep 2026
+GCC 11.5.0（MinGW-w64）
+Node.js v22.22.0（运行验证脚本和导出文档）
+</code></pre>
+<p>OpenSSL 使用 FireDaemon 提供的便携发行包，下载 SHA-256 与提供方公布值一致。实践只生成临时测试密钥，执行结束后删除。关键命令如下，完整流程在 <code>code/run_experiments.mjs</code>，Linux 复现脚本在 <code>code/sm2_demo.sh</code>。</p>
+<pre><code class="language-bash">openssl genpkey -algorithm SM2 -out private.pem
+openssl pkey -in private.pem -pubout -out public.pem
+openssl pkeyutl -encrypt -pubin -inkey public.pem -in message.txt -out cipher.der
+openssl pkeyutl -decrypt -inkey private.pem -in cipher.der -out recovered.txt
+</code></pre>
+<p>实际检查结果：</p>
+<table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>观察结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加密后解密，与原始文件逐字节比较</td>
+<td>一致</td>
+</tr>
+<tr>
+<td>对同一消息、公钥连续加密两次</td>
+<td>密文不同</td>
+</tr>
+<tr>
+<td>修改密文末尾一个字节后解密</td>
+<td>返回非零退出码，提示 <code>invalid digest</code></td>
+</tr>
+<tr>
+<td>正确 ID 验签</td>
+<td><code>Verified OK</code></td>
+</tr>
+<tr>
+<td>错误 ID 验签</td>
+<td><code>Verification failure</code></td>
+</tr>
+<tr>
+<td>恢复正确 ID 验签</td>
+<td><code>Verified OK</code></td>
+</tr>
+<tr>
+<td>修改消息后验签</td>
+<td><code>Verification failure</code></td>
+</tr>
+<tr>
+<td>C 示例启用 <code>-Wall -Wextra -Werror</code> 编译</td>
+<td>通过</td>
+</tr>
+</tbody></table>
+<h3>问题 1：消息和公钥没变，SM2 验签却失败</h3>
+<p><strong>复现现象</strong>：签名时设置 ID 为 <code>20241328</code>，验签时故意改为 <code>wrong-id</code>，产生 <code>Verification failure</code>。</p>
+<p><strong>向 AI 提问</strong>：SM2 的公钥、消息和签名都没变，为什么只改一个 ID 就失败？应检查哪一层？</p>
+<p><strong>AI 分析与处理</strong>：先核对签名参数，再核对消息字节。SM2 的 ID 参与 ZA 计算，因此不一致的 ID 会使最终摘要不同。保持文件不变，把验签 ID 改回签名时使用的值。</p>
+<pre><code class="language-bash">openssl dgst -sm3 -sign private.pem -sigopt distid:20241328 -out signature.der message.txt
+
+# 故意使用错误 ID：失败
+openssl dgst -sm3 -verify public.pem -sigopt distid:wrong-id -signature signature.der message.txt
+
+# 改回同一 ID：成功
+openssl dgst -sm3 -verify public.pem -sigopt distid:20241328 -signature signature.der message.txt
+</code></pre>
+<p><strong>实际结果</strong>：错误 ID 返回退出码 1；恢复后输出 <code>Verified OK</code>、退出码 0。</p>
+<p><strong>经验总结</strong>：密码调用是否正确，取决于消息、密钥、算法参数与上下文是否一致；不能只检查消息和公钥。</p>
+<h3>问题 2：把 SM2 密文当作固定长度的 C1C3C2 直接切片</h3>
+<p><strong>复现观察</strong>：对 OpenSSL 输出执行 <code>asn1parse</code>，发现实际是一个 <code>SEQUENCE</code>，包含两个 <code>INTEGER</code> 与两个 <code>OCTET STRING</code>，而不是可以从第 0 字节起直接切出 65 字节 C1 的裸拼接。</p>
+<p><strong>向 AI 提问</strong>：为什么曲线坐标是 256 位，DER 解析出的坐标整数却可能占 33 字节？</p>
+<p><strong>AI 分析与处理</strong>：DER 的整数采用带符号编码，正整数最高位为 1 时可能增加一个前导 <code>00</code>；此外还有 Tag、Length 等编码开销。应先按 ASN.1 结构解析，再按目标接口规定转换坐标和字段顺序。</p>
+<pre><code class="language-bash">openssl asn1parse -inform DER -in cipher1.der
+</code></pre>
+<p>本次解析出的字段长度为：</p>
+<pre><code class="language-text">SEQUENCE
+  INTEGER        32 bytes   （C1 的 x 坐标）
+  INTEGER        33 bytes   （C1 的 y 坐标，含正数符号补位）
+  OCTET STRING   32 bytes   （C3）
+  OCTET STRING   31 bytes   （C2，本次消息为 31 字节）
+</code></pre>
+<p><strong>验证方式</strong>：同一 DER 文件交给 <code>openssl pkeyutl -decrypt</code> 正常恢复原文；原始日志保留完整 TLV 偏移和字段值。本次验证了 OpenSSL 的 DER 结构，未把“跨 GmSSL 转码成功”列为已完成结果。</p>
+<p><strong>经验总结</strong>：算法相同不等于编码相同。之前学过的 ASN.1／DER，本周直接影响密文能否被正确解析。</p>
+<h3>问题 3：结构体传给函数后，成员修改没有保留下来</h3>
+<p><strong>复现现象</strong>：<code>wrong_change(h)</code> 在函数内部把 <code>length</code> 改为 99，函数返回后原对象仍是 5。</p>
+<p><strong>向 AI 提问</strong>：结构体成员的赋值语句已经执行，为什么调用者看不到修改？</p>
+<p><strong>AI 分析与处理</strong>：整个结构体按值传参，修改的是副本。改为传地址并使用 <code>-&gt;</code> 访问成员。</p>
+<pre><code class="language-c">static void correct_change(PacketHeader *h)
+{
+    h-&gt;length = 99;
+}
+
+/* 调用：correct_change(&amp;h); */
+</code></pre>
+<p><strong>实际输出</strong>：</p>
+<pre><code class="language-text">after pass-by-value: length=5
+after pass-by-pointer: length=99
+</code></pre>
+<p><strong>经验总结</strong>：需要修改调用者数据时，应明确传入可写地址；只读接口可用 <code>const</code> 指针表达约束。结构体中包含指针时还要考虑浅拷贝和所有权。</p>
+<h3>问题 4：结构体大小不是成员大小之和，二进制长度也不是 strlen</h3>
+<p><strong>复现现象</strong>：一个 <code>unsigned char</code> 与一个 <code>uint32_t</code> 成员合计 5 字节，本次编译环境下 <code>sizeof(PacketHeader)</code> 却是 8；包含 <code>00</code> 的 4 字节数组，<code>strlen</code> 只返回 1。</p>
+<p><strong>向 AI 提问</strong>：能不能用结构体原始内存保存协议头，用 <code>strlen</code> 计算密文长度？</p>
+<p><strong>AI 分析与处理</strong>：结构体会因对齐产生填充；<code>strlen</code> 只适用于以零字节结尾的字符串。协议头应逐字段按明确字节序序列化；密文则使用缓冲区与显式长度。</p>
+<p><strong>实际输出</strong>：</p>
+<pre><code class="language-text">header: sizeof=8, fields=5, length_offset=4
+serialized: 01 00 00 00 63
+binary: strlen=1, actual_bytes=4
+</code></pre>
+<p><code>01</code> 是版本，<code>00 00 00 63</code> 是将 99 按大端编码得到的长度。结构体的具体 <code>sizeof</code> 与偏移依赖平台，不能把本机的 8 字节当作所有系统的规定。</p>
+<p><strong>经验总结</strong>：密码程序处理的是精确字节串。缓冲区长度、字节序、指针生命周期与算法公式同样重要。</p>
+<hr>
+<h2>六、本周学习小结</h2>
+<p>本周应建立的核心认识是：SM2 的正确性来自椭圆曲线群运算与规范化算法流程，安全性还依赖参数验证、随机数、身份标识、编码及错误处理。</p>
+<p>通过本周整理，可以把前三周的学习串联起来：结构体用于组织数据，ASN.1／DER 负责明确编码，SM3 参与摘要与一致性检查，SM2 提供公钥密码能力。下一步阅读第 14 章源码时，应逐项对照“密钥从哪里来、临时随机数如何生成、每一步失败如何退出、字节串如何编码”，而不只是看正常路径能否运行。</p>
+<h2>七、作业提交要求（1分）</h2>
+<ol>
+<li><strong>Markdown</strong>：<code>20241328蔡贸俊《密码系统设计》.md</code>。</li>
+<li><strong>PDF</strong>：<code>20241328蔡贸俊《密码系统设计》第4周.pdf</code>。</li>
+<li><strong>思维导图</strong>：正文包含 Mermaid 代码与 PNG 渲染截图；移动 Markdown 时保留相邻的 <code>assets</code> 文件夹。</li>
+<li><strong>实践附件</strong>：<code>code/</code> 保存 C 示例与复现脚本，<code>evidence/experiment-log.txt</code> 保存实际输出。</li>
+<li><strong>代码托管链接（可选）</strong>：<a href="https://github.com/1515720698/cryptosystem">20241328蔡贸俊 GitHub 仓库</a>。该链接指向已有仓库，本地第四周文件上传后才会出现在仓库中。</li>
+</ol>
+<h2>八、参考资料</h2>
+<h3>AI 工具</h3>
+<ul>
+<li><a href="https://opencode.ai/">OpenCode</a>：本次用于知识整理、苏格拉底学习示例、实践复现与文件生成。</li>
+</ul>
+<h3>教材与课程</h3>
+<ul>
+<li><a href="https://weread.qq.com/web/bookDetail/a0332190813ab78fag011422?wfrom=bookDetailH5">《Windows C/C++加密解密实战》</a>，朱晨冰、李建英，清华大学出版社。核对第 6、8、13、14 章公开目录，重点对应 14.8—14.13。</li>
+<li><a href="https://www.ituring.com.cn/book/1004">《Head First C 嗨翻 C 语言》</a>，David Griffiths、Dawn Griffiths，第 5 章。</li>
+<li><a href="https://www.processon.com/mindmap/66bcf83cce68f62ecf3f63fc?from=pwa">课程 mindmap</a>。</li>
+<li>课程提供的《预习作业要求》：第四周学习范围及第一周报告评分模板。</li>
+</ul>
+<h3>技术文档</h3>
+<ul>
+<li><a href="https://docs.openssl.org/3.0/man7/EVP_PKEY-SM2/">OpenSSL：EVP_PKEY-SM2</a>：SM2 支持、签名 ID 与 EVP 调用流程。</li>
+<li><a href="https://docs.openssl.org/3.0/man1/openssl-pkeyutl/">OpenSSL：openssl-pkeyutl</a>：公钥操作命令。</li>
+<li><a href="https://docs.openssl.org/3.0/man1/openssl-dgst/">OpenSSL：openssl-dgst</a>：摘要、签名、验签命令。</li>
+<li><a href="https://docs.openssl.org/3.0/man1/openssl-asn1parse/">OpenSSL：openssl-asn1parse</a>：ASN.1 数据解析。</li>
+<li><a href="https://gmssl.org/">GmSSL 官网</a>：国密密码库与后续对照学习入口。</li>
+<li><a href="https://www.firedaemon.com/download-firedaemon-openssl">FireDaemon OpenSSL 下载页</a>：本次 Windows 便携实验工具来源。</li>
+<li><a href="https://mermaid.js.org/syntax/mindmap.html">Mermaid Mindmap</a>：思维导图语法。</li>
+</ul>
+</body></html>

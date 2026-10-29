@@ -1,0 +1,64 @@
+{
+  "message_bytes": 44,
+  "crlf_bytes": 46,
+  "signature_bytes": 256,
+  "message_sha256": "e557954b8f834b223be622d3d8f5f2aca60d803ef829b3a6eafc45aa6563f5b5",
+  "checks": [
+    {
+      "test": "Two randomized PSS signatures differ and both verify",
+      "passed": true
+    },
+    {
+      "test": "RSA-2048 signature is 256 bytes",
+      "passed": true
+    },
+    {
+      "test": "Reject changed bytes: tampered.txt",
+      "passed": true
+    },
+    {
+      "test": "Reject changed bytes: crlf.txt",
+      "passed": true
+    },
+    {
+      "test": "Reject unrelated public key",
+      "passed": true
+    },
+    {
+      "test": "Reject modified signature",
+      "passed": true
+    },
+    {
+      "test": "Reject PSS signature under PKCS1-v1_5 verification",
+      "passed": true
+    },
+    {
+      "test": "Reject mismatched salt length",
+      "passed": true
+    },
+    {
+      "test": "Restore correct PSS parameters: verification succeeds",
+      "passed": true
+    },
+    {
+      "test": "Signing a precomputed digest through dgst hashes it again",
+      "passed": true
+    },
+    {
+      "test": "PKCS1-v1_5 signatures are deterministic for identical inputs",
+      "passed": true
+    },
+    {
+      "test": "C EVP signature verifies in OpenSSL CLI",
+      "passed": true
+    },
+    {
+      "test": "CLI signature verifies in C EVP (7-byte update chunks)",
+      "passed": true
+    },
+    {
+      "test": "C EVP rejects tampered message",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+20241328 CAI MAOJUN | openEuler | SM2 supplementary run 1
+Working directory: logs/screenshot-run
+
+$ date -Iseconds
+2026-10-26T16:51:13+08:00
+[exit code: 0; expected: 0]
+
+$ grep PRETTY_NAME /etc/os-release
+PRETTY_NAME="openEuler 24.03 (LTS)"
+[exit code: 0; expected: 0]
+
+$ gmssl version
+GmSSL 3.3.0-dev.1183
+[exit code: 0; expected: 0]
+
+$ gmssl sm2keygen -pass "$SM2_PASS" -out ../../private/screenshot_private.pem -pubout sm2_public.pem
+[exit code: 0; expected: 0]
+
+$ head -n 1 ../../private/screenshot_private.pem
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+[exit code: 0; expected: 0]
+
+$ head -n 1 sm2_public.pem
+-----BEGIN PUBLIC KEY-----
+[exit code: 0; expected: 0]
+
+$ gcc -Wall -Wextra -O2 sm2_file.c -I/usr/local/include -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lgmssl -o sm2_file
+[exit code: 0; expected: 0]
+
+=== ALL CHECKS PASSED ===

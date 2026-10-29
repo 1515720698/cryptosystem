@@ -1,0 +1,16 @@
+Submission verification: PASS
+C source matches report appendix: PASS
+sn.txt == sn2.txt == CLI plaintext: PASS
+key/IV sizes and report consistency: PASS
+Chinese text extraction and horizontal page bounds: PASS
+PDF pages: 9
+Page 1: 925 extracted characters
+Page 2: 591 extracted characters
+Page 3: 1029 extracted characters
+Page 4: 914 extracted characters
+Page 5: 685 extracted characters
+Page 6: 613 extracted characters
+Page 7: 1052 extracted characters
+Page 8: 1638 extracted characters
+Page 9: 1029 extracted characters
+sn.txt SHA256: 3e6ae0ce6045401bc073e36c4442f0de3d44cb6f6414ef0d339a5bac386ac012

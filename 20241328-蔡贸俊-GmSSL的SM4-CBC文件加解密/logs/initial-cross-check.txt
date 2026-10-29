@@ -1,0 +1,12 @@
+First independent CLI check (before enabling padding removal):
+$ gmssl sm4_cbc -decrypt -key f71c6749764d9d4ec008683a8b11e8d0 -iv 32b774332d9fce9008e58354677de1f2 -in sn.enc -out logs/sn_cli.txt
+[exit code: 0]
+$ diff sn.txt logs/sn_cli.txt
+29a30
+> [11 bytes of 0x0b; control characters represented here for readability]
+\ No newline at end of file
+[exit code: 1]
+
+The C program roundtrip had already passed diff. The CLI default retained
+PKCS#7 padding. Add -pkcs7_padding when using the CLI to decrypt.
+This is the first run's key/IV; final practice.txt records a new run.

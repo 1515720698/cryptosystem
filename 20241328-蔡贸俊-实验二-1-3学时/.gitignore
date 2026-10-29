@@ -1,0 +1,12 @@
+# Rebuildable Linux binaries and intermediate objects
+src/lab2
+src/test_key
+src/miracl/*.o
+src/miracl/*.a
+__pycache__/
+
+# Public d=1 fixture is generated at runtime; no private-key PEM is published.
+data/test_private.pem
+
+# Local visual-review mosaic
+images/PDF分页核验.png

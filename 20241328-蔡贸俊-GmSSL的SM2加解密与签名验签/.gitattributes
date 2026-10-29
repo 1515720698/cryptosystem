@@ -1,0 +1,8 @@
+*.enc -text
+*.sig -text
+*.der -text
+*.pdf -text
+*.png -text
+*.c text eol=lf
+*.sh text eol=lf
+*.py text eol=lf

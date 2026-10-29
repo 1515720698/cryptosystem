@@ -1,0 +1,22 @@
+20241328 CAI MAOJUN | openEuler | SM2 supplementary run 3
+Working directory: logs/screenshot-run
+
+$ ./sm2_file sign ../../private/screenshot_private.pem sn.txt sn.sig
+sign: 261 bytes, signature=71 bytes -> sn.sig
+[exit code: 0; expected: 0]
+
+$ ./sm2_file verify sm2_public.pem sn.txt sn.sig
+verify: PASS, file=sn.txt, bytes=261, id=1234567812345678
+[exit code: 0; expected: 0]
+
+$ gmssl sm2verify -pubkey sm2_public.pem -id 1234567812345678 -in sn.txt -sig sn.sig
+verify : success
+[exit code: 0; expected: 0]
+
+$ ./sm2_file verify sm2_public.pem sn_tampered.txt sn.sig
+/root/GmSSL-src/src/sm2_sign.c:265:sm2_fast_verify():
+/root/GmSSL-src/src/sm2_sign.c:671:sm2_verify_finish():
+verify: REJECT, file=sn_tampered.txt, bytes=261, id=1234567812345678
+[exit code: 2; expected: 2]
+
+=== ALL CHECKS PASSED ===

@@ -1,0 +1,23 @@
+{
+  "input_bytes": 261,
+  "id_count": 29,
+  "last_id": "20241328",
+  "cipher_bytes": 485,
+  "blocks_plain_bytes": [
+    255,
+    6
+  ],
+  "blocks_der_bytes": [
+    365,
+    112
+  ],
+  "signature_bytes": 72,
+  "sha256_plain": "3e6ae0ce6045401bc073e36c4442f0de3d44cb6f6414ef0d339a5bac386ac012",
+  "roundtrip": true,
+  "cli_decryption": true,
+  "cli_verifies_c_signature": true,
+  "c_verifies_cli_signature": true,
+  "tampered_message_rejected": true,
+  "truncated_ciphertext_rejected": true,
+  "source_input": "/root/hash_hw/sn.txt"
+}
