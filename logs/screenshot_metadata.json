@@ -1,0 +1,6 @@
+{
+  "method": "Actual console window screenshot, PIL.ImageGrab",
+  "title": "LAB2-GM3000-20241328",
+  "command": "$Host.UI.RawUI.WindowTitle='LAB2-GM3000-20241328'; & python -X utf8 'D:\\HuaweiMoveData\\Users\\HUAWEI\\Desktop\\学习\\密码系统设计\\20241328-蔡贸俊-实验二-4-6学时\\tools\\demo_results.py'",
+  "note": "Console rechecks saved hardware results; it does not rerun hardware encryption."
+}

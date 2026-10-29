@@ -1,0 +1,259 @@
+
+
+src/textbook/sm2/SM2_ENC.c:7: warning: ignoring ‘#pragma comment ’ [-Wunknown-pragmas]
+    7 | #pragma comment(lib,"mymiracl.lib")
+      | 
+src/textbook/sm2/SM2_ENC.c: In function ‘Test_PubKey’:
+src/textbook/sm2/SM2_ENC.c:74:24: warning: variable ‘tmp’ set but not used [-Wunused-but-set-variable]
+   74 |         big x, y, x_3, tmp;
+      |                        ^~~
+src/textbook/sm2/SM2_ENC.c:74:19: warning: variable ‘x_3’ set but not used [-Wunused-but-set-variable]
+   74 |         big x, y, x_3, tmp;
+      |                   ^~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_Init’:
+src/textbook/sm2/SM2_ENC.c:142:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  142 |         bytes_to_big(SM2_NUMWORD, SM2_p, para_p);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+In file included from src/textbook/sm2/SM2_ENC.c:2:
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:143:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  143 |         bytes_to_big(SM2_NUMWORD, SM2_a, para_a);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:144:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  144 |         bytes_to_big(SM2_NUMWORD, SM2_b, para_b);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:145:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  145 |         bytes_to_big(SM2_NUMWORD, SM2_n, para_n);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:146:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  146 |         bytes_to_big(SM2_NUMWORD, SM2_Gx, para_Gx);
+      |                                   ^~~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:147:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  147 |         bytes_to_big(SM2_NUMWORD, SM2_Gy, para_Gy);
+      |                                   ^~~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:148:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  148 |         bytes_to_big(SM2_NUMWORD, SM2_h, para_h);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_KeyGeneration’:
+src/textbook/sm2/SM2_ENC.c:175:13: warning: unused variable ‘i’ [-Wunused-variable]
+  175 |         int i = 0;
+      |             ^
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_Encrypt’:
+src/textbook/sm2/SM2_ENC.c:217:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  217 |         bytes_to_big(SM2_NUMWORD, randK, rand);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:220:40: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  220 |         big_to_bytes(SM2_NUMWORD, C1x, C, 1);
+      |                                        ^
+      |                                        |
+      |                                        unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:221:42: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  221 |         big_to_bytes(SM2_NUMWORD, C1y, C + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:230:39: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  230 |         big_to_bytes(SM2_NUMWORD, x2, x2y2, 1);
+      |                                       ^~~~
+      |                                       |
+      |                                       unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:231:44: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  231 |         big_to_bytes(SM2_NUMWORD, y2, x2y2 + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_Decrypt’:
+src/textbook/sm2/SM2_ENC.c:281:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  281 |         bytes_to_big(SM2_NUMWORD, C, C1x);
+      |                                   ^
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:282:37: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  282 |         bytes_to_big(SM2_NUMWORD, C + SM2_NUMWORD, C1y);
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:294:39: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  294 |         big_to_bytes(SM2_NUMWORD, x2, x2y2, 1);
+      |                                       ^~~~
+      |                                       |
+      |                                       unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:295:44: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  295 |         big_to_bytes(SM2_NUMWORD, y2, x2y2 + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_ENC_SelfTest’:
+src/textbook/sm2/SM2_ENC.c:365:26: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  365 |         bytes_to_big(32, std_priKey, ks); //ks is the standard private key
+      |                          ^~~~~~~~~~
+      |                          |
+      |                          unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:373:38: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  373 |         big_to_bytes(SM2_NUMWORD, x, kGxy, 1);
+      |                                      ^~~~
+      |                                      |
+      |                                      unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:374:43: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  374 |         big_to_bytes(SM2_NUMWORD, y, kGxy + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/kdf.c: In function ‘SM3_done’:
+src/textbook/sm2/kdf.c:261:23: warning: unused variable ‘tmp’ [-Wunused-variable]
+  261 |         unsigned char tmp = 0;
+      |                       ^~~
+src/miracl/mrarth1.c: In function ‘mr_pmul’:
+src/miracl/mrarth1.c:136:25: warning: variable ‘zg’ set but not used [-Wunused-but-set-variable]
+  136 |     mr_small carry,*xg,*zg;
+      |                         ^~
+src/miracl/mrarth1.c:136:21: warning: variable ‘xg’ set but not used [-Wunused-but-set-variable]
+  136 |     mr_small carry,*xg,*zg;
+      |                     ^~
+src/miracl/mrarth1.c: In function ‘mr_sdiv’:
+src/miracl/mrarth1.c:420:22: warning: variable ‘zg’ set but not used [-Wunused-but-set-variable]
+  420 |     mr_small sr,*xg,*zg;
+      |                      ^~
+src/miracl/mrarth1.c:420:18: warning: variable ‘xg’ set but not used [-Wunused-but-set-variable]
+  420 |     mr_small sr,*xg,*zg;
+      |                  ^~
+src/miracl/mrarth2.c: In function ‘multiply’:
+src/miracl/mrarth2.c:99:29: warning: variable ‘w0g’ set but not used [-Wunused-but-set-variable]
+   99 |     mr_small carry,*xg,*yg,*w0g;
+      |                             ^~~
+src/miracl/mrarth2.c:99:25: warning: variable ‘yg’ set but not used [-Wunused-but-set-variable]
+   99 |     mr_small carry,*xg,*yg,*w0g;
+      |                         ^~
+src/miracl/mrarth2.c:99:21: warning: variable ‘xg’ set but not used [-Wunused-but-set-variable]
+   99 |     mr_small carry,*xg,*yg,*w0g;
+      |                     ^~
+src/miracl/mrarth2.c: In function ‘divide’:
+src/miracl/mrarth2.c:871:31: warning: variable ‘yg’ set but not used [-Wunused-but-set-variable]
+  871 |     mr_small borrow,dig,*w0g,*yg;
+      |                               ^~
+src/miracl/mrarth2.c:871:26: warning: variable ‘w0g’ set but not used [-Wunused-but-set-variable]
+  871 |     mr_small borrow,dig,*w0g,*yg;
+      |                          ^~~
+src/miracl/mrecn2.c: In function ‘ecn2_pre’:
+src/miracl/mrecn2.c:815:41: warning: unused parameter ‘norm’ [-Wunused-parameter]
+  815 | static void ecn2_pre(_MIPD_ int sz,BOOL norm,ecn2 *PT)
+      |                                    ~~~~~^~~~
+src/miracl/mrecn2.c: In function ‘ecn2_precomp_gls’:
+src/miracl/mrecn2.c:1329:11: warning: variable ‘j’ set but not used [-Wunused-but-set-variable]
+ 1329 |     int i,j;
+      |           ^
+src/miracl/mrflsh2.c: In function ‘expon’:
+src/miracl/mrflsh2.c:45:29: warning: unused parameter ‘w’ [-Wunused-parameter]
+   45 | static int expon(_MIPD_ big w,int n)
+      |                         ~~~~^
+src/miracl/mrflsh3.c: In function ‘tan1’:
+src/miracl/mrflsh3.c:88:28: warning: unused parameter ‘w’ [-Wunused-parameter]
+   88 | static int tan1(_MIPD_ big w,int n)
+      |                        ~~~~^
+src/miracl/mrio1.c: In function ‘instr’:
+src/miracl/mrio1.c:228:61: warning: ‘lc’ may be used uninitialized [-Wmaybe-uninitialized]
+  228 |                         putdig(_MIPP_ 0x3f&((ch<<(6-2*pads))|lc),x,n);
+      |                                            ~~~~~~~~~~~~~~~~~^~~~
+src/miracl/mrio1.c:49:12: note: ‘lc’ was declared here
+   49 |     int ch,lc;
+      |            ^~
+src/miracl/mrmonty.c: In function ‘redc’:
+src/miracl/mrmonty.c:302:46: warning: variable ‘mg’ set but not used [-Wunused-but-set-variable]
+  302 |     mr_small carry,delay_carry,m,ndash,*w0g,*mg;
+      |                                              ^~
+src/miracl/mrmonty.c:302:41: warning: variable ‘w0g’ set but not used [-Wunused-but-set-variable]
+  302 |     mr_small carry,delay_carry,m,ndash,*w0g,*mg;
+      |                                         ^~~
+src/miracl/mrsha3.c: In function ‘sha3_hash’:
+src/miracl/mrsha3.c:162:43: warning: comparison of integer expressions of different signedness: ‘long unsigned int’ and ‘int’ [-Wsign-compare]
+  162 |                 while (sh->length%sh->rate!=sh->rate-1) sha3_process(sh,0x00);
+      |                                           ^~
+src/miracl/mrshs.c:149:28: warning: argument 2 of type ‘char[20]’ with mismatched bound [-Warray-parameter=]
+  149 | void shs_hash(sha *sh,char hash[20])
+      |                       ~~~~~^~~~~~~~
+In file included from src/miracl/mrshs.c:46:
+src/miracl/miracl.h:1057:29: note: previously declared as ‘char *’
+ 1057 | extern void  shs_hash(sha *,char *);
+      |                             ^~~~~~
+src/miracl/mrshs256.c:135:34: warning: argument 2 of type ‘char[32]’ with mismatched bound [-Warray-parameter=]
+  135 | void shs256_hash(sha256 *sh,char hash[32])
+      |                             ~~~~~^~~~~~~~
+In file included from src/miracl/mrshs256.c:45:
+src/miracl/miracl.h:1061:35: note: previously declared as ‘char *’
+ 1061 | extern void  shs256_hash(sha256 *,char *);
+      |                                   ^~~~~~
+src/miracl/mrshs512.c:194:34: warning: argument 2 of type ‘char[64]’ with mismatched bound [-Warray-parameter=]
+  194 | void shs512_hash(sha512 *sh,char hash[64])
+      |                             ~~~~~^~~~~~~~
+In file included from src/miracl/mrshs512.c:47:
+src/miracl/miracl.h:1067:35: note: previously declared as ‘char *’
+ 1067 | extern void  shs512_hash(sha512 *,char *);
+      |                                   ^~~~~~
+src/miracl/mrshs512.c:212:34: warning: argument 2 of type ‘char[48]’ with mismatched bound [-Warray-parameter=]
+  212 | void shs384_hash(sha384 *sh,char hash[48])
+      |                             ~~~~~^~~~~~~~
+src/miracl/miracl.h:1071:35: note: previously declared as ‘char *’
+ 1071 | extern void  shs384_hash(sha384 *,char *);
+      |                                   ^~~~~~
+src/miracl/mrstrong.c: In function ‘strong_bigrand’:
+src/miracl/mrstrong.c:161:38: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  161 |                 for (r = 0, i = 0; i < sizeof(mr_small); i++) {
+      |                                      ^
+

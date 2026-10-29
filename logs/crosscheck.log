@@ -1,0 +1,601 @@
+$ python3 tools/prepare_textbook_sources.py
+
+[exit=0]
+$ uname -a
+Linux DESKTOP-4I272LV 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+[exit=0]
+$ cat /etc/os-release
+NAME="openEuler"
+VERSION="24.03 (LTS)"
+ID="openEuler"
+VERSION_ID="24.03"
+PRETTY_NAME="openEuler 24.03 (LTS)"
+ANSI_COLOR="0;31"
+[exit=0]
+$ gcc --version
+gcc (GCC) 12.3.1 (openEuler 12.3.1-38.oe2403)
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+[exit=0]
+$ gmssl version
+GmSSL 3.3.0-dev.1183
+[exit=0]
+$ g++ -std=c++17 -O2 -g -Wall -Wextra -I src -I src/textbook/sm3 src/textbook/sm3/sm3.cpp src/sm3_driver.cpp -o build/textbook_sm3
+
+[exit=0]
+$ g++ -std=c++17 -O2 -g -Wall -Wextra -I src -I src/textbook/sm4 src/textbook/sm4/sm4.cpp src/sm4_driver.cpp -o build/textbook_sm4
+
+[exit=0]
+$ gcc -O2 -g -std=c11 -Wall -Wextra -fcommon -fno-strict-aliasing -I src -I src/miracl -I src/textbook/sm2 src/textbook/sm2/SM2_ENC.c src/textbook/sm2/kdf.c src/sm2_driver.c src/miracl/mraes.c src/miracl/mralloc.c src/miracl/mrarth0.c src/miracl/mrarth1.c src/miracl/mrarth2.c src/miracl/mrarth3.c src/miracl/mrbits.c src/miracl/mrbrick.c src/miracl/mrbuild.c src/miracl/mrcore.c src/miracl/mrcrt.c src/miracl/mrcurve.c src/miracl/mrdouble.c src/miracl/mrebrick.c src/miracl/mrec2m.c src/miracl/mrecn2.c src/miracl/mrfast.c src/miracl/mrflash.c src/miracl/mrflsh1.c src/miracl/mrflsh2.c src/miracl/mrflsh3.c src/miracl/mrflsh4.c src/miracl/mrfpe.c src/miracl/mrfrnd.c src/miracl/mrgcd.c src/miracl/mrgcm.c src/miracl/mrgf2m.c src/miracl/mrio1.c src/miracl/mrio2.c src/miracl/mrjack.c src/miracl/mrlucas.c src/miracl/mrmonty.c src/miracl/mrmuldv.c src/miracl/mrpi.c src/miracl/mrpower.c src/miracl/mrprime.c src/miracl/mrrand.c src/miracl/mrround.c src/miracl/mrscrt.c src/miracl/mrsha3.c src/miracl/mrshs.c src/miracl/mrshs256.c src/miracl/mrshs512.c src/miracl/mrsmall.c src/miracl/mrsroot.c src/miracl/mrstrong.c src/miracl/mrxgcd.c src/miracl/mrzzn2.c src/miracl/mrzzn2b.c src/miracl/mrzzn3.c src/miracl/mrzzn4.c -lm -o build/textbook_sm2
+src/textbook/sm2/SM2_ENC.c:7: warning: ignoring ‘#pragma comment ’ [-Wunknown-pragmas]
+    7 | #pragma comment(lib,"mymiracl.lib")
+      | 
+src/textbook/sm2/SM2_ENC.c: In function ‘Test_PubKey’:
+src/textbook/sm2/SM2_ENC.c:74:24: warning: variable ‘tmp’ set but not used [-Wunused-but-set-variable]
+   74 |         big x, y, x_3, tmp;
+      |                        ^~~
+src/textbook/sm2/SM2_ENC.c:74:19: warning: variable ‘x_3’ set but not used [-Wunused-but-set-variable]
+   74 |         big x, y, x_3, tmp;
+      |                   ^~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_Init’:
+src/textbook/sm2/SM2_ENC.c:142:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  142 |         bytes_to_big(SM2_NUMWORD, SM2_p, para_p);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+In file included from src/textbook/sm2/SM2_ENC.c:2:
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:143:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  143 |         bytes_to_big(SM2_NUMWORD, SM2_a, para_a);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:144:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  144 |         bytes_to_big(SM2_NUMWORD, SM2_b, para_b);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:145:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  145 |         bytes_to_big(SM2_NUMWORD, SM2_n, para_n);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:146:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  146 |         bytes_to_big(SM2_NUMWORD, SM2_Gx, para_Gx);
+      |                                   ^~~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:147:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  147 |         bytes_to_big(SM2_NUMWORD, SM2_Gy, para_Gy);
+      |                                   ^~~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:148:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  148 |         bytes_to_big(SM2_NUMWORD, SM2_h, para_h);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_KeyGeneration’:
+src/textbook/sm2/SM2_ENC.c:175:13: warning: unused variable ‘i’ [-Wunused-variable]
+  175 |         int i = 0;
+      |             ^
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_Encrypt’:
+src/textbook/sm2/SM2_ENC.c:217:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  217 |         bytes_to_big(SM2_NUMWORD, randK, rand);
+      |                                   ^~~~~
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:220:40: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  220 |         big_to_bytes(SM2_NUMWORD, C1x, C, 1);
+      |                                        ^
+      |                                        |
+      |                                        unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:221:42: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  221 |         big_to_bytes(SM2_NUMWORD, C1y, C + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:230:39: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  230 |         big_to_bytes(SM2_NUMWORD, x2, x2y2, 1);
+      |                                       ^~~~
+      |                                       |
+      |                                       unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:231:44: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  231 |         big_to_bytes(SM2_NUMWORD, y2, x2y2 + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_Decrypt’:
+src/textbook/sm2/SM2_ENC.c:281:35: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  281 |         bytes_to_big(SM2_NUMWORD, C, C1x);
+      |                                   ^
+      |                                   |
+      |                                   unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:282:37: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  282 |         bytes_to_big(SM2_NUMWORD, C + SM2_NUMWORD, C1y);
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:294:39: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  294 |         big_to_bytes(SM2_NUMWORD, x2, x2y2, 1);
+      |                                       ^~~~
+      |                                       |
+      |                                       unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:295:44: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  295 |         big_to_bytes(SM2_NUMWORD, y2, x2y2 + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c: In function ‘SM2_ENC_SelfTest’:
+src/textbook/sm2/SM2_ENC.c:365:26: warning: pointer targets in passing argument 2 of ‘bytes_to_big’ differ in signedness [-Wpointer-sign]
+  365 |         bytes_to_big(32, std_priKey, ks); //ks is the standard private key
+      |                          ^~~~~~~~~~
+      |                          |
+      |                          unsigned char *
+src/miracl/miracl.h:933:38: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+  933 | extern void  bytes_to_big(_MIPT_ int,const char *,big);
+      |                                      ^~~~~~~~~~~~
+src/textbook/sm2/SM2_ENC.c:373:38: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  373 |         big_to_bytes(SM2_NUMWORD, x, kGxy, 1);
+      |                                      ^~~~
+      |                                      |
+      |                                      unsigned char *
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/SM2_ENC.c:374:43: warning: pointer targets in passing argument 3 of ‘big_to_bytes’ differ in signedness [-Wpointer-sign]
+  374 |         big_to_bytes(SM2_NUMWORD, y, kGxy + SM2_NUMWORD, 1);
+src/miracl/miracl.h:934:42: note: expected ‘char *’ but argument is of type ‘unsigned char *’
+  934 | extern int   big_to_bytes(_MIPT_ int,big,char *,BOOL);
+      |                                          ^~~~~~
+src/textbook/sm2/kdf.c: In function ‘SM3_done’:
+src/textbook/sm2/kdf.c:261:23: warning: unused variable ‘tmp’ [-Wunused-variable]
+  261 |         unsigned char tmp = 0;
+      |                       ^~~
+src/miracl/mrarth1.c: In function ‘mr_pmul’:
+src/miracl/mrarth1.c:136:25: warning: variable ‘zg’ set but not used [-Wunused-but-set-variable]
+  136 |     mr_small carry,*xg,*zg;
+      |                         ^~
+src/miracl/mrarth1.c:136:21: warning: variable ‘xg’ set but not used [-Wunused-but-set-variable]
+  136 |     mr_small carry,*xg,*zg;
+      |                     ^~
+src/miracl/mrarth1.c: In function ‘mr_sdiv’:
+src/miracl/mrarth1.c:420:22: warning: variable ‘zg’ set but not used [-Wunused-but-set-variable]
+  420 |     mr_small sr,*xg,*zg;
+      |                      ^~
+src/miracl/mrarth1.c:420:18: warning: variable ‘xg’ set but not used [-Wunused-but-set-variable]
+  420 |     mr_small sr,*xg,*zg;
+      |                  ^~
+src/miracl/mrarth2.c: In function ‘multiply’:
+src/miracl/mrarth2.c:99:29: warning: variable ‘w0g’ set but not used [-Wunused-but-set-variable]
+   99 |     mr_small carry,*xg,*yg,*w0g;
+      |                             ^~~
+src/miracl/mrarth2.c:99:25: warning: variable ‘yg’ set but not used [-Wunused-but-set-variable]
+   99 |     mr_small carry,*xg,*yg,*w0g;
+      |                         ^~
+src/miracl/mrarth2.c:99:21: warning: variable ‘xg’ set but not used [-Wunused-but-set-variable]
+   99 |     mr_small carry,*xg,*yg,*w0g;
+      |                     ^~
+src/miracl/mrarth2.c: In function ‘divide’:
+src/miracl/mrarth2.c:871:31: warning: variable ‘yg’ set but not used [-Wunused-but-set-variable]
+  871 |     mr_small borrow,dig,*w0g,*yg;
+      |                               ^~
+src/miracl/mrarth2.c:871:26: warning: variable ‘w0g’ set but not used [-Wunused-but-set-variable]
+  871 |     mr_small borrow,dig,*w0g,*yg;
+      |                          ^~~
+src/miracl/mrecn2.c: In function ‘ecn2_pre’:
+src/miracl/mrecn2.c:815:41: warning: unused parameter ‘norm’ [-Wunused-parameter]
+  815 | static void ecn2_pre(_MIPD_ int sz,BOOL norm,ecn2 *PT)
+      |                                    ~~~~~^~~~
+src/miracl/mrecn2.c: In function ‘ecn2_precomp_gls’:
+src/miracl/mrecn2.c:1329:11: warning: variable ‘j’ set but not used [-Wunused-but-set-variable]
+ 1329 |     int i,j;
+      |           ^
+src/miracl/mrflsh2.c: In function ‘expon’:
+src/miracl/mrflsh2.c:45:29: warning: unused parameter ‘w’ [-Wunused-parameter]
+   45 | static int expon(_MIPD_ big w,int n)
+      |                         ~~~~^
+src/miracl/mrflsh3.c: In function ‘tan1’:
+src/miracl/mrflsh3.c:88:28: warning: unused parameter ‘w’ [-Wunused-parameter]
+   88 | static int tan1(_MIPD_ big w,int n)
+      |                        ~~~~^
+src/miracl/mrio1.c: In function ‘instr’:
+src/miracl/mrio1.c:228:61: warning: ‘lc’ may be used uninitialized [-Wmaybe-uninitialized]
+  228 |                         putdig(_MIPP_ 0x3f&((ch<<(6-2*pads))|lc),x,n);
+      |                                            ~~~~~~~~~~~~~~~~~^~~~
+src/miracl/mrio1.c:49:12: note: ‘lc’ was declared here
+   49 |     int ch,lc;
+      |            ^~
+src/miracl/mrmonty.c: In function ‘redc’:
+src/miracl/mrmonty.c:302:46: warning: variable ‘mg’ set but not used [-Wunused-but-set-variable]
+  302 |     mr_small carry,delay_carry,m,ndash,*w0g,*mg;
+      |                                              ^~
+src/miracl/mrmonty.c:302:41: warning: variable ‘w0g’ set but not used [-Wunused-but-set-variable]
+  302 |     mr_small carry,delay_carry,m,ndash,*w0g,*mg;
+      |                                         ^~~
+src/miracl/mrsha3.c: In function ‘sha3_hash’:
+src/miracl/mrsha3.c:162:43: warning: comparison of integer expressions of different signedness: ‘long unsigned int’ and ‘int’ [-Wsign-compare]
+  162 |                 while (sh->length%sh->rate!=sh->rate-1) sha3_process(sh,0x00);
+      |                                           ^~
+src/miracl/mrshs.c:149:28: warning: argument 2 of type ‘char[20]’ with mismatched bound [-Warray-parameter=]
+  149 | void shs_hash(sha *sh,char hash[20])
+      |                       ~~~~~^~~~~~~~
+In file included from src/miracl/mrshs.c:46:
+src/miracl/miracl.h:1057:29: note: previously declared as ‘char *’
+ 1057 | extern void  shs_hash(sha *,char *);
+      |                             ^~~~~~
+src/miracl/mrshs256.c:135:34: warning: argument 2 of type ‘char[32]’ with mismatched bound [-Warray-parameter=]
+  135 | void shs256_hash(sha256 *sh,char hash[32])
+      |                             ~~~~~^~~~~~~~
+In file included from src/miracl/mrshs256.c:45:
+src/miracl/miracl.h:1061:35: note: previously declared as ‘char *’
+ 1061 | extern void  shs256_hash(sha256 *,char *);
+      |                                   ^~~~~~
+src/miracl/mrshs512.c:194:34: warning: argument 2 of type ‘char[64]’ with mismatched bound [-Warray-parameter=]
+  194 | void shs512_hash(sha512 *sh,char hash[64])
+      |                             ~~~~~^~~~~~~~
+In file included from src/miracl/mrshs512.c:47:
+src/miracl/miracl.h:1067:35: note: previously declared as ‘char *’
+ 1067 | extern void  shs512_hash(sha512 *,char *);
+      |                                   ^~~~~~
+src/miracl/mrshs512.c:212:34: warning: argument 2 of type ‘char[48]’ with mismatched bound [-Warray-parameter=]
+  212 | void shs384_hash(sha384 *sh,char hash[48])
+      |                             ~~~~~^~~~~~~~
+src/miracl/miracl.h:1071:35: note: previously declared as ‘char *’
+ 1071 | extern void  shs384_hash(sha384 *,char *);
+      |                                   ^~~~~~
+src/miracl/mrstrong.c: In function ‘strong_bigrand’:
+src/miracl/mrstrong.c:161:38: warning: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+  161 |                 for (r = 0, i = 0; i < sizeof(mr_small); i++) {
+      |                                      ^
+[exit=0]
+$ gcc -O2 src/test_key.c -lgmssl -o build/test_key
+
+[exit=0]
+$ file build/textbook_sm2 build/textbook_sm3 build/textbook_sm4
+build/textbook_sm2: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=cd92eb8a43e00cc9b96c6a322d753c36bdb2192b, for GNU/Linux 3.2.0, with debug_info, not stripped
+build/textbook_sm3: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=af2b13950c382df71340ba1186a03b5b1edc9d7e, for GNU/Linux 3.2.0, with debug_info, not stripped
+build/textbook_sm4: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=db28d46e9cefbf415a45080df25377b7136db336, for GNU/Linux 3.2.0, with debug_info, not stripped
+[exit=0]
+$ build/textbook_sm2
+原文：
+0x65,0x6e,0x63,0x72,0x79,0x70,0x74,0x69,
+0x6f,0x6e,0x20,0x73,0x74,0x61,0x6e,0x64,
+0x61,0x72,0x64,
+
+密文：
+0x4,0xeb,0xfc,0x71,0x8e,0x8d,0x17,0x98,
+0x62,0x4,0x32,0x26,0x8e,0x77,0xfe,0xb6,
+0x41,0x5e,0x2e,0xde,0xe,0x7,0x3c,0xf,
+0x4f,0x64,0xe,0xcd,0x2e,0x14,0x9a,0x73,
+0xe8,0x58,0xf9,0xd8,0x1e,0x54,0x30,0xa5,
+0x7b,0x36,0xda,0xab,0x8f,0x95,0xa,0x3c,
+0x64,0xe6,0xee,0x6a,0x63,0x9,0x4d,0x99,
+0x28,0x3a,0xff,0x76,0x7e,0x12,0x4d,0xf0,
+0x59,0x98,0x3c,0x18,0xf8,0x9,0xe2,0x62,
+0x92,0x3c,0x53,0xae,0xc2,0x95,0xd3,0x3,
+0x83,0xb5,0x4e,0x39,0xd6,0x9,0xd1,0x60,
+0xaf,0xcb,0x19,0x8,0xd0,0xbd,0x87,0x66,
+0x21,0x88,0x6c,0xa9,0x89,0xca,0x9c,0x7d,
+0x58,0x8,0x73,0x7,0xca,0x93,0x9,0x2d,
+0x65,0x1e,0xfa,
+
+解密结果：
+0x65,0x6e,0x63,0x72,0x79,0x70,0x74,0x69,
+0x6f,0x6e,0x20,0x73,0x74,0x61,0x6e,0x64,
+0x61,0x72,0x64,
+解密成功
+SM2 textbook selftest return=0
+[exit=0]
+PASS Textbook SM2 official selftest return=0
+$ build/test_key
+
+[exit=0]
+$ build/textbook_sm3 data/soft_msg_0.bin data/soft_sm3_0.bin
+SM3 textbook digest: 1ab21d8355cfa17f8e61194831e81a8f22bec8c728fefb747ed035eb5082aa2b
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_0.bin -bin -out data/gmssl_sm3_0.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=0
+$ build/textbook_sm3 data/soft_msg_1.bin data/soft_sm3_1.bin
+SM3 textbook digest: 94e15974646a3e2d4b3325dbbed3a83eb4a563bdf49dffc08cc1bcf279518c6b
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_1.bin -bin -out data/gmssl_sm3_1.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=1
+PASS SM3 UKey=textbook=GmSSL length=1
+$ build/textbook_sm3 data/soft_msg_3.bin data/soft_sm3_3.bin
+SM3 textbook digest: 66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_3.bin -bin -out data/gmssl_sm3_3.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=3
+PASS SM3 UKey=textbook=GmSSL length=3
+$ build/textbook_sm3 data/soft_msg_55.bin data/soft_sm3_55.bin
+SM3 textbook digest: 7c3597ba1ba56c819e47c89cf4234d7af5d5a47a22047e6e365f53b53fdb532d
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_55.bin -bin -out data/gmssl_sm3_55.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=55
+PASS SM3 UKey=textbook=GmSSL length=55
+$ build/textbook_sm3 data/soft_msg_56.bin data/soft_sm3_56.bin
+SM3 textbook digest: f8689fcad16dafeefca9793a384229136b08fefdf8e348bf69dc373ceb0bd953
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_56.bin -bin -out data/gmssl_sm3_56.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=56
+PASS SM3 UKey=textbook=GmSSL length=56
+$ build/textbook_sm3 data/soft_msg_63.bin data/soft_sm3_63.bin
+SM3 textbook digest: a093b74bb0b1c68661ee6167263b405124efbaafe458545ddb6b794660e93f84
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_63.bin -bin -out data/gmssl_sm3_63.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=63
+PASS SM3 UKey=textbook=GmSSL length=63
+$ build/textbook_sm3 data/soft_msg_64.bin data/soft_sm3_64.bin
+SM3 textbook digest: 2c1eb95e250c93d09a2a614a0fd73a274d95b6d4f22e354d15f46bf15fc1a6f8
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_64.bin -bin -out data/gmssl_sm3_64.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=64
+PASS SM3 UKey=textbook=GmSSL length=64
+$ build/textbook_sm3 data/soft_msg_65.bin data/soft_sm3_65.bin
+SM3 textbook digest: 5623575446d354069551fd0c19820f87366fb1023124ce406d579faa2a2b4c21
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_65.bin -bin -out data/gmssl_sm3_65.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=65
+PASS SM3 UKey=textbook=GmSSL length=65
+$ build/textbook_sm3 data/soft_msg_127.bin data/soft_sm3_127.bin
+SM3 textbook digest: db048dd576d08e3dfde18030842f00ecfba5c5b8ccde0a3f488286fedc6880a6
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_127.bin -bin -out data/gmssl_sm3_127.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=127
+$ build/textbook_sm3 data/soft_msg_128.bin data/soft_sm3_128.bin
+SM3 textbook digest: 9a30fd9e76b6d1530f29f5b8161213d9ee835fa8874254da427e048d178a5df9
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_128.bin -bin -out data/gmssl_sm3_128.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=128
+$ build/textbook_sm3 data/soft_msg_1024.bin data/soft_sm3_1024.bin
+SM3 textbook digest: 9ea78403aaa08b7e4d5647ced82b0c3619d04e0cc0202fdcea746a7df5f0de4b
+[exit=0]
+$ gmssl sm3 -in data/soft_msg_1024.bin -bin -out data/gmssl_sm3_1024.bin
+
+[exit=0]
+PASS SM3 textbook=GmSSL length=1024
+PASS SM3 UKey=textbook=GmSSL length=1024
+$ build/textbook_sm4 enc data/soft_sm4_plain_0.bin data/soft_sm4_cipher_0.bin
+681edf34d206965e86b3e94f536e4246
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_0.bin -out data/gmssl_sm4_cipher_0.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=0
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_0.bin data/soft_sm4_recovered_0.bin
+0123456789abcdeffedcba9876543210
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=0
+PASS SM4 UKey=textbook=GmSSL case=0
+PASS SM4 published standard ciphertext
+$ build/textbook_sm4 enc data/soft_sm4_plain_1.bin data/soft_sm4_cipher_1.bin
+89c92a36264cb324d08a383ee2b133c9
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_1.bin -out data/gmssl_sm4_cipher_1.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=1
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_1.bin data/soft_sm4_recovered_1.bin
+1f3245586b7e91a4b7caddf00316293c
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=1
+PASS SM4 UKey=textbook=GmSSL case=1
+$ build/textbook_sm4 enc data/soft_sm4_plain_2.bin data/soft_sm4_cipher_2.bin
+86fe19cd950bd88385d33a763fe2f9ec
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_2.bin -out data/gmssl_sm4_cipher_2.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=2
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_2.bin data/soft_sm4_recovered_2.bin
+3e5164778a9db0c3d6e9fc0f2235485b
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=2
+PASS SM4 UKey=textbook=GmSSL case=2
+$ build/textbook_sm4 enc data/soft_sm4_plain_3.bin data/soft_sm4_cipher_3.bin
+cd7b396fe597078c2da3fe2045c0efff
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_3.bin -out data/gmssl_sm4_cipher_3.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=3
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_3.bin data/soft_sm4_recovered_3.bin
+5d708396a9bccfe2f5081b2e4154677a
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=3
+PASS SM4 UKey=textbook=GmSSL case=3
+$ build/textbook_sm4 enc data/soft_sm4_plain_4.bin data/soft_sm4_cipher_4.bin
+d007379ed79efe60f2fd55d39836b53b
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_4.bin -out data/gmssl_sm4_cipher_4.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=4
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_4.bin data/soft_sm4_recovered_4.bin
+7c8fa2b5c8dbee0114273a4d60738699
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=4
+$ build/textbook_sm4 enc data/soft_sm4_plain_5.bin data/soft_sm4_cipher_5.bin
+44d7a6616ee18c5a0e6308180aaefe13
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_5.bin -out data/gmssl_sm4_cipher_5.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=5
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_5.bin data/soft_sm4_recovered_5.bin
+9baec1d4e7fa0d203346596c7f92a5b8
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=5
+$ build/textbook_sm4 enc data/soft_sm4_plain_6.bin data/soft_sm4_cipher_6.bin
+a2746ed769432afdf0c051b899dd9b66
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_6.bin -out data/gmssl_sm4_cipher_6.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=6
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_6.bin data/soft_sm4_recovered_6.bin
+bacde0f306192c3f5265788b9eb1c4d7
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=6
+$ build/textbook_sm4 enc data/soft_sm4_plain_7.bin data/soft_sm4_cipher_7.bin
+9dd4e8ec49dd4f861cb902e42d14e7ef
+[exit=0]
+$ gmssl sm4_ecb -encrypt -key 0123456789abcdeffedcba9876543210 -in data/soft_sm4_plain_7.bin -out data/gmssl_sm4_cipher_7.bin
+
+[exit=0]
+PASS SM4 textbook=GmSSL case=7
+$ build/textbook_sm4 dec data/gmssl_sm4_cipher_7.bin data/soft_sm4_recovered_7.bin
+d9ecff1225384b5e718497aabdd0e3f6
+[exit=0]
+PASS SM4 GmSSL->textbook recover case=7
+$ build/textbook_sm4 enc data/soft_msg_3.bin data/rejected_sm4.bin
+
+[exit=2]
+PASS SM4 invalid block rejected without output
+$ build/textbook_sm2 enc data/soft_sm2_message.bin data/soft_sm2_0.raw
+SM2 textbook encrypt return=0
+[exit=0]
+$ gmssl sm2decrypt -key data/test_private.pem -pass lab2-test-only -in data/soft_sm2_0.der -out data/gmssl_from_textbook_0.bin
+
+[exit=0]
+PASS SM2 textbook encrypt->GmSSL decrypt trial=0
+$ gmssl sm2encrypt -pubkey data/test_public.pem -in data/soft_sm2_message.bin -out data/gmssl_sm2_0.der
+
+[exit=0]
+$ build/textbook_sm2 dec data/gmssl_sm2_0.raw data/textbook_from_gmssl_0.bin
+SM2 textbook decrypt return=0
+[exit=0]
+PASS SM2 GmSSL encrypt->textbook decrypt trial=0
+$ build/textbook_sm2 dec data/ukey_sm2_0.raw data/textbook_from_ukey_0.bin
+SM2 textbook decrypt return=0
+[exit=0]
+$ gmssl sm2decrypt -key data/test_private.pem -pass lab2-test-only -in data/ukey_sm2_0.der -out data/gmssl_from_ukey_0.bin
+
+[exit=0]
+PASS SM2 UKey encrypt->textbook decrypt trial=0
+PASS SM2 UKey encrypt->GmSSL decrypt trial=0
+$ build/textbook_sm2 enc data/soft_sm2_message.bin data/soft_sm2_1.raw
+SM2 textbook encrypt return=0
+[exit=0]
+$ gmssl sm2decrypt -key data/test_private.pem -pass lab2-test-only -in data/soft_sm2_1.der -out data/gmssl_from_textbook_1.bin
+
+[exit=0]
+PASS SM2 textbook encrypt->GmSSL decrypt trial=1
+$ gmssl sm2encrypt -pubkey data/test_public.pem -in data/soft_sm2_message.bin -out data/gmssl_sm2_1.der
+
+[exit=0]
+$ build/textbook_sm2 dec data/gmssl_sm2_1.raw data/textbook_from_gmssl_1.bin
+SM2 textbook decrypt return=0
+[exit=0]
+PASS SM2 GmSSL encrypt->textbook decrypt trial=1
+$ build/textbook_sm2 dec data/ukey_sm2_1.raw data/textbook_from_ukey_1.bin
+SM2 textbook decrypt return=0
+[exit=0]
+$ gmssl sm2decrypt -key data/test_private.pem -pass lab2-test-only -in data/ukey_sm2_1.der -out data/gmssl_from_ukey_1.bin
+
+[exit=0]
+PASS SM2 UKey encrypt->textbook decrypt trial=1
+PASS SM2 UKey encrypt->GmSSL decrypt trial=1
+$ build/textbook_sm2 enc data/soft_sm2_message.bin data/soft_sm2_2.raw
+SM2 textbook encrypt return=0
+[exit=0]
+$ gmssl sm2decrypt -key data/test_private.pem -pass lab2-test-only -in data/soft_sm2_2.der -out data/gmssl_from_textbook_2.bin
+
+[exit=0]
+PASS SM2 textbook encrypt->GmSSL decrypt trial=2
+$ gmssl sm2encrypt -pubkey data/test_public.pem -in data/soft_sm2_message.bin -out data/gmssl_sm2_2.der
+
+[exit=0]
+$ build/textbook_sm2 dec data/gmssl_sm2_2.raw data/textbook_from_gmssl_2.bin
+SM2 textbook decrypt return=0
+[exit=0]
+PASS SM2 GmSSL encrypt->textbook decrypt trial=2
+$ build/textbook_sm2 dec data/ukey_sm2_2.raw data/textbook_from_ukey_2.bin
+SM2 textbook decrypt return=0
+[exit=0]
+$ gmssl sm2decrypt -key data/test_private.pem -pass lab2-test-only -in data/ukey_sm2_2.der -out data/gmssl_from_ukey_2.bin
+
+[exit=0]
+PASS SM2 UKey encrypt->textbook decrypt trial=2
+PASS SM2 UKey encrypt->GmSSL decrypt trial=2
+PASS SM2 UKey encryption produced distinct ciphertexts
+$ build/textbook_sm2 dec data/bad_c3.raw data/rejected_c3.bin
+SM2 textbook decrypt return=6
+[exit=1]
+PASS SM2 C3 tamper rejected rc=6 without plaintext file
+$ build/textbook_sm2 dec data/soft_msg_3.bin data/rejected_short.bin
+
+[exit=2]
+PASS SM2 truncated ciphertext rejected without output
+$ g++ -std=c++17 -O1 -g -Wall -Wextra -I src -I src/textbook/sm3 src/textbook/sm3/sm3.cpp src/sm3_driver.cpp -o build/sm3_ubsan -fsanitize=undefined -fno-sanitize-recover=undefined
+
+[exit=0]
+$ build/sm3_ubsan data/soft_msg_65.bin data/ubsan_sm3.bin
+SM3 textbook digest: 5623575446d354069551fd0c19820f87366fb1023124ce406d579faa2a2b4c21
+[exit=0]
+PASS SM3 representative input UBSan passed
+$ g++ -std=c++17 -O1 -g -Wall -Wextra -I src -I src/textbook/sm4 src/textbook/sm4/sm4.cpp src/sm4_driver.cpp -o build/sm4_ubsan -fsanitize=undefined -fno-sanitize-recover=undefined
+
+[exit=0]
+$ build/sm4_ubsan enc data/soft_sm4_plain_0.bin data/ubsan_sm4.bin
+681edf34d206965e86b3e94f536e4246
+[exit=0]
+PASS SM4 representative input UBSan passed
+ALL 59 CHECKS PASSED: {'software': 40, 'hardware': 19}

@@ -1,0 +1,15 @@
+commit cce439c54b08b2b286b94e84fcf9d2049b53eb3d
+Author: 蔡贸俊 <1515720698@users.noreply.github.com>
+Date: 2026-10-29T11:55:45+08:00
+Subject: feat(lab2): add textbook SM2 and verified GM3000 cross-checks
+
+commit 591307c67d6a43b2fbef37307559477ac7882e6c
+Author: 蔡贸俊 <1515720698@users.noreply.github.com>
+Date: 2026-10-29T11:55:43+08:00
+Subject: feat(lab2): archive textbook SM4 and block validation
+
+commit 79c5598173404668abd28b8e1c3fe52849bff199
+Author: 蔡贸俊 <1515720698@users.noreply.github.com>
+Date: 2026-10-29T11:55:43+08:00
+Subject: feat(lab2): archive textbook SM3 and portable word handling
+

@@ -1,0 +1,299 @@
+{
+  "started_at": "2026-10-29T11:52:17.856581+08:00",
+  "dll": "materials\\GM3000_runtime\\mtoken_gm3000.dll",
+  "dll_sha256": "f72bc9ee2a59045e75cea6fab708b4f62460744f2c0cc07267b528007db285b0",
+  "abi": "Windows x64, stdcall, ULONG=32bit, struct pack=1",
+  "pin_used": false,
+  "persistent_key_objects_created": false,
+  "calls": [
+    {
+      "function": "SKF_EnumDev",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_ConnectDev",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DigestInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Digest",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_SetSymmKey",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_EncryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Encrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DecryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Decrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_EncryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Encrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DecryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Decrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_EncryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Encrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DecryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Decrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_EncryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Encrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DecryptInit",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_Decrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_CloseHandle",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_ExtECCEncrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_ExtECCEncrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_ExtECCEncrypt",
+      "rv": "0x00000000"
+    },
+    {
+      "function": "SKF_DisConnectDev",
+      "rv": "0x00000000"
+    }
+  ],
+  "checks": [
+    {
+      "name": "SM3 UKey vs independent hashlib length=3",
+      "passed": true,
+      "digest": "66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0"
+    },
+    {
+      "name": "SM3 UKey vs independent hashlib length=1",
+      "passed": true,
+      "digest": "94e15974646a3e2d4b3325dbbed3a83eb4a563bdf49dffc08cc1bcf279518c6b"
+    },
+    {
+      "name": "SM3 UKey vs independent hashlib length=55",
+      "passed": true,
+      "digest": "7c3597ba1ba56c819e47c89cf4234d7af5d5a47a22047e6e365f53b53fdb532d"
+    },
+    {
+      "name": "SM3 UKey vs independent hashlib length=56",
+      "passed": true,
+      "digest": "f8689fcad16dafeefca9793a384229136b08fefdf8e348bf69dc373ceb0bd953"
+    },
+    {
+      "name": "SM3 UKey vs independent hashlib length=63",
+      "passed": true,
+      "digest": "a093b74bb0b1c68661ee6167263b405124efbaafe458545ddb6b794660e93f84"
+    },
+    {
+      "name": "SM3 UKey vs independent hashlib length=64",
+      "passed": true,
+      "digest": "2c1eb95e250c93d09a2a614a0fd73a274d95b6d4f22e354d15f46bf15fc1a6f8"
+    },
+    {
+      "name": "SM3 UKey vs independent hashlib length=65",
+      "passed": true,
+      "digest": "5623575446d354069551fd0c19820f87366fb1023124ce406d579faa2a2b4c21"
+    },
+    {
+      "name": "SM3 UKey vs independent hashlib length=1024",
+      "passed": true,
+      "digest": "9ea78403aaa08b7e4d5647ced82b0c3619d04e0cc0202fdcea746a7df5f0de4b"
+    },
+    {
+      "name": "SM4 UKey ciphertext length case=0",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey standard vector",
+      "passed": true,
+      "ciphertext": "681edf34d206965e86b3e94f536e4246"
+    },
+    {
+      "name": "SM4 UKey recover case=0",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey ciphertext length case=1",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey recover case=1",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey ciphertext length case=2",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey recover case=2",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey ciphertext length case=3",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey recover case=3",
+      "passed": true
+    },
+    {
+      "name": "SM2 SKF blob length case=0",
+      "passed": true,
+      "cipher_length": 18
+    },
+    {
+      "name": "SM2 SKF blob length case=1",
+      "passed": true,
+      "cipher_length": 18
+    },
+    {
+      "name": "SM2 SKF blob length case=2",
+      "passed": true,
+      "cipher_length": 18
+    }
+  ],
+  "device_count": 1,
+  "status": "hardware_operations_completed_crosscheck_required",
+  "finished_at": "2026-10-29T11:52:19.163029+08:00"
+}

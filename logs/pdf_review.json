@@ -1,0 +1,31 @@
+{
+  "practice": {
+    "pages": 8,
+    "page_text_lengths": [
+      856,
+      1191,
+      1631,
+      1378,
+      1010,
+      364,
+      1141,
+      962
+    ],
+    "no_blank_pages": true
+  },
+  "report": {
+    "pages": 9,
+    "page_text_lengths": [
+      671,
+      1005,
+      1335,
+      1647,
+      1671,
+      1170,
+      459,
+      1311,
+      888
+    ],
+    "no_blank_pages": true
+  }
+}

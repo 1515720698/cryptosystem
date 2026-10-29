@@ -1,0 +1,439 @@
+{
+  "time": "2026-10-29T11:53:02.165458+08:00",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.38",
+  "passed": 59,
+  "totals": {
+    "software": 40,
+    "hardware": 19
+  },
+  "checks": [
+    {
+      "name": "Textbook SM2 official selftest return=0",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=0",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=1",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=1",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=3",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=3",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=55",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=55",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=56",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=56",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=63",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=63",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=64",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=64",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=65",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=65",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=127",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=128",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 textbook=GmSSL length=1024",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 UKey=textbook=GmSSL length=1024",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=0",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=0",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey=textbook=GmSSL case=0",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM4 published standard ciphertext",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=1",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=1",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey=textbook=GmSSL case=1",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=2",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=2",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey=textbook=GmSSL case=2",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=3",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=3",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 UKey=textbook=GmSSL case=3",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=4",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=4",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=5",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=5",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=6",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=6",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 textbook=GmSSL case=7",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 GmSSL->textbook recover case=7",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 invalid block rejected without output",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 textbook encrypt->GmSSL decrypt trial=0",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 GmSSL encrypt->textbook decrypt trial=0",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 UKey encrypt->textbook decrypt trial=0",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM2 UKey encrypt->GmSSL decrypt trial=0",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM2 textbook encrypt->GmSSL decrypt trial=1",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 GmSSL encrypt->textbook decrypt trial=1",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 UKey encrypt->textbook decrypt trial=1",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM2 UKey encrypt->GmSSL decrypt trial=1",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM2 textbook encrypt->GmSSL decrypt trial=2",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 GmSSL encrypt->textbook decrypt trial=2",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 UKey encrypt->textbook decrypt trial=2",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM2 UKey encrypt->GmSSL decrypt trial=2",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM2 UKey encryption produced distinct ciphertexts",
+      "category": "hardware",
+      "passed": true
+    },
+    {
+      "name": "SM2 C3 tamper rejected rc=6 without plaintext file",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM2 truncated ciphertext rejected without output",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM3 representative input UBSan passed",
+      "category": "software",
+      "passed": true
+    },
+    {
+      "name": "SM4 representative input UBSan passed",
+      "category": "software",
+      "passed": true
+    }
+  ],
+  "hardware_scope": "SKF SM3 digest, SM4 ECB encrypt/decrypt, SM2 external public-key encryption (d=1 fixture); no token private key/PIN operation",
+  "input_output_sha256": {
+    "data/bad_c3.raw": "9d7ec1fd658565be4d5f7c00915c20798c422b9075f7ad16669a1e6e0c42e3e9",
+    "data/gmssl_from_textbook_0.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/gmssl_from_textbook_1.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/gmssl_from_textbook_2.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/gmssl_from_ukey_0.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/gmssl_from_ukey_1.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/gmssl_from_ukey_2.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/gmssl_sm2_0.der": "7557cadeba2865668d9a77ffffb1026a6d5533f13d6bd4969d9b704a46999fb0",
+    "data/gmssl_sm2_0.raw": "d11d237efd522d70d31d5da5203a47535de3780dac54850f6f5e45c65767870b",
+    "data/gmssl_sm2_1.der": "87d90043e4b9aaf1b62368e1b9ce4d558e619139976fc64e5005de8df7602a74",
+    "data/gmssl_sm2_1.raw": "72f6d2843822487fa93f342cf71b9695d312d7d1279c2ea0905943fb30b3c3db",
+    "data/gmssl_sm2_2.der": "2036f0b0514b99943525a81eec1288f15edef601c87fdef1865c93c4edb56dee",
+    "data/gmssl_sm2_2.raw": "4ab2a84f5e76a3c9b85e6a86a2c424729fb56cd80db8d61efe7810e7a41a1612",
+    "data/gmssl_sm3_0.bin": "9f3d6c3a3f4f70b6a36c20a21dcd45c4b421718d364e5bd89b44450f8d2e7381",
+    "data/gmssl_sm3_1.bin": "493711aaf1b41a6187031ff8f4ef1ccfa6cf49101ec5b0ba8291db35d30e2c8b",
+    "data/gmssl_sm3_1024.bin": "9528a04b53727379991dd1f65dec8d388050d3162efd391317d1d665f2702710",
+    "data/gmssl_sm3_127.bin": "b9e9e5c3b6672a711b81908c34461ea53cacf5a02781a8f1049dd3c853ae878b",
+    "data/gmssl_sm3_128.bin": "e76e2b56464b010e7f5d129291e578965a3b2913f931b75479c46db11a12c4a2",
+    "data/gmssl_sm3_3.bin": "c654a069dc154729f6dd0f76ab1fee4e94ec65c4f91ba5fa43ad719834f72276",
+    "data/gmssl_sm3_55.bin": "84f6a9a518974b17936e1db4f2ee52b2dd9fb4e80ca3ca126a5608f33d21f9e4",
+    "data/gmssl_sm3_56.bin": "0de1b737c95d78b73a3c43b40e08e7fd98195a4c4f3fe815698861aad5681d9b",
+    "data/gmssl_sm3_63.bin": "469ba52b0ef5d6104abe2990b83989c245be2822cdafee5caa421656db87e3e8",
+    "data/gmssl_sm3_64.bin": "ef6a796ba7d3b997de8de8ea2e1cb463d8bb06bd94f0f5fd6dcf996b265c5d7f",
+    "data/gmssl_sm3_65.bin": "5997b744ac237e5dfe3d39abf70c0d1fd90e90669ebe1aed51fefd9431938258",
+    "data/gmssl_sm4_cipher_0.bin": "3882e1a68a0e3f58acb1ca5573773aef6d5575cb963e365cbebff2f64b7bbeaf",
+    "data/gmssl_sm4_cipher_1.bin": "bb2ba547579c2909e14b858d8eed7b6a91db775feded19566b4d17461d7fd2b5",
+    "data/gmssl_sm4_cipher_2.bin": "112d63ddcc49377d734a44c9d6a2836402338717f36f29e478f5e0c5cbf04a51",
+    "data/gmssl_sm4_cipher_3.bin": "310118447d352e4cdd4b21ed6f9109b7f4b3af56dd9815f818468826a7ae7788",
+    "data/gmssl_sm4_cipher_4.bin": "04c23748d8df50731becf0e8be078d7c6bc8b0b8c1422985c475ce42b732cc07",
+    "data/gmssl_sm4_cipher_5.bin": "55d392716a28140dc4c72fe7553d90e4df5217554d4055ffdecd0b005a63f10b",
+    "data/gmssl_sm4_cipher_6.bin": "c51dea8805a8ff2227d90060fea6e51375450ff9c195007d7b21cfe92c104975",
+    "data/gmssl_sm4_cipher_7.bin": "bd3967d138c8ca7ce39bab2dee8b4adaf1b93814e2b7b40fa01764eb2b97630b",
+    "data/soft_msg_0.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/soft_msg_1.bin": "e7cf46a078fed4fafd0b5e3aff144802b853f8ae459a4f0c14add3314b7cc3a6",
+    "data/soft_msg_1024.bin": "ffbad8f947474cfdd5b2bb22d7e0bf5ee8ba2b7af859d0c2bb28622db6a4be47",
+    "data/soft_msg_127.bin": "0fe729ff19257bd6fec853acc2ea355f6b34b58e6c0f684c3e188fcdfcd9baae",
+    "data/soft_msg_128.bin": "0aedd4856f8eba0963627336ad5144a9a7dbe12498e6066f0165fc97d8ddee4c",
+    "data/soft_msg_3.bin": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "data/soft_msg_55.bin": "2900465fcb533e05a158fd2b3be0e5e3b03740d83060aa3580e0d98a96bf2384",
+    "data/soft_msg_56.bin": "31454ff48ef36af2f08fd511bdc37d9d5855ac23e992e5ff5445cb6b7674a674",
+    "data/soft_msg_63.bin": "5f6401b96532c36de4e65beec0409b69b1d181864c8009b7a04f43e5d56350d1",
+    "data/soft_msg_64.bin": "94eb5de4943613fd048dc93393ab06877405faa39c11f53e9386083339833e7e",
+    "data/soft_msg_65.bin": "fc518669b6eb4b4dd91827ecacef86689c725bd5bab888fd3b26dbb196eec954",
+    "data/soft_sm2_0.der": "39c4545de5910549be9640526b9a8c3a54811ee276d8ff9e4cde9cf28fc0a1d5",
+    "data/soft_sm2_0.raw": "ba0e2dc60482ac14ae1390c61023994c75cec4465c7c15177b6d9daf98ff83a0",
+    "data/soft_sm2_1.der": "47c8afbc9f92083ef78fb69f1bb67bd3af178c11789c3ae1875ff504fdfb3ccd",
+    "data/soft_sm2_1.raw": "2d610c32897309f936c9b29fd7a6d7a6714544839d104951c616c357201dccfc",
+    "data/soft_sm2_2.der": "fc87b3d90235fda28a711232426fcd280a7f7da9e67e417f4e2a168f5753942b",
+    "data/soft_sm2_2.raw": "0b2f08a618b49d9e1d8851fae24f6630ce9d51ef7e4aa4513416be8c06af8730",
+    "data/soft_sm2_message.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/soft_sm3_0.bin": "9f3d6c3a3f4f70b6a36c20a21dcd45c4b421718d364e5bd89b44450f8d2e7381",
+    "data/soft_sm3_1.bin": "493711aaf1b41a6187031ff8f4ef1ccfa6cf49101ec5b0ba8291db35d30e2c8b",
+    "data/soft_sm3_1024.bin": "9528a04b53727379991dd1f65dec8d388050d3162efd391317d1d665f2702710",
+    "data/soft_sm3_127.bin": "b9e9e5c3b6672a711b81908c34461ea53cacf5a02781a8f1049dd3c853ae878b",
+    "data/soft_sm3_128.bin": "e76e2b56464b010e7f5d129291e578965a3b2913f931b75479c46db11a12c4a2",
+    "data/soft_sm3_3.bin": "c654a069dc154729f6dd0f76ab1fee4e94ec65c4f91ba5fa43ad719834f72276",
+    "data/soft_sm3_55.bin": "84f6a9a518974b17936e1db4f2ee52b2dd9fb4e80ca3ca126a5608f33d21f9e4",
+    "data/soft_sm3_56.bin": "0de1b737c95d78b73a3c43b40e08e7fd98195a4c4f3fe815698861aad5681d9b",
+    "data/soft_sm3_63.bin": "469ba52b0ef5d6104abe2990b83989c245be2822cdafee5caa421656db87e3e8",
+    "data/soft_sm3_64.bin": "ef6a796ba7d3b997de8de8ea2e1cb463d8bb06bd94f0f5fd6dcf996b265c5d7f",
+    "data/soft_sm3_65.bin": "5997b744ac237e5dfe3d39abf70c0d1fd90e90669ebe1aed51fefd9431938258",
+    "data/soft_sm4_cipher_0.bin": "3882e1a68a0e3f58acb1ca5573773aef6d5575cb963e365cbebff2f64b7bbeaf",
+    "data/soft_sm4_cipher_1.bin": "bb2ba547579c2909e14b858d8eed7b6a91db775feded19566b4d17461d7fd2b5",
+    "data/soft_sm4_cipher_2.bin": "112d63ddcc49377d734a44c9d6a2836402338717f36f29e478f5e0c5cbf04a51",
+    "data/soft_sm4_cipher_3.bin": "310118447d352e4cdd4b21ed6f9109b7f4b3af56dd9815f818468826a7ae7788",
+    "data/soft_sm4_cipher_4.bin": "04c23748d8df50731becf0e8be078d7c6bc8b0b8c1422985c475ce42b732cc07",
+    "data/soft_sm4_cipher_5.bin": "55d392716a28140dc4c72fe7553d90e4df5217554d4055ffdecd0b005a63f10b",
+    "data/soft_sm4_cipher_6.bin": "c51dea8805a8ff2227d90060fea6e51375450ff9c195007d7b21cfe92c104975",
+    "data/soft_sm4_cipher_7.bin": "bd3967d138c8ca7ce39bab2dee8b4adaf1b93814e2b7b40fa01764eb2b97630b",
+    "data/soft_sm4_plain_0.bin": "411d3f1d2390ff3f482ac8df4e730780bb081a192f283d2f373138fd101dc8fe",
+    "data/soft_sm4_plain_1.bin": "265899d316d042abcc2b1192e54ec4c5db6f6e28f113ef7efe51260920526501",
+    "data/soft_sm4_plain_2.bin": "78248d09ce1a6754e8254e8de66cb7c97961c2fd578ef01c6f66d0c571e15850",
+    "data/soft_sm4_plain_3.bin": "81e4ef031ad77de2701732b4d8c411d6432a4975f8e82b04874cab08f3075c0c",
+    "data/soft_sm4_plain_4.bin": "8d0790c84fe61dff37c4ca5434154f748db456442e4ab3055bfc40cfc9af5bf5",
+    "data/soft_sm4_plain_5.bin": "4b13f8d4673af3cdde81ae705b24de4d42fcccfa28354ff3b54f65f0d82ecf54",
+    "data/soft_sm4_plain_6.bin": "0bc9d2d0add5c6936ea1270cc02f215c37e49adfed3d4f2be60481acd796ebd3",
+    "data/soft_sm4_plain_7.bin": "253f572539571353b30ccec498f2998b2fda964b9aef9adff927cb4dfb1e1e23",
+    "data/soft_sm4_recovered_0.bin": "411d3f1d2390ff3f482ac8df4e730780bb081a192f283d2f373138fd101dc8fe",
+    "data/soft_sm4_recovered_1.bin": "265899d316d042abcc2b1192e54ec4c5db6f6e28f113ef7efe51260920526501",
+    "data/soft_sm4_recovered_2.bin": "78248d09ce1a6754e8254e8de66cb7c97961c2fd578ef01c6f66d0c571e15850",
+    "data/soft_sm4_recovered_3.bin": "81e4ef031ad77de2701732b4d8c411d6432a4975f8e82b04874cab08f3075c0c",
+    "data/soft_sm4_recovered_4.bin": "8d0790c84fe61dff37c4ca5434154f748db456442e4ab3055bfc40cfc9af5bf5",
+    "data/soft_sm4_recovered_5.bin": "4b13f8d4673af3cdde81ae705b24de4d42fcccfa28354ff3b54f65f0d82ecf54",
+    "data/soft_sm4_recovered_6.bin": "0bc9d2d0add5c6936ea1270cc02f215c37e49adfed3d4f2be60481acd796ebd3",
+    "data/soft_sm4_recovered_7.bin": "253f572539571353b30ccec498f2998b2fda964b9aef9adff927cb4dfb1e1e23",
+    "data/textbook_abc.bin": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "data/textbook_from_gmssl_0.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/textbook_from_gmssl_1.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/textbook_from_gmssl_2.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/textbook_from_ukey_0.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/textbook_from_ukey_1.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/textbook_from_ukey_2.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/textbook_sm4_gmssl.bin": "3882e1a68a0e3f58acb1ca5573773aef6d5575cb963e365cbebff2f64b7bbeaf",
+    "data/textbook_sm4_plain.bin": "411d3f1d2390ff3f482ac8df4e730780bb081a192f283d2f373138fd101dc8fe",
+    "data/ubsan_sm3.bin": "5997b744ac237e5dfe3d39abf70c0d1fd90e90669ebe1aed51fefd9431938258",
+    "data/ubsan_sm4.bin": "3882e1a68a0e3f58acb1ca5573773aef6d5575cb963e365cbebff2f64b7bbeaf",
+    "data/ukey_msg_1.bin": "e7cf46a078fed4fafd0b5e3aff144802b853f8ae459a4f0c14add3314b7cc3a6",
+    "data/ukey_msg_1024.bin": "ffbad8f947474cfdd5b2bb22d7e0bf5ee8ba2b7af859d0c2bb28622db6a4be47",
+    "data/ukey_msg_3.bin": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "data/ukey_msg_55.bin": "2900465fcb533e05a158fd2b3be0e5e3b03740d83060aa3580e0d98a96bf2384",
+    "data/ukey_msg_56.bin": "31454ff48ef36af2f08fd511bdc37d9d5855ac23e992e5ff5445cb6b7674a674",
+    "data/ukey_msg_63.bin": "5f6401b96532c36de4e65beec0409b69b1d181864c8009b7a04f43e5d56350d1",
+    "data/ukey_msg_64.bin": "94eb5de4943613fd048dc93393ab06877405faa39c11f53e9386083339833e7e",
+    "data/ukey_msg_65.bin": "fc518669b6eb4b4dd91827ecacef86689c725bd5bab888fd3b26dbb196eec954",
+    "data/ukey_sm2_0.der": "5f5558d3431ca4d74f0bf4e23f158ea03d564d7074aad76f82145ec0b19ad805",
+    "data/ukey_sm2_0.raw": "14d6715fabffe3159b3f6d6a36e9c5a3e72a5b8fea0eaa802d78933bf1f4828b",
+    "data/ukey_sm2_0.skfblob": "15751442b66dea2bc2467d41cdc8fcf702a327ee71cf4f5f2cbbb2ea4ea2673a",
+    "data/ukey_sm2_1.der": "50e93d80652945d3088f82c4aedf5447829dc617b3b49accdabc82cb482d64c1",
+    "data/ukey_sm2_1.raw": "adef69c3df9aa9a7800beda6d91efec04a541d6a5d0ed34d3b06298c52e3629d",
+    "data/ukey_sm2_1.skfblob": "be079024fdda260955f4dd814e9e064a028e17aab809615ed14c473673ce245c",
+    "data/ukey_sm2_2.der": "86ffea62ec053e1c671c2a8343ceaba891cf5a0893cd4ddfd713b469f1a23337",
+    "data/ukey_sm2_2.raw": "2bf36b1c8bac8281d5a912ad3837c87cad62ffc6319ab3be37190c9d4107081e",
+    "data/ukey_sm2_2.skfblob": "1e37b2a820adb83b66d8a23e211e6299c3491591fb644f18911c1d949f6c546b",
+    "data/ukey_sm2_message.bin": "e27f3d952e38dd4816701e8aedbac9b87b2ad44c4f9368a92503568500f159e8",
+    "data/ukey_sm3_1.bin": "493711aaf1b41a6187031ff8f4ef1ccfa6cf49101ec5b0ba8291db35d30e2c8b",
+    "data/ukey_sm3_1024.bin": "9528a04b53727379991dd1f65dec8d388050d3162efd391317d1d665f2702710",
+    "data/ukey_sm3_3.bin": "c654a069dc154729f6dd0f76ab1fee4e94ec65c4f91ba5fa43ad719834f72276",
+    "data/ukey_sm3_55.bin": "84f6a9a518974b17936e1db4f2ee52b2dd9fb4e80ca3ca126a5608f33d21f9e4",
+    "data/ukey_sm3_56.bin": "0de1b737c95d78b73a3c43b40e08e7fd98195a4c4f3fe815698861aad5681d9b",
+    "data/ukey_sm3_63.bin": "469ba52b0ef5d6104abe2990b83989c245be2822cdafee5caa421656db87e3e8",
+    "data/ukey_sm3_64.bin": "ef6a796ba7d3b997de8de8ea2e1cb463d8bb06bd94f0f5fd6dcf996b265c5d7f",
+    "data/ukey_sm3_65.bin": "5997b744ac237e5dfe3d39abf70c0d1fd90e90669ebe1aed51fefd9431938258",
+    "data/ukey_sm4_cipher_0.bin": "3882e1a68a0e3f58acb1ca5573773aef6d5575cb963e365cbebff2f64b7bbeaf",
+    "data/ukey_sm4_cipher_1.bin": "bb2ba547579c2909e14b858d8eed7b6a91db775feded19566b4d17461d7fd2b5",
+    "data/ukey_sm4_cipher_2.bin": "112d63ddcc49377d734a44c9d6a2836402338717f36f29e478f5e0c5cbf04a51",
+    "data/ukey_sm4_cipher_3.bin": "310118447d352e4cdd4b21ed6f9109b7f4b3af56dd9815f818468826a7ae7788",
+    "data/ukey_sm4_plain_0.bin": "411d3f1d2390ff3f482ac8df4e730780bb081a192f283d2f373138fd101dc8fe",
+    "data/ukey_sm4_plain_1.bin": "265899d316d042abcc2b1192e54ec4c5db6f6e28f113ef7efe51260920526501",
+    "data/ukey_sm4_plain_2.bin": "78248d09ce1a6754e8254e8de66cb7c97961c2fd578ef01c6f66d0c571e15850",
+    "data/ukey_sm4_plain_3.bin": "81e4ef031ad77de2701732b4d8c411d6432a4975f8e82b04874cab08f3075c0c"
+  }
+}

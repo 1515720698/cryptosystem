@@ -12,6 +12,7 @@ __pycache__/
 /materials/GM3000_SDK_reference/
 /images/*_pages_review.png
 /logs/report_pdf_text.txt
+/logs/*_pdf_text.txt
 /logs/package_verification.json
 /SHA256SUMS.json
 /logs/git_log_完整.txt

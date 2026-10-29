@@ -1,0 +1,91 @@
+{
+  "root": "D:\\HuaweiMoveData\\Users\\HUAWEI\\Desktop\\学习\\密码系统设计\\20241328-蔡贸俊-实验二-4-6学时",
+  "scope": "Selected files, basic formats and local Markdown links only",
+  "ok": true,
+  "files": [
+    {
+      "path": "20241328_蔡贸俊_实验二_4-6学时_实践记录.md",
+      "size": 17347,
+      "sha256": "beeacdfc9281b69bc11bda97c8c06d96ae398dd8751b9a9d8b4b2b99a53e34ab"
+    },
+    {
+      "path": "20241328_蔡贸俊_实验二_4-6学时_实践记录.pdf",
+      "size": 548374,
+      "sha256": "b191b63c5aa15f4dce71fe59fbfeea47a45d35c6f9c3b3b2f51491b0dfda47ed"
+    },
+    {
+      "path": "20241328_蔡贸俊_实验二_密码算法实现_完成版.doc",
+      "size": 164864,
+      "sha256": "89a36ecc4b3b630810590175dbdd60cd7c188caea6b1be35ed48a1637303c1f8"
+    },
+    {
+      "path": "20241328_蔡贸俊_实验二_密码算法实现_完成版.docx",
+      "size": 108451,
+      "sha256": "4744e295b8ffd8bddecb737f87378a6e265ed4cae15fecb24bad009298ccd7e3"
+    },
+    {
+      "path": "20241328_蔡贸俊_实验二_密码算法实现_完成版.pdf",
+      "size": 445805,
+      "sha256": "0f6d7cbda3e376b90a58068c98ae769fb0b1c15f89af1608bd30e1d9920a8d9e"
+    },
+    {
+      "path": "tools/verify_ukey.py",
+      "size": 7108,
+      "sha256": "655b4e6c543de303663dd8ddca2d57d93172a6b0746c38c5d27a0e38ceef2199"
+    },
+    {
+      "path": "logs/crosscheck_results.json",
+      "size": 20109,
+      "sha256": "9745db0f502b19485c38e2b65e64e703145e39d3c4dc5c55731d7ff203951494"
+    },
+    {
+      "path": "logs/textbook_source_provenance.json",
+      "size": 12025,
+      "sha256": "4a8c2ce9c54c296e6e6f7dc632aa01b7f07ed3c814e186429074d331b12057b8"
+    },
+    {
+      "path": "logs/textbook_portability.patch",
+      "size": 8954,
+      "sha256": "0e4b965101d65febf14f4bca5d855d7cf85c579320aca7d44c981e399c2d4fbd"
+    },
+    {
+      "path": "logs/crosscheck.log",
+      "size": 32497,
+      "sha256": "5adac2b0edaf2e6a1d5a4d9714e118defb5beb65af1a9aa33d61090766e6c7d5"
+    },
+    {
+      "path": "logs/build_current.log",
+      "size": 17370,
+      "sha256": "870d21de287aae6bdab0f5e9c4ede869de0e335ad469c573fff83bd0dd890f16"
+    },
+    {
+      "path": "images/GM3000三方交叉验证_实际终端.png",
+      "size": 85450,
+      "sha256": "df856e72a00f2efb7ee408aca87971b55e358229fe1fabad00db4f6509831c36"
+    },
+    {
+      "path": "logs/ukey_results.json",
+      "size": 6817,
+      "sha256": "cbdc82dd7a791eaad3f774e24b75b2117b422f1c3825d54fc3420015ea842442"
+    },
+    {
+      "path": "logs/git_log.txt",
+      "size": 629,
+      "sha256": "62ad36baa957ebb37ebb8dcc225bf6ff02dca798f6cbd7ca280922f9f5e2a519"
+    },
+    {
+      "path": "20241328_蔡贸俊_实验二_密码算法实现_完成版.md",
+      "size": 18732,
+      "sha256": "9cfe7ef266526939f041769f431f1c25183684dca36beef7a28ad71737fa9ca3"
+    },
+    {
+      "path": "README_提交清单.md",
+      "size": 2711,
+      "sha256": "e6a550dcc8f2132d8efe16d67cc6fc39e21f27c581bbe8e9f195464c522b5ea2"
+    }
+  ],
+  "linked_directories": [],
+  "embedded_images": 0,
+  "unverified_remote_links": [],
+  "errors": []
+}
