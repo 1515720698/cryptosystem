@@ -16,7 +16,7 @@ import win32com.client
 
 ROOT = Path(__file__).resolve().parents[1]
 PRACTICE = '20241328_蔡贸俊_实验二_4-6学时_实践记录'
-REPORT = '20241328_蔡贸俊_实验二_密码算法实现_完成版'
+REPORT = '20241328_蔡贸俊_实验二_密码算法实现'
 
 
 def font(run, name='宋体', size=10.5):
