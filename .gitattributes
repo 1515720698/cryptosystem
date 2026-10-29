@@ -1,0 +1,11 @@
+* text=auto
+*.bin -text
+*.raw -text
+*.der -text
+*.skfblob -text
+*.dll -text
+*.pdf -text
+*.png -text
+*.doc -text
+*.docx -text
+materials/textbook_selected/** -text
