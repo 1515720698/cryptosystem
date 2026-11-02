@@ -1,0 +1,212 @@
+{
+  "results": {
+    "openssl_version": "OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)",
+    "pub_enc_i": "047dbea54543458172bd3b688e509c2df54586ace00b58ec941499f94a50a58c675d6f9adaff089e8137a76343acd2f35ca30a8a5ccf81b7cdce5266a016b9e364",
+    "pub_enc_r": "042920dde9348041de867e49a5caa1936d3241f9b79cb5dcc5c6d59b31f8d88467b05b38505b101f7dbf242bcba73daf394cf0879d3f0e8ec08739f1db00fa770c",
+    "ski_decrypted": "e6b74813213bfe4759c20225ade2678e",
+    "ni_decrypted": "450be90d637a4c714d129d13e15642370000000000000000000000000000000f",
+    "idi_decrypted": "09000000304a310b3009060355040613024141310b3009060355040813024242310b3009060355040a13024343310b3009060355040b13024444311430120603550403130b636c69656e74207369676e0000000000000000000000000000000f",
+    "verify_i": true,
+    "verify_i_tampered_rejected": true,
+    "verify_r": true,
+    "verify_r_tampered_rejected": true,
+    "nonce_hash": "83fddf2b5dc8bd853c343ee68f780cfaf2e37fdde3998da2c76a4b368816e972",
+    "skeyid": "af75db413c0babf64d866f08b53432ce027c59a975a30b284b31236c0689113e",
+    "skeyid_d": "d07385874bd72fa3ec6d42714e643a94de6644d24f2f50239892f8ef478293e7",
+    "skeyid_a": "51b531818c073c1b72ca8e9a883e6b19755604445abedf57df176d575f4320fe",
+    "skeyid_e_full": "f60661271d29c5093894dacdacf5378c13aeea3d52b2be0ce06ad87edbc9f7d1",
+    "main_iv_hash": "de788aa1e41303baf97136e86f82f2fc05fd904df03879c49c1e1a9a868b0e1a",
+    "hashi": "5855a82383911acace237a72d2c6427aa18d552fc4d80d13288104a7f9da2f3c",
+    "hashr": "4146700c999eb6b4ce92891881b8ec69c013bf83062b885372f2dfddfafe4ea6",
+    "hashi_decrypted": "000000245855a82383911acace237a72d2c6427aa18d552fc4d80d13288104a7f9da2f3c000000000000000000000000",
+    "hashr_decrypted": "000000244146700c999eb6b4ce92891881b8ec69c013bf83062b885372f2dfddfafe4ea6000000000000000000000000",
+    "quick_iv_hash": "56e6dfc945499ae8aca47a6ca9cf2ada005ac24e502d2ad621591efd5d57bdbe",
+    "qm1": "010000240c52abf2bee8337f08694ee22b97e4571ef491ef5c88eda04a5f4c3fc82c03d90a00003c00000001000000010000003000030401c515ecd500000024017f000080050014800400018001000180021734800100020002000400086470050000144fdbbce1785046b21f1eb00afbec31c40500001004000000ac101d00ffffff000000001004000000ac101c00ffffff00000000000000000000000000",
+    "qm2": "01000024d90aad574e561b98e0fd9136cc217e7e4c8300cf8c3829aa2c650e8de73e7c210a00003c00000001000000010000003000030401c713ad0600000024017f00008005001480040001800100018002173480010002000200040008647005000014106bcaa925dc5b6d994efc88369d60590500001004000000ac101d00ffffff000000001004000000ac101c00ffffff00000000000000000000000000",
+    "qm1_payloads": [
+      {
+        "type": 8,
+        "offset": 0,
+        "length": 36,
+        "next": 1,
+        "body": "0c52abf2bee8337f08694ee22b97e4571ef491ef5c88eda04a5f4c3fc82c03d9"
+      },
+      {
+        "type": 1,
+        "offset": 36,
+        "length": 60,
+        "next": 10,
+        "body": "00000001000000010000003000030401c515ecd500000024017f000080050014800400018001000180021734800100020002000400086470"
+      },
+      {
+        "type": 10,
+        "offset": 96,
+        "length": 20,
+        "next": 5,
+        "body": "4fdbbce1785046b21f1eb00afbec31c4"
+      },
+      {
+        "type": 5,
+        "offset": 116,
+        "length": 16,
+        "next": 5,
+        "body": "04000000ac101d00ffffff00"
+      },
+      {
+        "type": 5,
+        "offset": 132,
+        "length": 16,
+        "next": 0,
+        "body": "04000000ac101c00ffffff00"
+      }
+    ],
+    "qm2_payloads": [
+      {
+        "type": 8,
+        "offset": 0,
+        "length": 36,
+        "next": 1,
+        "body": "d90aad574e561b98e0fd9136cc217e7e4c8300cf8c3829aa2c650e8de73e7c21"
+      },
+      {
+        "type": 1,
+        "offset": 36,
+        "length": 60,
+        "next": 10,
+        "body": "00000001000000010000003000030401c713ad0600000024017f000080050014800400018001000180021734800100020002000400086470"
+      },
+      {
+        "type": 10,
+        "offset": 96,
+        "length": 20,
+        "next": 5,
+        "body": "106bcaa925dc5b6d994efc88369d6059"
+      },
+      {
+        "type": 5,
+        "offset": 116,
+        "length": 16,
+        "next": 5,
+        "body": "04000000ac101d00ffffff00"
+      },
+      {
+        "type": 5,
+        "offset": 132,
+        "length": 16,
+        "next": 0,
+        "body": "04000000ac101c00ffffff00"
+      }
+    ],
+    "quick_hash1": "0c52abf2bee8337f08694ee22b97e4571ef491ef5c88eda04a5f4c3fc82c03d9",
+    "quick_hash2": "d90aad574e561b98e0fd9136cc217e7e4c8300cf8c3829aa2c650e8de73e7c21",
+    "quick_hash1_tampered": "15aae52ea72e752eaf40f18f69b8e7e2b34da5ee9bd39533f72781fd979fb074",
+    "check_count": 26,
+    "pass_count": 26
+  },
+  "checks": [
+    {
+      "name": "private key i point size",
+      "pass": true
+    },
+    {
+      "name": "private key r point size",
+      "pass": true
+    },
+    {
+      "name": "SM2 decrypt SKi",
+      "pass": true
+    },
+    {
+      "name": "Ni plaintext",
+      "pass": true
+    },
+    {
+      "name": "Ni padding",
+      "pass": true
+    },
+    {
+      "name": "IDi plaintext",
+      "pass": true
+    },
+    {
+      "name": "IDi padding",
+      "pass": true
+    },
+    {
+      "name": "SM2 signature i",
+      "pass": true
+    },
+    {
+      "name": "SM2 rejects tamper i",
+      "pass": true
+    },
+    {
+      "name": "SM2 signature r",
+      "pass": true
+    },
+    {
+      "name": "SM2 rejects tamper r",
+      "pass": true
+    },
+    {
+      "name": "SM3 Ni||Nr",
+      "pass": true
+    },
+    {
+      "name": "SKEYID_d",
+      "pass": true
+    },
+    {
+      "name": "SKEYID_e",
+      "pass": true
+    },
+    {
+      "name": "HASHi recompute vs decrypted",
+      "pass": true
+    },
+    {
+      "name": "HASHr recompute vs decrypted",
+      "pass": true
+    },
+    {
+      "name": "HASHi course value",
+      "pass": true
+    },
+    {
+      "name": "HASHr course value",
+      "pass": true
+    },
+    {
+      "name": "Quick IV",
+      "pass": true
+    },
+    {
+      "name": "qm1 payload chain",
+      "pass": true
+    },
+    {
+      "name": "qm2 payload chain",
+      "pass": true
+    },
+    {
+      "name": "Quick HASH(1)",
+      "pass": true
+    },
+    {
+      "name": "Quick HASH(2)",
+      "pass": true
+    },
+    {
+      "name": "qm1 padding zero",
+      "pass": true
+    },
+    {
+      "name": "qm2 padding zero",
+      "pass": true
+    },
+    {
+      "name": "Quick rejects altered content",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+$ openssl version
+exit=0
+
+OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+
+$ openssl pkey -inform DER -in data/enc_i.der -out data/enc_i.pem
+exit=0
+
+$ openssl pkey -in data/enc_i.pem -pubout -outform DER
+exit=0
+
+HEX: 3059301306072a8648ce3d020106082a811ccf5501822d034200047dbea54543458172bd3b688e509c2df54586ace00b58ec941499f94a50a58c675d6f9adaff089e8137a76343acd2f35ca30a8a5ccf81b7cdce5266a016b9e364
+$ openssl pkey -inform DER -in data/enc_r.der -out data/enc_r.pem
+exit=0
+
+$ openssl pkey -in data/enc_r.pem -pubout -outform DER
+exit=0
+
+HEX: 3059301306072a8648ce3d020106082a811ccf5501822d034200042920dde9348041de867e49a5caa1936d3241f9b79cb5dcc5c6d59b31f8d88467b05b38505b101f7dbf242bcba73daf394cf0879d3f0e8ec08739f1db00fa770c
+$ openssl pkeyutl -decrypt -inkey data/enc_i.pem -in data/ski.der
+exit=0
+
+HEX: e6b74813213bfe4759c20225ade2678e
+$ openssl enc -d -sm4-cbc -K e6b74813213bfe4759c20225ade2678e -iv 00000000000000000000000000000000 -nopad -in data/ni_decrypted.enc
+exit=0
+
+HEX: 450be90d637a4c714d129d13e15642370000000000000000000000000000000f
+$ openssl enc -d -sm4-cbc -K e6b74813213bfe4759c20225ade2678e -iv fb83d3a176a3e11b618206b32b958c69 -nopad -in data/idi_decrypted.enc
+exit=0
+
+HEX: 09000000304a310b3009060355040613024141310b3009060355040813024242310b3009060355040a13024343310b3009060355040b13024444311430120603550403130b636c69656e74207369676e0000000000000000000000000000000f
+$ openssl pkeyutl -verify -pubin -keyform DER -inkey data/sig_i_pub.der -rawin -digest sm3 -pkeyopt distid:1234567812345678 -in data/signed_i.bin -sigfile data/sig_i.der
+exit=0
+
+Signature Verified Successfully
+
+$ openssl pkeyutl -verify -pubin -keyform DER -inkey data/sig_i_pub.der -rawin -digest sm3 -pkeyopt distid:1234567812345678 -in data/signed_i_tampered.bin -sigfile data/sig_i.der
+exit=1
+100000000A000000:error:030000EA:digital envelope routines:EVP_DigestVerifyFinal:provider signature failure:crypto/evp/m_sigver.c:703:SM2 digest_verify_final:
+
+Signature Verification Failure
+
+$ openssl pkeyutl -verify -pubin -keyform DER -inkey data/sig_r_pub.der -rawin -digest sm3 -pkeyopt distid:1234567812345678 -in data/signed_r.bin -sigfile data/sig_r.der
+exit=0
+
+Signature Verified Successfully
+
+$ openssl pkeyutl -verify -pubin -keyform DER -inkey data/sig_r_pub.der -rawin -digest sm3 -pkeyopt distid:1234567812345678 -in data/signed_r_tampered.bin -sigfile data/sig_r.der
+exit=1
+100000000A000000:error:030000EA:digital envelope routines:EVP_DigestVerifyFinal:provider signature failure:crypto/evp/m_sigver.c:703:SM2 digest_verify_final:
+
+Signature Verification Failure
+
+$ openssl dgst -sm3 -binary data/nonce_hash.bin
+exit=0
+
+HEX: 83fddf2b5dc8bd853c343ee68f780cfaf2e37fdde3998da2c76a4b368816e972
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:83fddf2b5dc8bd853c343ee68f780cfaf2e37fdde3998da2c76a4b368816e972 -binary data/skeyid.bin
+exit=0
+
+HEX: af75db413c0babf64d866f08b53432ce027c59a975a30b284b31236c0689113e
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:af75db413c0babf64d866f08b53432ce027c59a975a30b284b31236c0689113e -binary data/skeyid_d.bin
+exit=0
+
+HEX: d07385874bd72fa3ec6d42714e643a94de6644d24f2f50239892f8ef478293e7
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:af75db413c0babf64d866f08b53432ce027c59a975a30b284b31236c0689113e -binary data/skeyid_a.bin
+exit=0
+
+HEX: 51b531818c073c1b72ca8e9a883e6b19755604445abedf57df176d575f4320fe
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:af75db413c0babf64d866f08b53432ce027c59a975a30b284b31236c0689113e -binary data/skeyid_e_full.bin
+exit=0
+
+HEX: f60661271d29c5093894dacdacf5378c13aeea3d52b2be0ce06ad87edbc9f7d1
+$ openssl dgst -sm3 -binary data/main_iv_hash.bin
+exit=0
+
+HEX: de788aa1e41303baf97136e86f82f2fc05fd904df03879c49c1e1a9a868b0e1a
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:af75db413c0babf64d866f08b53432ce027c59a975a30b284b31236c0689113e -binary data/hashi.bin
+exit=0
+
+HEX: 5855a82383911acace237a72d2c6427aa18d552fc4d80d13288104a7f9da2f3c
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:af75db413c0babf64d866f08b53432ce027c59a975a30b284b31236c0689113e -binary data/hashr.bin
+exit=0
+
+HEX: 4146700c999eb6b4ce92891881b8ec69c013bf83062b885372f2dfddfafe4ea6
+$ openssl enc -d -sm4-cbc -K f60661271d29c5093894dacdacf5378c -iv de788aa1e41303baf97136e86f82f2fc -nopad -in data/hashi_decrypted.enc
+exit=0
+
+HEX: 000000245855a82383911acace237a72d2c6427aa18d552fc4d80d13288104a7f9da2f3c000000000000000000000000
+$ openssl enc -d -sm4-cbc -K f60661271d29c5093894dacdacf5378c -iv b958be5fa74277fc91b3bfd3d1cbf7e0 -nopad -in data/hashr_decrypted.enc
+exit=0
+
+HEX: 000000244146700c999eb6b4ce92891881b8ec69c013bf83062b885372f2dfddfafe4ea6000000000000000000000000
+$ openssl dgst -sm3 -binary data/quick_iv_hash.bin
+exit=0
+
+HEX: 56e6dfc945499ae8aca47a6ca9cf2ada005ac24e502d2ad621591efd5d57bdbe
+$ openssl enc -d -sm4-cbc -K f60661271d29c5093894dacdacf5378c -iv 56e6dfc945499ae8aca47a6ca9cf2ada -nopad -in data/qm1.enc
+exit=0
+
+HEX: 010000240c52abf2bee8337f08694ee22b97e4571ef491ef5c88eda04a5f4c3fc82c03d90a00003c00000001000000010000003000030401c515ecd500000024017f000080050014800400018001000180021734800100020002000400086470050000144fdbbce1785046b21f1eb00afbec31c40500001004000000ac101d00ffffff000000001004000000ac101c00ffffff00000000000000000000000000
+$ openssl enc -d -sm4-cbc -K f60661271d29c5093894dacdacf5378c -iv 359b204f92800504072e2994af771b88 -nopad -in data/qm2.enc
+exit=0
+
+HEX: 01000024d90aad574e561b98e0fd9136cc217e7e4c8300cf8c3829aa2c650e8de73e7c210a00003c00000001000000010000003000030401c713ad0600000024017f00008005001480040001800100018002173480010002000200040008647005000014106bcaa925dc5b6d994efc88369d60590500001004000000ac101d00ffffff000000001004000000ac101c00ffffff00000000000000000000000000
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:51b531818c073c1b72ca8e9a883e6b19755604445abedf57df176d575f4320fe -binary data/quick_hash1.bin
+exit=0
+
+HEX: 0c52abf2bee8337f08694ee22b97e4571ef491ef5c88eda04a5f4c3fc82c03d9
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:51b531818c073c1b72ca8e9a883e6b19755604445abedf57df176d575f4320fe -binary data/quick_hash2.bin
+exit=0
+
+HEX: d90aad574e561b98e0fd9136cc217e7e4c8300cf8c3829aa2c650e8de73e7c21
+$ openssl dgst -sm3 -mac HMAC -macopt hexkey:51b531818c073c1b72ca8e9a883e6b19755604445abedf57df176d575f4320fe -binary data/quick_hash1_tampered.bin
+exit=0
+
+HEX: 15aae52ea72e752eaf40f18f69b8e7e2b34da5ee9bd39533f72781fd979fb074
