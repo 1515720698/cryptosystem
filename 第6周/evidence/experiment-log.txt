@@ -1,0 +1,10 @@
+OS: Windows-10-10.0.19045-SP0
+Python: 3.12.10, direct Advapi32.dll calls
+Command: python code/verify_cryptoapi.py
+Provider: Microsoft Enhanced RSA and AES Cryptographic Provider
+Small buffer: ok=False, error=234, required=32
+abc: bytes=3, SHA256=ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad, cross-check=PASS
+LF: bytes=4, SHA256=edeaaff3f1774ad2888673770c6d64097e391bc362d7d6fb34982ddf0efd18cb, cross-check=PASS
+CRLF: bytes=5, SHA256=552bab6864c7a7b69a502ed1854b9245c0e1a30f008aaa0b281da62585fdb025, cross-check=PASS
+Mismatched provider type: ok=False, error=0x8009001B
+ALL CHECKS PASSED; hash handles and provider context released.

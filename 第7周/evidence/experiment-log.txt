@@ -1,0 +1,277 @@
+OS: Windows-10-10.0.19045-SP0
+UTC: 2026-11-02T13:50:10Z
+$ openssl version -a
+OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+built on: Wed Sep 30 08:35:38 2026 UTC
+platform: Msys-x86_64
+options:  bn(64,64)
+compiler: gcc  -march=nocona -msahf -mtune=generic -O2 -pipe -DTERMIOS -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_BUILDING_OPENSSL -DNDEBUG
+OPENSSLDIR: "/usr/ssl"
+ENGINESDIR: "/usr/lib/openssl/engines-3"
+MODULESDIR: "/usr/lib/openssl/ossl-modules"
+Seeding source: os-specific
+CPUINFO: N/A
+
+[exit=0]
+
+$ openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out root/key.pem
+........+++++++++++++++++++++++++++++++++++++++*.....+...+..+...+...............+..........+..+....+.....+.+...........+....+...+...+..+...+...+++++++++++++++++++++++++++++++++++++++*.+......+...+.........+......+...............+.........+........+...+....+...+.....+.........+...+.+...........+......+...+.+...........+.......+.....+.+.....+.+......+..+...+....+.....+......+.........+.+...+..+.......+..+..........+.....+....+.................+.......+...+..+.......+.....+.+........+......+.+.........+..................+....................+.+.....+.......+..+...............+......+......+..........+...........+...+.+...+..+......+...+............+.............+..+....+..............+....+.....+............+.+...+.......................................+..+......+.......+............+.........++++++
+..+..+......+.+.........+........................+........+..........+...+..+...+....+.....+...+....+...+++++++++++++++++++++++++++++++++++++++*...+...+.......+..+.......+.....+.+..............+...............+.........................+++++++++++++++++++++++++++++++++++++++*.......+.....+..........+..+...+....+...+...+...........+...+......+.+...+............+.....+.............+...+.....+....+...+......++++++
+
+[exit=0]
+
+$ openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out intermediate/key.pem
+...+++++++++++++++++++++++++++++++++++++++*...............+++++++++++++++++++++++++++++++++++++++*.....+...+............+......+.......+.....+.+..+....+...+.....+......+......+.+.....+.......+...+........+.++++++
+.+++++++++++++++++++++++++++++++++++++++*.....+.........+..+.......+.....+............+++++++++++++++++++++++++++++++++++++++*........+.....+....+.....+.........+......+.......+........+....+.....+.+..............+.+.........+...............+...+........+...............+.+.....+......+....+......+...+..+.......+...+.....+....+........+...+..........+........+.........+.......+......+...............+............+..+......+.........+...+..........+..+...+..........+...+...++++++
+
+[exit=0]
+
+$ openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.pem
+..........+..+.......+...+........+.........+.......+...+..+.+........+.+.........+..............+++++++++++++++++++++++++++++++++++++++*....+......+........+++++++++++++++++++++++++++++++++++++++*...+.........+.+......+........+..........+...+..+......+..........+.....+.........+.+.........+..+..........+...+..+....+............+..+.+.........+..+....+...............+..+.........+.+..+.................................+...+.......+........++++++
+....+......+....+..+....+++++++++++++++++++++++++++++++++++++++*..+...+.......+..+..........+...+++++++++++++++++++++++++++++++++++++++*.+................+..+.......+......+.................+...+....+..+...+.......+..............+....+......+......+...........+...+..........+......+........+.............+..+.+.........+........+.........+................+..+.......+...+..+..........+...+...+.....+.........+.+........+.......+..+.......+...+........+..........+...+..+..........+...+....................+....+......+.....+......+.+..............+.+..+.+.........+.................+.+.....+.......+..+......+....+........+.+............+..+.+..+..........+...+......+......+.....+.......+..+.............+...+...+...............+..+.......+......+..+...+.........+.+..+.........+.........+...............+.+...+.....+.......+...+...............+...+.....+.........+.........+....+...............+...+..+.+..............+.+..+....+.....+.........+............+...+.......+............+.....+...+...+.......+..+.+.....+.+...+......+.....+......+...............+...+...+...+....+.................+...+............+..........+......+.....+...+....+..++++++
+
+[exit=0]
+
+$ openssl req -new -x509 -key root/key.pem -out root/cert.pem -days 3650 -sha256 -subj /CN=Week7 Teaching Root CA -config root.cnf -extensions v3_root
+
+[exit=0]
+
+$ openssl req -new -key intermediate/key.pem -out intermediate.csr -subj /CN=Week7 Intermediate CA
+
+[exit=0]
+
+$ openssl ca -batch -config root.cnf -extensions v3_intermediate -days 1825 -in intermediate.csr -out intermediate/cert.pem -notext
+Using configuration from root.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'Week7 Intermediate CA'
+Certificate is to be certified until Nov  1 13:50:11 2031 GMT (1825 days)
+
+Write out database with 1 new entries
+Database updated
+
+[exit=0]
+
+$ openssl req -new -key server.pem -out server.csr -subj /CN=lab.example.test
+
+[exit=0]
+
+$ openssl req -in server.csr -verify -noout
+Certificate request self-signature verify OK
+
+[exit=0]
+
+$ openssl ca -batch -config intermediate.cnf -extensions v3_server -in server.csr -out server-cert.pem -notext
+Using configuration from intermediate.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'lab.example.test'
+Certificate is to be certified until Nov  2 13:50:11 2027 GMT (365 days)
+
+Write out database with 1 new entries
+Database updated
+
+[exit=0]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore -untrusted intermediate/cert.pem -show_chain -purpose sslserver -verify_hostname lab.example.test server-cert.pem
+server-cert.pem: OK
+Chain:
+depth=0: CN=lab.example.test (untrusted)
+depth=1: CN=Week7 Intermediate CA (untrusted)
+depth=2: CN=Week7 Teaching Root CA
+
+[exit=0]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore server-cert.pem
+CN=lab.example.test
+error 20 at 0 depth lookup: unable to get local issuer certificate
+error server-cert.pem: verification failed
+
+[exit=2]
+
+$ openssl verify -no-CAfile -no-CApath -no-CAstore -untrusted intermediate/cert.pem server-cert.pem
+CN=Week7 Intermediate CA
+error 20 at 1 depth lookup: unable to get local issuer certificate
+error server-cert.pem: verification failed
+
+[exit=2]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore -untrusted intermediate/cert.pem -verify_hostname wrong.example.test server-cert.pem
+CN=lab.example.test
+error 62 at 0 depth lookup: hostname mismatch
+error server-cert.pem: verification failed
+
+[exit=2]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore -untrusted intermediate/cert.pem -purpose sslclient server-cert.pem
+CN=lab.example.test
+error 26 at 0 depth lookup: unsuitable certificate purpose
+error server-cert.pem: verification failed
+
+[exit=2]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore -untrusted intermediate/cert.pem -attime 1825249811 server-cert.pem
+CN=lab.example.test
+error 10 at 0 depth lookup: certificate has expired
+error server-cert.pem: verification failed
+
+[exit=2]
+
+$ openssl ca -config intermediate.cnf -gencrl -out before.crl.pem
+Using configuration from intermediate.cnf
+
+[exit=0]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore -untrusted intermediate/cert.pem -CRLfile before.crl.pem -crl_check server-cert.pem
+server-cert.pem: OK
+
+[exit=0]
+
+$ openssl ca -config intermediate.cnf -revoke server-cert.pem -crl_reason keyCompromise
+Using configuration from intermediate.cnf
+Revoking Certificate 1000.
+Database updated
+
+[exit=0]
+
+$ openssl ca -config intermediate.cnf -gencrl -out after.crl.pem
+Using configuration from intermediate.cnf
+
+[exit=0]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore -untrusted intermediate/cert.pem -CRLfile after.crl.pem -crl_check server-cert.pem
+CN=lab.example.test
+error 23 at 0 depth lookup: certificate revoked
+error server-cert.pem: verification failed
+
+[exit=2]
+
+$ openssl verify -CAfile root/cert.pem -no-CApath -no-CAstore -untrusted intermediate/cert.pem server-cert.pem
+server-cert.pem: OK
+
+[exit=0]
+
+$ openssl x509 -in server-cert.pem -outform DER -out server-cert.der
+
+[exit=0]
+
+$ openssl x509 -inform DER -in server-cert.der -out roundtrip.pem
+
+[exit=0]
+
+$ openssl x509 -in server-cert.pem -fingerprint -sha256 -noout
+sha256 Fingerprint=CA:1A:3D:E9:5E:C8:D1:EC:CC:4D:E6:BB:E2:2A:06:DB:9A:EF:2D:13:D5:60:6E:C8:E0:7F:E1:65:B5:77:9F:CD
+
+[exit=0]
+
+$ openssl x509 -in roundtrip.pem -fingerprint -sha256 -noout
+sha256 Fingerprint=CA:1A:3D:E9:5E:C8:D1:EC:CC:4D:E6:BB:E2:2A:06:DB:9A:EF:2D:13:D5:60:6E:C8:E0:7F:E1:65:B5:77:9F:CD
+
+[exit=0]
+
+$ openssl x509 -in server-cert.pem -noout -text
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 4096 (0x1000)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=Week7 Intermediate CA
+        Validity
+            Not Before: Nov  2 13:50:11 2026 GMT
+            Not After : Nov  2 13:50:11 2027 GMT
+        Subject: CN=lab.example.test
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:ba:d4:ba:0a:01:1e:a7:b7:d0:9f:b0:7c:28:a4:
+                    6e:67:a3:f8:d7:c0:26:72:31:6e:e6:0e:9d:cd:2b:
+                    90:ca:88:0a:5e:bf:4b:32:99:3a:bb:d0:b5:d5:7d:
+                    fb:d3:39:9a:da:7a:01:46:d2:17:37:95:a8:5d:d1:
+                    e4:af:49:be:33:88:1e:bf:b1:9d:dd:7b:5f:5c:4e:
+                    b0:63:fc:6c:88:b6:0c:1e:7c:89:28:f1:3e:e7:9b:
+                    41:c5:6b:37:87:2e:fc:62:8c:28:f5:f8:de:db:72:
+                    98:f0:14:21:07:1b:8b:fe:de:63:9e:8f:1e:c2:37:
+                    90:5d:1c:ac:2d:3b:66:70:31:6b:14:eb:4d:ec:9e:
+                    24:a1:37:37:c7:53:fb:a0:54:a1:f0:d6:04:04:98:
+                    4b:2d:e7:bb:81:82:93:a5:a6:84:c6:9e:59:19:b1:
+                    83:24:21:5f:f8:60:48:8b:00:57:90:3f:46:b2:8f:
+                    e1:e0:e4:cb:ff:9b:26:5f:5e:a6:27:f0:5b:bc:f4:
+                    b6:3f:b5:05:7f:0f:c8:57:8b:34:3e:ae:17:e2:d1:
+                    a7:06:c5:cf:1f:6e:fa:d8:94:7d:db:a4:43:68:9b:
+                    40:8a:13:e6:9e:31:69:50:c6:0f:18:bf:bd:4e:61:
+                    45:c6:e7:ee:2a:3e:1c:9d:be:62:f5:fc:88:bb:e8:
+                    01:c9
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Key Usage: critical
+                Digital Signature, Key Encipherment
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Subject Alternative Name: 
+                DNS:lab.example.test
+            X509v3 Subject Key Identifier: 
+                D1:A8:4B:5D:20:2B:18:23:20:CB:07:26:7B:58:40:C6:48:41:46:E6
+            X509v3 Authority Key Identifier: 
+                96:57:11:8F:49:42:D5:38:3F:D0:D7:C6:42:19:47:F8:48:DC:DA:96
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        d4:4f:7e:04:4f:0e:30:6f:48:2c:ee:82:66:53:bb:81:a9:af:
+        8e:74:52:6d:39:af:a6:32:85:fd:a8:84:e6:bc:ea:ca:14:a1:
+        f6:aa:14:18:5c:37:1f:ab:95:d9:19:16:67:3f:50:77:ed:62:
+        21:1a:b3:9c:9a:4a:27:99:5a:df:17:d6:cf:4a:d0:55:54:4a:
+        94:31:7d:8a:d2:a4:b6:6a:ee:8f:40:47:64:75:2f:ff:e8:51:
+        2c:a6:ad:ac:9b:e4:41:8c:be:bf:4e:9b:29:48:e1:3d:66:f8:
+        cc:4f:ab:8a:44:1e:ae:b2:df:d9:6f:26:89:e0:0c:d0:fd:c8:
+        66:18:4b:42:51:07:ce:f1:e9:04:51:f6:e2:69:1e:92:63:7e:
+        76:5f:27:7c:60:5f:61:7d:0a:40:f4:40:aa:7a:6e:b1:39:e0:
+        9c:78:28:b7:6d:55:30:ce:e7:94:02:87:ed:1d:be:f3:32:c3:
+        c9:11:32:65:f9:90:52:a4:ac:74:4f:a2:44:37:34:49:5f:86:
+        13:52:06:3f:d7:cc:cd:d7:71:fa:40:da:82:07:a3:d5:f3:3c:
+        1f:bb:89:54:da:80:7f:d7:c6:3f:02:a9:cd:82:dc:2e:5e:86:
+        2a:0f:f4:65:38:76:29:b8:a8:07:f5:2d:b7:65:bd:54:56:d2:
+        bf:6a:d4:1f
+
+[exit=0]
+
+$ openssl crl -in after.crl.pem -noout -text
+Certificate Revocation List (CRL):
+        Version 2 (0x1)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=Week7 Intermediate CA
+        Last Update: Nov  2 13:50:11 2026 GMT
+        Next Update: Nov  9 13:50:11 2026 GMT
+        CRL extensions:
+            X509v3 CRL Number: 
+                4097
+Revoked Certificates:
+    Serial Number: 1000
+        Revocation Date: Nov  2 13:50:11 2026 GMT
+        CRL entry extensions:
+            X509v3 CRL Reason Code: 
+                Key Compromise
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        29:ef:72:b8:86:5a:34:21:f3:8f:0a:81:fa:6c:4c:fe:c7:c9:
+        50:72:5e:a5:fa:6f:7b:46:e2:79:93:b8:e9:a6:63:ec:5d:9a:
+        f5:e1:2a:cd:ef:5e:c9:97:2d:81:57:de:b5:8f:a4:93:3f:e4:
+        a1:cd:82:56:10:7d:74:16:54:8e:ee:f1:bb:a5:51:d5:5f:bd:
+        f0:e8:71:16:ec:10:09:20:9d:3e:30:ff:c0:bd:92:b8:a8:f5:
+        d1:46:67:bb:a6:ff:4a:34:b1:ea:cb:11:fc:e0:c4:fb:33:23:
+        f2:db:b8:c7:f9:83:cf:6f:b9:ad:7a:a8:3e:a8:9e:36:e0:80:
+        dc:c2:d1:d4:3a:ff:ee:32:83:66:b2:0a:4a:4b:37:38:6d:86:
+        93:62:d8:6c:1e:9b:2c:cb:fe:5e:e7:9b:b1:96:90:b7:ba:a3:
+        69:68:9c:ba:c0:d9:b0:cb:78:26:ea:87:a0:12:55:f2:38:ca:
+        bb:cb:b7:7f:11:35:11:09:22:2d:a9:d4:d2:bf:ed:82:6f:20:
+        59:2b:95:9c:25:48:c4:f5:33:64:93:57:00:55:19:76:68:fa:
+        d0:64:6c:7e:4e:24:fc:dc:e2:08:d6:3e:d8:91:23:5b:a8:fb:
+        0f:7c:3e:70:96:aa:93:b3:11:74:99:19:8e:1e:31:23:30:56:
+        56:06:36:a2
+
+[exit=0]
+
+ALL 10 CHECKS PASSED. Temporary private keys removed when temporary directory exits.

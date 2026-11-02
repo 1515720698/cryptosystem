@@ -1,0 +1,10 @@
+Library: OpenSSL 3.5.9 29 Sep 2026
+Binding: ctypes -> native OpenSSL C API
+X509 version raw=2 (v3)
+Serial=4096
+Subject=/CN=lab.example.test
+Issuer=/CN=Week7 Intermediate CA
+complete chain: ret=1, error=0, depth=0, detail=ok
+missing intermediate: ret=0, error=20, depth=0, detail=unable to get local issuer certificate
+wrong hostname: ret=0, error=62, depth=0, detail=hostname mismatch
+ALL 3 API CHECKS PASSED; contexts, store, stack and certificates released.

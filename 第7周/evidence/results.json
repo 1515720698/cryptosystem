@@ -1,0 +1,51 @@
+[
+  {
+    "case": "complete chain",
+    "expected_accept": true,
+    "pass": true
+  },
+  {
+    "case": "missing intermediate",
+    "expected_accept": false,
+    "pass": true
+  },
+  {
+    "case": "root not trusted",
+    "expected_accept": false,
+    "pass": true
+  },
+  {
+    "case": "wrong hostname",
+    "expected_accept": false,
+    "pass": true
+  },
+  {
+    "case": "wrong purpose",
+    "expected_accept": false,
+    "pass": true
+  },
+  {
+    "case": "expired at future validation time",
+    "expected_accept": false,
+    "pass": true
+  },
+  {
+    "case": "CRL before revocation",
+    "expected_accept": true,
+    "pass": true
+  },
+  {
+    "case": "revoked certificate",
+    "expected_accept": false,
+    "pass": true
+  },
+  {
+    "case": "revocation not automatically enabled",
+    "expected_accept": true,
+    "pass": true
+  },
+  {
+    "case": "PEM DER fingerprint unchanged",
+    "pass": true
+  }
+]
