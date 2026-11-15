@@ -1,0 +1,128 @@
+OS: Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.38
+Python: 3.11.6
+$ openssl version -a
+OpenSSL 3.0.12 24 Oct 2023 (Library: OpenSSL 3.0.12 24 Oct 2023)
+built on: Tue Apr 21 09:41:41 2026 UTC
+platform: linux-x86_64
+options:  bn(64,64)
+compiler: gcc -fPIC -pthread -m64 -Wa,--noexecstack -Wall -O3 -O2 -g -grecord-gcc-switches -pipe -fstack-protector-strong -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/generic-hardened-cc1 -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -Wa,--noexecstack -Wa,--generate-missing-build-notes=yes -specs=/usr/lib/rpm/generic-hardened-ld -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_BUILDING_OPENSSL -DZLIB -DNDEBUG -DPURIFY -DDEVRANDOM="\"/dev/urandom\""
+OPENSSLDIR: "/etc/pki/tls"
+ENGINESDIR: "/usr/lib64/engines-3"
+MODULESDIR: "/usr/lib64/ossl-modules"
+Seeding source: os-specific
+CPUINFO: OPENSSL_ia32cap=0xfffa32235f8bffff:0x184007a4219c27ab:0x0
+exit=0
+$ gcc --version
+gcc (GCC) 12.3.1 (openEuler 12.3.1-38.oe2403)
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+exit=0
+$ gcc -std=c11 -Wall -Wextra -Werror '/mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/第8周/code/tls_demo.c' -o /tmp/week8-tls-ey47i2qe/tls_demo -lssl -lcrypto
+
+exit=0
+$ openssl req -x509 -newkey rsa:2048 -nodes -keyout ca.key -out ca.pem -days 2 -subj /CN=Week8-ca -addext basicConstraints=critical,CA:TRUE -addext keyUsage=critical,keyCertSign,cRLSign
+....+...+...........+.+.........+.....+++++++++++++++++++++++++++++++++++++++*..+++++++++++++++++++++++++++++++++++++++*.....++++++
+.+....+...............+...+.....+....+...+++++++++++++++++++++++++++++++++++++++*.+..+.+...+.....+..........+..+.......+..+.+..+............+......+.......+........+............+..........+...+........+....+..+....+......+......+...+..+.........+.........+......+.+............+...+.........+.....+...+.+......+...+...+.....+++++++++++++++++++++++++++++++++++++++*..+....+...+...........+..........+..+.............+......+...........+.........+.+..+.......+......+........+......+.+..+...+....+...+..+......+...+..........+.....+.......+..............+.+........................+...+..+....+.....+....+......+.........+..+...+.+.........+......+.....+.........+.+.....+.......+..+.......+......+..+............+.........+......+...+...+...................+........+.+.........+.....+.......+.....+.........+......+...+..........+..+.+...+.........+.....+...............+.+..+.......+...............+..+....+...........+................+.....+...+.......+.....+...+.........+.+..+....+...............+......+..+............+.+...+.....+.+......+..+...+....+......+............+......+..+...+....+........+............+.+.........+........+...+.......+..+...............+...+...+....+..+.........+.+...+......+..+.........+...+..........+......+......+.........+..+....+...+..+....+...........+......+....+...+..+..........+..............+.......+.....+.......++++++
+-----
+exit=0
+$ openssl req -x509 -newkey rsa:2048 -nodes -keyout other-ca.key -out other-ca.pem -days 2 -subj /CN=Week8-other-ca -addext basicConstraints=critical,CA:TRUE -addext keyUsage=critical,keyCertSign,cRLSign
+....+...+......+.........+++++++++++++++++++++++++++++++++++++++*.+++++++++++++++++++++++++++++++++++++++*......+...+.......+......+..+...+......+...+............+.........+.+...+.....+.+...............+......+.....+......+..........+............+...+...+.....+....+.....+.......+.....+....+..+.......+.....+......+.......+...............+.....+...+....+............+...+..+.........+....+..+.+..+.......+...........+...+............+.........+...+......+.+..................+........+...+.+...........+...+..........+..+....+...+..+....+..+.............+............+...+..............+......+................+.....+......+..........+..+.+..............+...+....+......+........+....+...+..+...............+...+.........+.+..+..........+...+...+.....+....+..+.............+..+....++++++
+.+...+...+......+...+.....+...+++++++++++++++++++++++++++++++++++++++*..........+..+....+......+.........+........+.+.....+.......+..+...+....+...+.....+...+....+..............+++++++++++++++++++++++++++++++++++++++*...+..............+.........+....+.....+.+.....+......+...+.............+.................+...+....+.........+.................+....+.....+...+......+....+...+..+...+...................+.....+.+...+......+...+............+.........+...............+...........+...+.+.................+....+...+...........+................+...+.....+............+.+............+...+.....+....+...+...........+...............+.+.........+...........+...+.+.....+............+.........+.+............+.....+...+.......+......+..+...+.+...........+.......+.....+......+.+......+..+..........+...............+......+.........+...+..+.+..+.............+.....+....+...+..............+...+.......+......+....................+...+....+........+...................+...+.....+.+.........+...+..+...+....+...+......+.....+.+......+..+......+......+.+.........+......+..............+...+.+..+....+...........+....+.........+.....+......+...+.+.....+.......+.....+...+....+...........+.......+.....+...+..........+...........+...+...+..........+........+.+........+......+.......+..+...+...............+....+.........+.........+..+.+...+...........+.........+....+...+........+....+..+.+.........+...............+..............+....+...+.................+................+.........+.....+...+....+...+..+....+.....++++++
+-----
+exit=0
+$ openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr -subj /CN=localhost
+.....+......+...+...............+..+...+......+.+..+......+......+....+.................+.......+........+....+...+......+.........+..+++++++++++++++++++++++++++++++++++++++*.....+.........+.+.....+..........+...+.....+....+..+...............+...+.............+++++++++++++++++++++++++++++++++++++++*.+...............+.....+...+....+...........+....+......+..+.........+.+..+...+....+...+.....+...+....+...+..................+........+......+.+............+............+...+......+.........+......+..+...............+...+..........+......+......+........+.+........+.+..+...............+....+..............+......+...+..........+...............+...+..+.+...........+.+...+...........+....+..+...+.+........+............+.+...+.....+............+.........+...+.............+.........+...+...........+.........+.+.................+...............+.......+..+.+...+..+.......+..+.........+.+......+............+............+........+............+......+.........++++++
+..+..+.+++++++++++++++++++++++++++++++++++++++*.....+.........+....+..+......+++++++++++++++++++++++++++++++++++++++*......+.+...+...+..............+.+..+.+...........+.+..+.......+......+........+................+.....+....+.....+.........+...+....+........+.+......++++++
+-----
+exit=0
+$ openssl x509 -req -in server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out server.pem -days 2 -extfile server.ext
+Certificate request self-signature ok
+subject=CN = localhost
+exit=0
+$ openssl req -new -newkey rsa:2048 -nodes -keyout client.key -out client.csr -subj /CN=Week8-device
+......+..+++++++++++++++++++++++++++++++++++++++*.+............+.+...+......+.....+.+..+.+......+...+..+......+++++++++++++++++++++++++++++++++++++++*.....+...............+.+.....+.+......+..............+.+........+......+.+...+...............+..+...............+....+......+.........+...+.................+.+..+..........+.....+......+.+...........+...+.......+............+......+..+...............+.........+....+...........+.+...+..+...+.........+.......+...+...........+......+...+.+..+....+..................+...+........+.........+......+.+......+..+.+.....+.+...+...+.....+...+....+................................+...+.+......+........+...+.......+..+.+.........+.....+....+.....+.+...+...+.....+...+......+.............+...+.....+.............+..+.......+...+........+.+......+..+.....................+....+..+...+...+....+......+..................+.........+..+...+.+......+...........+....+.....+...................+..+....+....................+....+...........++++++
+.+........+.+.....+......+...+....+..+....+......+.........+.....+.+......+..+...+.......+.....+++++++++++++++++++++++++++++++++++++++*.+......+................+............+..+.........+++++++++++++++++++++++++++++++++++++++*...+.....+............+....+...+..+...+.......+...+...........+........................+.............+.....+....+......+...+............+...+.........+.....+.+.........+............+........+.+......+......+..+.+......+.....+...+............+......+.......+..+.+..+.+....................+..........+.....+......+.........+.+.........+.....+.+...+...+.....+...+....+..+...............+...+.+......+...........+....+........+...+....+...+.....+.............+...+......+...+.....+.......+.........+..............+.+..+....+...+......+..+.......+.....+.+..+.......+..+....+.....+.+.....+....+.....+......+...++++++
+-----
+exit=0
+$ openssl x509 -req -in client.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out client.pem -days 2 -extfile client.ext
+Certificate request self-signature ok
+subject=CN = Week8-device
+exit=0
+
+CASE trusted_server
+$ ./tls_demo server 39413 ca.pem server.pem server.key 0
+$ ./tls_demo client 39413 ca.pem localhost
+CLIENT:
+HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present
+RECEIVED PONG
+EXCHANGE_OK
+
+SERVER:
+READY loopback
+HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=absent
+RECEIVED HELLO
+EXCHANGE_OK
+
+client_exit=0 server_exit=0 PASS=True
+
+CASE untrusted_ca
+$ ./tls_demo server 35107 ca.pem server.pem server.key 0
+$ ./tls_demo client 35107 other-ca.pem localhost
+CLIENT:
+HANDSHAKE_FAIL ssl_error=1 verify=19 (self-signed certificate in certificate chain)
+401C474C53750000:error:0A000086:SSL routines:tls_post_process_server_certificate:certificate verify failed:ssl/statem/statem_clnt.c:1889:
+
+SERVER:
+READY loopback
+HANDSHAKE_FAIL ssl_error=1 verify=0 (ok)
+404CDC9AF77F0000:error:0A000418:SSL routines:ssl3_read_bytes:tlsv1 alert unknown ca:ssl/record/rec_layer_s3.c:1601:SSL alert number 48
+
+client_exit=1 server_exit=1 PASS=True
+
+CASE hostname_mismatch
+$ ./tls_demo server 43067 ca.pem server.pem server.key 0
+$ ./tls_demo client 43067 ca.pem wrong.example
+CLIENT:
+HANDSHAKE_FAIL ssl_error=1 verify=62 (hostname mismatch)
+40AC05C71A710000:error:0A000086:SSL routines:tls_post_process_server_certificate:certificate verify failed:ssl/statem/statem_clnt.c:1889:
+
+SERVER:
+READY loopback
+HANDSHAKE_FAIL ssl_error=1 verify=0 (ok)
+403C133C347A0000:error:0A000412:SSL routines:ssl3_read_bytes:sslv3 alert bad certificate:ssl/record/rec_layer_s3.c:1601:SSL alert number 42
+
+client_exit=1 server_exit=1 PASS=True
+
+CASE mtls_missing_client
+$ ./tls_demo server 59523 ca.pem server.pem server.key 1
+$ ./tls_demo client 59523 ca.pem localhost
+CLIENT:
+HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present
+TLS read error=1
+405CDC5B09720000:error:0A00045C:SSL routines:ssl3_read_bytes:tlsv13 alert certificate required:ssl/record/rec_layer_s3.c:1601:SSL alert number 116
+
+SERVER:
+READY loopback
+HANDSHAKE_FAIL ssl_error=1 verify=0 (ok)
+40ACFB4040760000:error:0A0000C7:SSL routines:tls_process_client_certificate:peer did not return a certificate:ssl/statem/statem_srvr.c:3509:
+
+client_exit=1 server_exit=1 PASS=True
+
+CASE mtls_valid_client
+$ ./tls_demo server 42047 ca.pem server.pem server.key 1
+$ ./tls_demo client 42047 ca.pem localhost client.pem client.key
+CLIENT:
+HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present
+RECEIVED PONG
+EXCHANGE_OK
+
+SERVER:
+READY loopback
+HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present
+RECEIVED HELLO
+EXCHANGE_OK
+
+client_exit=0 server_exit=0 PASS=True
+
+ALL 5 CASES PASSED. Temporary private keys and binary removed on exit.

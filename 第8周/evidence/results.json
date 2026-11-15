@@ -1,0 +1,47 @@
+[
+  {
+    "case": "trusted_server",
+    "expected_accept": true,
+    "passed": true,
+    "client_exit": 0,
+    "server_exit": 0,
+    "client_output": "HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present\nRECEIVED PONG\nEXCHANGE_OK\n",
+    "server_output": "READY loopback\nHANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=absent\nRECEIVED HELLO\nEXCHANGE_OK\n"
+  },
+  {
+    "case": "untrusted_ca",
+    "expected_accept": false,
+    "passed": true,
+    "client_exit": 1,
+    "server_exit": 1,
+    "client_output": "HANDSHAKE_FAIL ssl_error=1 verify=19 (self-signed certificate in certificate chain)\n401C474C53750000:error:0A000086:SSL routines:tls_post_process_server_certificate:certificate verify failed:ssl/statem/statem_clnt.c:1889:\n",
+    "server_output": "READY loopback\nHANDSHAKE_FAIL ssl_error=1 verify=0 (ok)\n404CDC9AF77F0000:error:0A000418:SSL routines:ssl3_read_bytes:tlsv1 alert unknown ca:ssl/record/rec_layer_s3.c:1601:SSL alert number 48\n"
+  },
+  {
+    "case": "hostname_mismatch",
+    "expected_accept": false,
+    "passed": true,
+    "client_exit": 1,
+    "server_exit": 1,
+    "client_output": "HANDSHAKE_FAIL ssl_error=1 verify=62 (hostname mismatch)\n40AC05C71A710000:error:0A000086:SSL routines:tls_post_process_server_certificate:certificate verify failed:ssl/statem/statem_clnt.c:1889:\n",
+    "server_output": "READY loopback\nHANDSHAKE_FAIL ssl_error=1 verify=0 (ok)\n403C133C347A0000:error:0A000412:SSL routines:ssl3_read_bytes:sslv3 alert bad certificate:ssl/record/rec_layer_s3.c:1601:SSL alert number 42\n"
+  },
+  {
+    "case": "mtls_missing_client",
+    "expected_accept": false,
+    "passed": true,
+    "client_exit": 1,
+    "server_exit": 1,
+    "client_output": "HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present\nTLS read error=1\n405CDC5B09720000:error:0A00045C:SSL routines:ssl3_read_bytes:tlsv13 alert certificate required:ssl/record/rec_layer_s3.c:1601:SSL alert number 116\n",
+    "server_output": "READY loopback\nHANDSHAKE_FAIL ssl_error=1 verify=0 (ok)\n40ACFB4040760000:error:0A0000C7:SSL routines:tls_process_client_certificate:peer did not return a certificate:ssl/statem/statem_srvr.c:3509:\n"
+  },
+  {
+    "case": "mtls_valid_client",
+    "expected_accept": true,
+    "passed": true,
+    "client_exit": 0,
+    "server_exit": 0,
+    "client_output": "HANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present\nRECEIVED PONG\nEXCHANGE_OK\n",
+    "server_output": "READY loopback\nHANDSHAKE_OK version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 peer_cert=present\nRECEIVED HELLO\nEXCHANGE_OK\n"
+  }
+]
