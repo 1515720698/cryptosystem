@@ -1,0 +1,177 @@
+6.18.33.2-microsoft-standard-WSL2
+kmod-30-4.oe2403.x86_64
+USB 055c:db08 path=1-1
+bInterfaceClass=08
+../../../../../../bus/usb/drivers/usb-storage
+target_visible=1
+Longmai SCSI node: /dev/sg4
+NAME TRAN MODEL
+sda       Virtual Disk    
+sdb       Virtual Disk    
+sdc       Virtual Disk    
+sdd       Virtual Disk    
+sr0  usb  GM3000          
+crw------- 1 root root 21, 0 Nov 19 10:09 /dev/sg0
+crw------- 1 root root 21, 1 Nov 19 10:09 /dev/sg1
+crw------- 1 root root 21, 2 Nov 19 10:09 /dev/sg2
+crw------- 1 root root 21, 3 Nov 19 10:09 /dev/sg3
+crw------- 1 root root 21, 4 Nov 19 10:14 /dev/sg4
+brw------- 1 root root 11, 0 Nov 19 10:14 /dev/sr0
+
+$ timeout 25s ./build/skf-original
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+
+	Manufacturer: Longmai 
+
+AlgSymCap :1799 
+
+AlgAsymCap :198400,
+
+AlgHashCap :7,
+
+evAuthAlgId :1025,
+	Issuer : Longmai 
+	Label : GM3000 
+	SerialNumber : [redacted]
+	Total space:131072 
+
+exit=1
+
+$ timeout 20s ./build/skf-state
+backend=Longmai SKF SDK
+SKF_GetDevState([redacted]): PRESENT (0x00000001)
+exit=0

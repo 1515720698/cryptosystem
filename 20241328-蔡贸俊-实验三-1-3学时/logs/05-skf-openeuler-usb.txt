@@ -1,0 +1,14 @@
+6.18.33.2-microsoft-standard-WSL2
+kmod-30-4.oe2403.x86_64
+USB 055c:db08 path=1-1
+bInterfaceClass=08
+target_visible=1
+
+$ timeout 20s ./build/skf-state
+backend=Longmai SKF SDK
+No present SKF device; provide a known name to query it.
+exit=3
+
+$ timeout 25s ./build/skf-original
+	Not found device. 
+exit=1

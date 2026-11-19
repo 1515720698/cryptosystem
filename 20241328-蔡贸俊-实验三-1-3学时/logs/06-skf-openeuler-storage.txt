@@ -1,0 +1,17 @@
+6.18.33.2-microsoft-standard-WSL2
+kmod-30-4.oe2403.x86_64
+target_visible=0
+NAME TRAN MODEL
+sda       Virtual Disk    
+sdb       Virtual Disk    
+sdc       Virtual Disk    
+sdd       Virtual Disk    
+crw------- 1 root root 21, 0 Nov 19 10:09 /dev/sg0
+crw------- 1 root root 21, 1 Nov 19 10:09 /dev/sg1
+crw------- 1 root root 21, 2 Nov 19 10:09 /dev/sg2
+crw------- 1 root root 21, 3 Nov 19 10:09 /dev/sg3
+
+$ timeout 20s ./build/skf-state
+backend=Longmai SKF SDK
+No present SKF device; provide a known name to query it.
+exit=3
