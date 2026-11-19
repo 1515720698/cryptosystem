@@ -1,0 +1,78 @@
+NAME="openEuler"
+VERSION="24.03 (LTS)"
+ID="openEuler"
+VERSION_ID="24.03"
+PRETTY_NAME="openEuler 24.03 (LTS)"
+ANSI_COLOR="0;31"
+
+x86_64
+6.18.33.2-microsoft-standard-WSL2
+gcc (GCC) 12.3.1 (openEuler 12.3.1-38.oe2403)
+GNU Make 4.4.1
+vendor/libgm3000.1.0.so: OK
+mkdir -p build
+g++ -m64 -o build/skf-original skf/enumdevinfo/main.cpp -Lvendor -l:libgm3000.1.0.so -Wl,-rpath,'$ORIGIN/../vendor'
+gcc -std=c11 -Wall -Wextra -O2 -ftrivial-auto-var-init=zero -Isdf/include -o build/sdf-original sdf/src/testsdf.c sdf/src/sdf.c
+sdf/src/testsdf.c: In function 'main':
+sdf/src/testsdf.c:15:43: warning: format '%ld' expects argument of type 'long int', but argument 2 has type 'LONG' {aka 'int'} [-Wformat=]
+   15 |         printf("设备打开失败，错误代码: %ld\n", openResult);
+      |                                         ~~^     ~~~~~~~~~~
+      |                                           |     |
+      |                                           |     LONG {aka int}
+      |                                           long int
+      |                                         %d
+sdf/src/testsdf.c:23:47: warning: format '%ld' expects argument of type 'long int', but argument 2 has type 'LONG' {aka 'int'} [-Wformat=]
+   23 |             printf("设备关闭失败，错误代码: %ld\n", closeResult);
+      |                                             ~~^     ~~~~~~~~~~~
+      |                                               |     |
+      |                                               |     LONG {aka int}
+      |                                               long int
+      |                                             %d
+sdf/src/sdf.c: In function 'SDF_OpenDevice':
+sdf/src/sdf.c:4:30: warning: unused parameter 'phDeviceHandle' [-Wunused-parameter]
+    4 | LONG SDF_OpenDevice(HANDLE * phDeviceHandle){
+      |                     ~~~~~~~~~^~~~~~~~~~~~~~
+sdf/src/sdf.c: In function 'SDF_CloseDevice':
+sdf/src/sdf.c:9:29: warning: unused parameter 'hDeviceHandle' [-Wunused-parameter]
+    9 | LONG SDF_CloseDevice(HANDLE hDeviceHandle){
+      |                      ~~~~~~~^~~~~~~~~~~~~
+build/skf-original: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=1a66d568592ea26316dcf94fb647d0b58df212d1, for GNU/Linux 3.2.0, not stripped
+build/sdf-original: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=000eb597fd71da5e93d4e40a3066052f020ae977, for GNU/Linux 3.2.0, not stripped
+	linux-vdso.so.1 (0x00007c1ac5343000)
+	libgm3000.1.0.so => /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so (0x00007c1ac5000000)
+	libstdc++.so.6 => /usr/lib64/libstdc++.so.6 (0x00007c1ac4c00000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x00007c1ac4f23000)
+	libgcc_s.so.1 => /usr/lib64/libgcc_s.so.1 (0x00007c1ac5316000)
+	libc.so.6 => /usr/lib64/libc.so.6 (0x00007c1ac4a27000)
+	libdl.so.2 => /usr/lib64/libdl.so.2 (0x00007c1ac5311000)
+	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x00007c1ac530e000)
+	librt.so.1 => /usr/lib64/librt.so.1 (0x00007c1ac530b000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007c1ac5345000)
+Not visible: /dev/bus/usb
+Not visible: /sys/bus/usb/devices
+
+$ timeout 15s build/skf-original
+tests/baseline.sh: line 18:   196 Segmentation fault      "$@"
+exit=139
+
+$ timeout 15s gdb -nx -batch -ex set debuginfod enabled off -ex run -ex bt --args build/skf-original
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib64/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff76adb64 in pthread_mutex_lock () from /usr/lib64/libc.so.6
+#0  0x00007ffff76adb64 in pthread_mutex_lock () from /usr/lib64/libc.so.6
+#1  0x00007ffff7c66365 in libusb_get_device_list () from /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so
+#2  0x00007ffff7c60e81 in hid_device_discover::discover_devices(char*, char (*) [256]) () from /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so
+#3  0x00007ffff7c60702 in device_manager::discover_devices(char*, char (*) [256]) () from /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so
+#4  0x00007ffff7c60143 in device_manager::update_devices(int*, int*, char*) () from /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so
+#5  0x00007ffff7c5fc4b in device_manager::enum_and_create_devices(char*) () from /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so
+#6  0x00007ffff7c4bdb4 in app_enum_device () from /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so
+#7  0x00007ffff7c37898 in SKF_EnumDev () from /mnt/d/HuaweiMoveData/Users/HUAWEI/Desktop/学习/信息安全设计/实验三/20241328-蔡贸俊-实验三-1-3学时/build/../vendor/libgm3000.1.0.so
+#8  0x0000000000401364 in main ()
+exit=0
+
+$ build/sdf-original
+设备打开成功。
+设备关闭成功。
+exit=0
