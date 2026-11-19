@@ -1,3 +1,4 @@
+bf75d8d Document-second-UKey-hardware-verification
 61b339c Verify-HSC32TU-SDF-random-service-on-openEuler
 50a7b2f Record course repository link and complete lab Git log
 68125a4 Verify GM3000 SKF device state on openEuler with USB passthrough
