@@ -1,0 +1,8 @@
+61b339c Verify-HSC32TU-SDF-random-service-on-openEuler
+50a7b2f Record course repository link and complete lab Git log
+68125a4 Verify GM3000 SKF device state on openEuler with USB passthrough
+7b7ffc6 Verify physical GM3000 with Windows SKF SDK
+29a9256 Document lab results and submission checklist
+ae00489 Implement SDF device information and session lifecycle
+6773f3f Add SKF device-state query with isolated mock checks
+04a1114 Import and run course SKF and SDF examples on openEuler
