@@ -1,0 +1,26 @@
++ make -B build/sdf-info build/test-sdf
+mkdir -p build
+gcc -std=c11 -Wall -Wextra -O2 -Werror -Isdf/include -o build/sdf-info sdf/src/device_info.c
+gcc -std=c11 -Wall -Wextra -O2 -Werror -DLAB_SDF_NO_MAIN -Isdf/include -o build/test-sdf tests/sdf_test.c sdf/src/device_info.c
++ file build/sdf-info build/test-sdf
+build/sdf-info: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=0044539eadcd2862419e1aa350db8be4a0672804, for GNU/Linux 3.2.0, not stripped
+build/test-sdf: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=906fa8efa363cb156539be1a0b93dfcc389ea257, for GNU/Linux 3.2.0, not stripped
++ build/sdf-info
+SDF_OpenDevice: 0x00000000
+SDF_OpenSession: 0x00000000
+SDF_GetDeviceInfo: 0x00000000
+backend=software IssuerName=Teaching software DeviceName=LAB3-SDF DeviceSerial=0000000000000000
+DeviceVersion=1 StandardVersion=2 AsymAlgAbility=[0,0] SymAlgAbility=0 HashAlgAbility=0 BufferSize=0
+SDF_CloseSession: 0x00000000
+SDF_CloseDevice: 0x00000000
++ build/test-sdf
+open device: 0x00000000 (expected 0x00000000)
+open session: 0x00000000 (expected 0x00000000)
+device handle is not a session: 0x0100001d (expected 0x0100001d)
+NULL output: 0x0100001e (expected 0x0100001e)
+get device info: 0x00000000 (expected 0x00000000)
+cannot close device before session: 0x0100001d (expected 0x0100001d)
+close session: 0x00000000 (expected 0x00000000)
+no active session: 0x0100001d (expected 0x0100001d)
+close device: 0x00000000 (expected 0x00000000)
+SDF checks passed (software backend).

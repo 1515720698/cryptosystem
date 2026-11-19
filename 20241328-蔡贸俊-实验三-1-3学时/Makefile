@@ -7,7 +7,7 @@ SKF_LINK = -Lvendor -l:libgm3000.1.0.so -Wl,-rpath,'$$ORIGIN/../vendor'
 SDF_SRC = sdf/src/testsdf.c sdf/src/sdf.c
 
 .PHONY: all
-all: build/skf-original build/sdf-original build/skf-state
+all: build/skf-original build/sdf-original build/skf-state build/sdf-info
 
 build:
 	mkdir -p $@
@@ -23,3 +23,9 @@ build/skf-state: skf/device_state.cpp skf/include/skfapi.h $(SKF_LIB) | build
 
 build/skf-state-mock: skf/device_state.cpp tests/skf_mock.cpp skf/include/skfapi.h | build
 	$(CXX) $(CXXFLAGS) -DLAB_SKF_MOCK -o $@ skf/device_state.cpp tests/skf_mock.cpp
+
+build/sdf-info: sdf/src/device_info.c sdf/include/sdf_device.h sdf/include/sdf.h | build
+	$(CC) $(CFLAGS) -Werror -Isdf/include -o $@ $<
+
+build/test-sdf: tests/sdf_test.c sdf/src/device_info.c sdf/include/sdf_device.h sdf/include/sdf.h | build
+	$(CC) $(CFLAGS) -Werror -DLAB_SDF_NO_MAIN -Isdf/include -o $@ $(filter %.c,$^)
