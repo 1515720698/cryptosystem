@@ -1,0 +1,3 @@
+ae00489 Implement SDF device information and session lifecycle
+6773f3f Add SKF device-state query with isolated mock checks
+04a1114 Import and run course SKF and SDF examples on openEuler
