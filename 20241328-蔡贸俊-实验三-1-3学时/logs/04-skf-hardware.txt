@@ -1,0 +1,12 @@
+Device: Longmai GM3000 USB Device (USB VID_055C PID_DB08)
+Windows x64: course SDK skf/windows/x64/mtoken_gm3000.dll
+> python tests/check-skf-windows.py <dll>
+SKF_EnumDev: ret=0x00000000, size=33
+Present device names returned: 1 (names omitted)
+SKF_GetDevState(device #1): ret=0x00000000, state=0x00000001
+Windows exit=0
+
+> wsl -d openEuler -- ./build/skf-state
+backend=Longmai SKF SDK
+stderr (observed): USB bus not visible; vendor API not called.
+openEuler exit=3
