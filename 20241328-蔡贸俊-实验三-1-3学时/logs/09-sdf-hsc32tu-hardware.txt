@@ -1,0 +1,15 @@
+	libhsctu_guomi_vpn.so => /mnt/c/Users/HUAWEI/AppData/Local/Temp/opencode/lab3-sdk/rochs.hsctu.cos6.x.exampls/so/Linux_x86_64/libhsctu_guomi_vpn.so (0x0000794b00200000)
+0000000000003874 T SDF_CloseDevice
+0000000000003a47 T SDF_CloseSession
+0000000000003a88 T SDF_GenerateRandom
+0000000000003f00 T SDF_GetDeviceSN
+00000000000037ff T SDF_OpenDevice
+00000000000038b5 T SDF_OpenSession
+HSC32TU USB 096e:082e node=/dev/bus/usb/001/003
+SDF_OpenDevice: 0x00000000
+SDF_OpenSession: 0x00000000
+SDF_GenerateRandom: 0x00000000
+Requested 16 random bytes successfully (contents omitted).
+SDF_CloseSession: 0x00000000
+SDF_CloseDevice: 0x00000000
+Probe exit=0
